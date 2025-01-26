@@ -24,5 +24,4 @@ const categorySchema = new mongoose.Schema({
     reviews:{type:[String],required:true},
     team:{type:[teamMember],required:true}
 })
-const Category = mongoose.model("Category", categorySchema);
-module.exports = Category
+export const Category = mongoose.model("Category", categorySchema);

@@ -25,4 +25,3 @@ export const createUser = async (req: Request, res: Response, next: NextFunction
         res.status(400).json({error: (error as Error).message})
     }
 };
-module.exports = {getUsers,createUser}

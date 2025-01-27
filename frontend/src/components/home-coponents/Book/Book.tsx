@@ -15,7 +15,7 @@ export const Book = () => {
       <form action="" className={styles.formContainer}>
         <span>
           <CiSearch size={20} />
-          <input type="text" placeholder="All Treatments and ve.." />
+          <input type="text" placeholder="All Treatments and venues" />
         </span>
 
         <span>

@@ -55,6 +55,7 @@
 
 .IoMdMenu{
     display: none;
+    cursor: pointer;
 }
 .dropdownMenu {
     position: absolute;
@@ -89,6 +90,14 @@
     background-color: #f0f0f0;
   }
   
+  @media(max-width: 1081px) {
+    .container{
+     padding-left: 5px;
+     padding-right: 5px;
+    }
+ }
+
+ 
 
 @media(max-width: 1016px) {
     .IoMdMenu {
@@ -102,9 +111,39 @@
     }
 }
 
+
+@media(max-width: 1012px) {
+    .dropdownMenu {
+        position: absolute;
+        top: 8%;
+        right: 2%;
+      
+      }
+}
+
+
 @media(max-width: 772px) {
     .buttonOne{
         display: none;
     }
+    .dropdownMenu {
+        position: absolute;
+        top: 6%;
+        right: 2%;
+      
+      }
 }
+
+@media(max-width: 772px) {
+    .buttonOne{
+        display: none;
+    }
+    .dropdownMenu {
+        position: absolute;
+        top: 6%;
+        right: 2%;
+      
+      }
+}
+
 

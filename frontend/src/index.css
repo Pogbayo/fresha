@@ -19,10 +19,19 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
+body::-webkit-scrollbar {
+  display: none; 
+}
+
 .app{
   width: 75vw;
   margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
+  overflow-x: hidden;
+  padding-bottom: 30px;
 }
 
 
@@ -43,12 +52,12 @@ body {
 }
 @media(max-width:1433px){
   .app{
-    width: 99vw;
+    width: 97vw;
   }
 }
 @media(max-width:600px){
   .app{
-    width: 99vw;
+    width: 97vw;
   }
 }
 

@@ -1,11 +1,14 @@
 .container{
     padding: 20px;
-    height: 700px;
+    height: auto;
     margin-top: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 30px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 .bigFont{
     color: black;
@@ -22,7 +25,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    
 }
 .formContainer span {
     display: flex;
@@ -42,6 +44,11 @@
     border-right: 1px solid gray;
     border-bottom-left-radius: 40px;
 }
+.formContainer span input:focus {
+    border: none;
+    outline: none; 
+}
+
 .formContainer span:nth-of-type(2) {
     border-top-left-radius: 1px;
     border-bottom-left-radius: 1px;
@@ -53,7 +60,8 @@
 .formContainer span:nth-of-type(4) {
     border-top-left-radius: 1px;
     border-bottom-left-radius: 1px;
-}
+} 
+
 
 .formContainer span:hover{
     background-color: rgb(235, 230, 230);
@@ -61,6 +69,13 @@
 .formContainer span input:hover{
     background-color: rgb(235, 230, 230);
 }
+
+
+.formContainer span:nth-of-type(5):hover{
+    background-color:white;
+}
+
+
 .formContainer span button{
     height: 60px;
     padding: 5px;
@@ -71,6 +86,17 @@
     color: white;
     border-right: 1px solid gray;
 }
+
+
+.formContainer span button:hover{
+    background-color: white;
+    color: black;
+    font-weight: 900;
+    font-size: 1rem;
+    border: 1px solid gray;
+}
+
+
 .qrCodeButton{
     padding: 20px;
     border: 1px solid gray;
@@ -85,3 +111,140 @@
 .qrCodeButton:hover{
     background-color: rgb(235, 230, 230);
 }
+
+@media(max-width:1021px){
+    .container{
+        text-align: center;
+    }
+    .formContainer{
+        max-width: 650px;
+        border: 2px solid black;
+        flex-direction: column;
+        height: auto;
+        gap: 5px;
+        padding: 20px;
+        border-radius: 30px;
+    }
+    .bigFont{
+        font-size: 35px;
+        font-weight: 900;
+    }
+    .formContainer span {
+        width: 600px;
+        border: 1px solid rgb(224, 221, 221);
+        border-radius: none;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        padding-left: 20px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+    }
+    .formContainer span input {
+        width: 600px;
+        border: none;
+        height: 50px;
+        border-top-left-radius: 0;
+        font-weight: 700;
+        border-bottom-left-radius: 0;
+    }
+    .formContainer span:nth-of-type(2) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    .formContainer span:nth-of-type(3) {
+        border-top-left-radius: 1px;
+        border-bottom-left-radius: 1px;
+    }
+    .formContainer span:nth-of-type(4) {
+        border-top-left-radius: 1px;
+        border-bottom-left-radius: 1px;
+    }
+    .formContainer span:nth-of-type(5) {
+        border-top-left-radius: 1px;
+        border-bottom-left-radius: 1px;
+        border: none;
+    }
+    .formContainer span button{
+        height: 60px;
+        padding: 5px;
+        border: none;
+        width: 100%;
+        background-color: black;
+        border-radius: 10px;
+        color: white;
+        border-right: 1px solid gray;
+        margin: 0 ;
+        padding: 0;
+        border-right:none;
+        margin-right: 15px;
+    }
+
+}
+   
+@media(max-width:771px){
+    .container{
+        text-align: center;
+        gap: 10px;
+    }
+    .formContainer{
+       width: 80%;
+    }
+    .bigFont{
+        margin-right: 20px;
+        margin-top: 2px;
+        font-size: 2.6rem;
+        text-align: start;
+        font-weight: 900;
+        width: 99%;
+        line-height: 1;
+    }
+    .formContainer span {
+        width: 100%;
+        border: 1px solid rgb(224, 221, 221);
+        border-radius: none;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        padding-left: 20px;
+        display: flex;
+        gap: 10px;
+    }
+    .formContainer span input {
+        width: 600px;
+        border: none;
+        height: 50px;
+        border-top-left-radius: 0;
+        font-weight: 700;
+        border-bottom-left-radius: 0;
+    }
+    .formContainer span:nth-of-type(2) {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    .formContainer span:nth-of-type(3) {
+        border-top-left-radius: 1px;
+        border-bottom-left-radius: 1px;
+    }
+    .formContainer span:nth-of-type(4) {
+        border-top-left-radius: 1px;
+        border-bottom-left-radius: 1px;
+    }
+    .formContainer span:nth-of-type(5) {
+        border-top-left-radius: 1px;
+        border-bottom-left-radius: 1px;
+        border: none;
+    }
+    .formContainer span button{
+        height: 60px;
+        padding: 5px;
+        border: none;
+        width: 100%;
+        background-color: black;
+        border-radius: 30px;
+        color: white;
+        border-right: 1px solid gray;
+    }
+
+}
+   

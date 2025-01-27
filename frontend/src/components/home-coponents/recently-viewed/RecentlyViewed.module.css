@@ -1,0 +1,13 @@
+.container{
+    padding: 10px;
+}
+.boxDiv{
+    width: 300px;
+    border: 2px solid gray;
+    height: 200px;
+}
+.boxDiv img{
+    height: 100px;
+    border: 2px solid black;
+    width: 100%;
+}

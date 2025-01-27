@@ -26,13 +26,13 @@ export const Header = () => {
         <button className={styles.buttonOne}>For business</button>
         <button className={styles.buttonTwo} onClick={handleMenuDropDown}>
           Menu
-          {isMenuOpen ? (
-            <FaChevronUp />
-          ) : (
-            <FaAngleDown onClick={handleMenuDropDown} />
-          )}
+          {isMenuOpen ? <FaChevronUp /> : <FaAngleDown />}
         </button>
-        <IoMdMenu size={30} className={styles.IoMdMenu} />
+        <IoMdMenu
+          size={30}
+          className={styles.IoMdMenu}
+          onClick={handleMenuDropDown}
+        />
       </div>
 
       {isMenuOpen && (

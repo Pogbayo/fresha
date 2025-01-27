@@ -1,0 +1,87 @@
+.container{
+    padding: 20px;
+    height: 700px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+.bigFont{
+    color: black;
+    font-size: 6rem;
+    width: 900px;
+    line-height: 0.8;
+}
+.formContainer{
+    height: 60px;
+    border-radius: 40px;
+    width: auto;
+    padding: 2px;
+    border: 6px solid  rgb(235, 230, 230);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.formContainer span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:90%;
+    border: none;
+    border-top-left-radius: 40px;
+    padding: 4px;
+    border-bottom-left-radius: 40px;
+}
+.formContainer span input{
+    height:90%;
+    border-top-left-radius: 40px;
+    padding: 4px;
+    border: none;
+    border-right: 1px solid gray;
+    border-bottom-left-radius: 40px;
+}
+.formContainer span:nth-of-type(2) {
+    border-top-left-radius: 1px;
+    border-bottom-left-radius: 1px;
+}
+.formContainer span:nth-of-type(3) {
+    border-top-left-radius: 1px;
+    border-bottom-left-radius: 1px;
+}
+.formContainer span:nth-of-type(4) {
+    border-top-left-radius: 1px;
+    border-bottom-left-radius: 1px;
+}
+
+.formContainer span:hover{
+    background-color: rgb(235, 230, 230);
+}
+.formContainer span input:hover{
+    background-color: rgb(235, 230, 230);
+}
+.formContainer span button{
+    height: 60px;
+    padding: 5px;
+    border: none;
+    width: 14cqh;
+    background-color: black;
+    border-radius: 30px;
+    color: white;
+    border-right: 1px solid gray;
+}
+.qrCodeButton{
+    padding: 20px;
+    border: 1px solid gray;
+    background-color: white;
+    color: black;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 40px;
+    cursor: pointer;
+}
+.qrCodeButton:hover{
+    background-color: rgb(235, 230, 230);
+}

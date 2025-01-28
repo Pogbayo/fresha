@@ -20,6 +20,7 @@ body {
   padding: 0;
   box-sizing: border-box;
   overflow-x: hidden;
+
 }
 body::-webkit-scrollbar {
   display: none; 
@@ -28,10 +29,9 @@ body::-webkit-scrollbar {
 .app{
   width: 75vw;
   margin: 0 auto;
-  padding-left: 10px;
-  padding-right: 10px;
   overflow-x: hidden;
   padding-bottom: 30px;
+  border: 2px solid red;
 }
 
 
@@ -53,6 +53,11 @@ body::-webkit-scrollbar {
 @media(max-width:1433px){
   .app{
     width: 97vw;
+  }
+}
+@media(max-width:1086px){
+  .app{
+    width: 95vw;
   }
 }
 @media(max-width:600px){

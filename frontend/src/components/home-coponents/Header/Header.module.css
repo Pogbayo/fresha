@@ -3,10 +3,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: fixed;
+    
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
+    height: 60px;
+    z-index: 100; /* Ensures it stays above other elements */
+
     background-color: white; 
 }
 
@@ -65,8 +69,8 @@
 }
 .dropdownMenu {
     position: absolute;
-    top: 10%;
-    right: 5%;
+    top: 90%;
+    right: 3%;
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -98,8 +102,8 @@
   
   @media(max-width: 1081px) {
     .container{
-     padding-left: 5px;
-     padding-right: 5px;
+     padding-left: 10px;
+     padding-right: 10px;
     }
  }
 
@@ -121,7 +125,7 @@
 @media(max-width: 1012px) {
     .dropdownMenu {
         position: absolute;
-        top: 8%;
+        top: 98%;
         right: 2%;
       
       }
@@ -129,27 +133,28 @@
 
 
 @media(max-width: 772px) {
+    .container{
+        padding-left: 15px;
+        padding-right:15px ;
+    }
     .buttonOne{
         display: none;
     }
     .dropdownMenu {
         position: absolute;
-        top: 6%;
-        right: 2%;
-      
-      }
-}
-
-@media(max-width: 772px) {
-    .buttonOne{
-        display: none;
-    }
-    .dropdownMenu {
-        position: absolute;
-        top: 6%;
+        top: 95%;
         right: 2%;
       
       }
 }
 
 
+@media(max-width: 442px) {
+    
+    .dropdownMenu {
+        position: absolute;
+        top: 84%;
+        right: 3%;
+      
+      }
+}

@@ -31,7 +31,7 @@ export const Book = () => {
           <input type="text" placeholder="Any time" />
         </span>
         <span>
-          <button>Search</button>
+          <button>Search spag</button>
         </span>
       </form>
       <h2>403,834 appointments booked today</h2>

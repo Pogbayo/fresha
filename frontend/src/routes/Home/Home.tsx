@@ -1,5 +1,6 @@
 import { Available } from "../../components/home-coponents/Available/Available";
 import { Book } from "../../components/home-coponents/Book/Book";
+import { FFB } from "../../components/home-coponents/fresha-for-business/FFB";
 import { Header } from "../../components/home-coponents/Header/Header";
 import { RecentlyViewed } from "../../components/home-coponents/recently-viewed/RecentlyViewed";
 import { Recommended } from "../../components/home-coponents/Recommended/Recommended";
@@ -19,6 +20,7 @@ export const Home = () => {
       <Available />
       <Review />
       <TopRated />
+      <FFB />
     </div>
   );
 };

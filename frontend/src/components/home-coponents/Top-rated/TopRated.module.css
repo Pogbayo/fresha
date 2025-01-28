@@ -1,11 +1,66 @@
 .container{
-    margin-top: 30px;
+    margin-top: 60px;
     text-align: center;
 }
  .container section  h1{
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 900;
-    color: red;
-    width: 2px solid red;
+    margin: 0;
     background-color: white;
+}
+section p{
+    font-size: 1.4rem;
+    margin-top: 0;
+}
+.div1{
+    margin: 60px;
+}
+.div1 big{
+    font-size: 5rem;
+    font-weight: 900;
+    margin-bottom: 0;
+}
+.hori{
+    display: flex;
+    margin: 0 auto;
+    width: 80%;
+    justify-content: space-around;
+}
+.div2 big{
+    font-size: 2.2rem;
+    font-weight: 900;
+}
+.div3 big{
+    font-size: 2.2rem;
+    font-weight: 900;
+}
+.div4 big{
+    font-size: 2.2rem;
+    font-weight: 900;
+}
+.hori p{
+    font-size: 20px;
+    margin: 0;
+}
+
+@media(max-width:1000px){
+    .hori{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+    .div1{
+        margin: 20px;
+    }
+    .div1 big,.div2 big,.div3 big,.div4 big{
+        font-size: 2rem;
+        margin: 0;
+    }
+    .container section  h1{
+        font-size: 2rem;
+    }
+    .container section p {
+        margin: 0;
+        font-size: 1.2rem;
+    }
 }

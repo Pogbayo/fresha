@@ -1,4 +1,4 @@
-import styles from "./RecentlyViewed.module.css";
+import styles from "./Trending.module.css";
 
 export interface Service {
   name: string;
@@ -22,7 +22,7 @@ export interface FitnessCenter {
   team: TeamMember[];
 }
 
-export const RecentlyViewed = () => {
+export const Trending = () => {
   const dummyData: FitnessCenter[] = [
     {
       id: "67962b27c5a885d5ca00aa5d",
@@ -60,12 +60,15 @@ export const RecentlyViewed = () => {
 
   return (
     <div className={styles.container}>
-      <h3>Recently Viewed</h3>
+      <h3>Trending</h3>
       <div className={styles.boxesDiv}>
         {dummyData.map((data) => (
           <div key={data.id} className={styles.boxDiv}>
             {/* <img src={data.images[0]} alt={`${data.name}`} /> */}
-            <img src="/images/homeMedia/bigImage.png" alt="" />
+            <img
+              src="/frontend/public/images/homeMedia/trendyStudio@2x-7323de5d66a7e52fa30aab8711abf488.webp"
+              alt=""
+            />
             <p>{data.name}</p>
             <p>{data.reviews[0]}</p>
           </div>

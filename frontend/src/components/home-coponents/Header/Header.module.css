@@ -1,9 +1,15 @@
-.container{
+.container {
     padding: 10px 30px 10px 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white; 
 }
+
 .logo{
     line-height: 1.5;
     font-family: cursive;

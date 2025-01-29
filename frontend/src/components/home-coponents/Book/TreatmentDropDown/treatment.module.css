@@ -5,17 +5,43 @@
     background-color: white;
     border-radius: 20px;
     border: 1px solid gray;
-}
+    height: 300px;
+    overflow-y: auto; /* Enable vertical scrolling */
 
+}
+.container::-webkit-scrollbar {
+  display: none; 
+}
+.container h3{
+  position: sticky;
+  top: 0;
+  background-color: white;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 .container ul li {
     display: flex;
     align-items: center;
     justify-content: flex-start; 
     padding: 10px;
-    margin: 0; 
+    cursor: pointer;
+    margin-right: 20px; 
   }
-  
+  .container ul li:hover {
+    background-color: gainsboro;
+  }
   .container ul li div:first-child {
     margin-right: 10px; 
   }
-  
+  @media(max-width:400px){
+    .container{
+      width: 350px;
+    }
+  }

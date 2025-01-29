@@ -9,13 +9,15 @@ import { MyCalendar } from "./calendar/MyCalendar";
 import { useRef, useEffect } from "react";
 import { Treatment } from "./TreatmentDropDown/Treatment";
 import { Location } from "./location/Location";
-import { Time } from "./TIme-picker/TIme";
+import { Time } from "./Time-picker/TIme";
 
 export const Book = () => {
   const {
     isCalendarOpen,
-    setIsCalendarOpen,
     handleCalendarDropDown,
+    calendarInputValue,
+    setCalendarInputValue,
+    setIsCalendarOpen,
     isTreatmentsOpen,
     setIsTreatmentsOpen,
     handleTreatmentsDropDown,
@@ -25,11 +27,27 @@ export const Book = () => {
     isCurrentLocation,
     setIsCurrentLocation,
     handleCurrentLocationDropDown,
+    treatmentInputValue,
+    setTreatmentInputValue,
+    locationInputValue,
+    setLocationInputValue,
   } = useAppContext();
   const calendarRef = useRef<HTMLDivElement | null>(null);
   const treatmentRef = useRef<HTMLDivElement | null>(null);
   const locationRef = useRef<HTMLDivElement | null>(null);
   const timeRef = useRef<HTMLDivElement | null>(null);
+
+  const handleTreatmentInput = (value: string) => {
+    setTreatmentInputValue(value);
+    setIsTreatmentsOpen(false);
+  };
+  const handleLocationValueInput = (value: string) => {
+    setLocationInputValue(value);
+    setIsCurrentLocation(false);
+  };
+  const handleCalendarValueInput = (value: string) => {
+    setCalendarInputValue(value);
+  };
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -72,6 +90,7 @@ export const Book = () => {
           <input
             type="text"
             placeholder="All Treatments and venues"
+            value={treatmentInputValue}
             onClick={handleTreatmentsDropDown}
           />
         </span>
@@ -81,6 +100,7 @@ export const Book = () => {
           <input
             type="text"
             placeholder="Current location"
+            value={locationInputValue}
             onClick={handleCurrentLocationDropDown}
           />
         </span>
@@ -89,6 +109,7 @@ export const Book = () => {
           <input
             type="text"
             placeholder="Any Date"
+            value={calendarInputValue}
             onClick={handleCalendarDropDown}
           />
         </span>
@@ -109,26 +130,44 @@ export const Book = () => {
         Get the app
         <IoQrCode />
       </button>
-      {isTreatmentsOpen && (
-        <div ref={treatmentRef} className={styles.TreatmentDropDown}>
-          <Treatment />
+      {
+        <div
+          ref={treatmentRef}
+          className={`${styles.treatmentDropDown} ${
+            isTreatmentsOpen ? styles.show : ""
+          }`}
+        >
+          <Treatment handleTreatmentInput={handleTreatmentInput} />
         </div>
-      )}
-      {isCurrentLocation && (
-        <div ref={locationRef} className={styles.locationDropDown}>
-          <Location />
+      }
+      {
+        <div
+          ref={locationRef}
+          className={`${styles.locationDropDown} ${
+            isCurrentLocation ? styles.show : ""
+          }`}
+        >
+          <Location handleLocationValueInput={handleLocationValueInput} />
         </div>
-      )}
-      {isCalendarOpen && (
-        <div ref={calendarRef} className={styles.calendarDropDown}>
-          <MyCalendar />
+      }
+      {
+        <div
+          ref={calendarRef}
+          className={`${styles.calendarDropDown} ${
+            isCalendarOpen ? styles.show : ""
+          }`}
+        >
+          <MyCalendar handleCalendarValueInput={handleCalendarValueInput} />
         </div>
-      )}
-      {isTime && (
-        <div ref={timeRef} className={styles.timeDropDown}>
+      }
+      {
+        <div
+          ref={timeRef}
+          className={`${styles.timedropdown} ${isTime ? styles.show : ""}`}
+        >
           <Time />
         </div>
-      )}
+      }
     </div>
   );
 };

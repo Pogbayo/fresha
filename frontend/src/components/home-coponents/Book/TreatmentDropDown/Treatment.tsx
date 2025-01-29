@@ -12,82 +12,101 @@ import { ImMakeGroup } from "react-icons/im";
 import { CiMedicalCross } from "react-icons/ci";
 import { CgGym } from "react-icons/cg";
 
-export const Treatment = () => {
+export const Treatment = ({
+  handleTreatmentInput,
+}: {
+  handleTreatmentInput: (value: string) => void;
+}) => {
+  const handleClickForTreatment = (value: string) => {
+    handleTreatmentInput(value);
+  };
   return (
     <div className={styles.container}>
       <h3>Top Categories</h3>
       <ul>
         <li>
           <div>
-            <GiHairStrands color="purple" size={15} />
+            <GiHairStrands size={15} />
           </div>
-          <div>Hair Styling</div>
+          <div onClick={() => handleClickForTreatment("Hair Styling")}>
+            Hair Styling
+          </div>
         </li>
         <li>
           <div>
-            <GiFingernail color="purple" size={15} />
+            <GiFingernail size={15} />
           </div>
-          <div>Nails</div>
+          <div onClick={() => handleClickForTreatment("Nails")}>Nails</div>
         </li>
         <li>
           <div>
-            <GiEyelashes color="purple" size={15} />
+            <GiEyelashes size={15} />
           </div>
-          <div>Eye brow & Eye lashes</div>
+          <div onClick={() => handleClickForTreatment("Eye brow & Eye lashes")}>
+            Eye brow & Eye lashes
+          </div>
         </li>
         <li>
           <div>
-            <TbMassage color="purple" size={15} />
+            <TbMassage size={15} />
           </div>
-          <div>Massage</div>
+          <div onClick={() => handleClickForTreatment("Massage")}>Massage</div>
         </li>
         <li>
           <div>
-            <PiWheelchairDuotone color="purple" size={15} />
+            <PiWheelchairDuotone size={15} />
           </div>
-          <div>Barbing</div>
+          <div onClick={() => handleClickForTreatment("Barbing")}>Barbing</div>
         </li>
         <li>
           <div>
-            <GiFemaleLegs color="purple" size={15} />
+            <GiFemaleLegs size={15} />
           </div>
-          <div>Hair removal</div>
+          <div onClick={() => handleClickForTreatment("Hair removal")}>
+            Hair removal
+          </div>
         </li>
         <li>
           <div>
-            <CiFaceSmile color="purple" size={15} />
+            <CiFaceSmile size={15} />
           </div>
-          <div>Facials and skincare</div>
+          <div onClick={() => handleClickForTreatment("Facials and skincare")}>
+            Facials and skincare
+          </div>
         </li>
         <li>
           <div>
-            <FaUmbrellaBeach color="purple" size={15} />
+            <FaUmbrellaBeach size={15} />
           </div>
-          <div>Body</div>
+          <div onClick={() => handleClickForTreatment("Body")}>Body</div>
         </li>
         <li>
           <div>
-            <IoMdHeartDislike color="purple" size={15} />
+            <IoMdHeartDislike size={15} />
           </div>
-          <div>Tattoo and piercing</div>
+          <div onClick={() => handleClickForTreatment("Tattoo and piercing")}>
+            Tattoo and piercing
+          </div>
         </li>
         <li>
           <div>
-            <ImMakeGroup color="purple" size={15} />
+            <ImMakeGroup size={15} />
           </div>
-          <div>Make up</div>
+          <div onClick={() => handleClickForTreatment("Make up")}>Make up</div>
         </li>
         <li>
           <div>
-            <CiMedicalCross color="purple" size={15} />
+            <CiMedicalCross size={15} />
           </div>
-          <div>Medical and dental</div>
+          <div onClick={() => handleClickForTreatment("Medical and dental")}>
+            Medical and dental
+          </div>
         </li>
         <li>
           <div>
-            <CgGym color="purple" size={15} />
+            <CgGym size={15} />
           </div>
-          <div>Fitness</div>
+          <div onClick={() => handleClickForTreatment("Fitness")}>Fitness</div>
         </li>
       </ul>
     </div>

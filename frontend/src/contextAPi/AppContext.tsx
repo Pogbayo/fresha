@@ -7,16 +7,22 @@ export interface AppContextType {
   handleMenuDropDown: () => void;
   isCalendarOpen: boolean;
   setIsCalendarOpen: (value: boolean | ((prev: boolean) => boolean)) => void;
+  calendarInputValue: string;
+  setCalendarInputValue: (value: string) => void;
   handleCalendarDropDown: () => void;
   isTreatmentsOpen: boolean;
+  treatmentInputValue: string;
   setIsTreatmentsOpen: (value: boolean | ((prev: boolean) => boolean)) => void;
+  setTreatmentInputValue: (value: string) => void;
   handleTreatmentsDropDown: () => void;
   isCurrentLocation: boolean;
   handleCurrentLocationDropDown: () => void;
   setIsCurrentLocation: (value: boolean | ((prev: boolean) => boolean)) => void;
+  locationInputValue: string;
   isTime: boolean;
   handleTimeDropDown: () => void;
   setIsTime: (value: boolean | ((prev: boolean) => boolean)) => void;
+  setLocationInputValue: (value: string) => void;
 }
 
 interface AppProviderProps {
@@ -32,10 +38,13 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   //calendar state
   const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false);
+  const [calendarInputValue, setCalendarInputValue] = useState("");
   //Treatments and venues state
   const [isTreatmentsOpen, setIsTreatmentsOpen] = useState<boolean>(false);
+  const [treatmentInputValue, setTreatmentInputValue] = useState("");
   //Current Location state
   const [isCurrentLocation, setIsCurrentLocation] = useState<boolean>(false);
+  const [locationInputValue, setLocationInputValue] = useState("");
   //Time state
   const [isTime, setIsTime] = useState<boolean>(false);
   // function
@@ -71,12 +80,18 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         isMenuOpen,
         handleMenuDropDown,
         isCalendarOpen,
+        calendarInputValue,
+        setCalendarInputValue,
         setIsCalendarOpen,
         handleCalendarDropDown,
         isTreatmentsOpen,
+        treatmentInputValue,
+        setTreatmentInputValue,
         setIsTreatmentsOpen,
         handleTreatmentsDropDown,
         isCurrentLocation,
+        locationInputValue,
+        setLocationInputValue,
         setIsCurrentLocation,
         handleCurrentLocationDropDown,
         isTime,

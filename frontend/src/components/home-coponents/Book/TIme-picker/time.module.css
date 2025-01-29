@@ -1,0 +1,20 @@
+.container{
+    border: 1px solid gray;
+    padding: 30px;
+    background-color: white;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.container .button{
+       margin-top: 3px;
+       width: 60px;
+       border-radius: 5px;
+       padding: 10px;
+       border: none;
+       color: white;
+       background-color: black;
+       cursor: pointer;
+       margin-left: auto; /* This will float the button to the right */
+    }

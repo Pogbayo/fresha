@@ -68,38 +68,43 @@
     display: none;
     cursor: pointer;
 }
+
+
 .dropdownMenu {
-    position: absolute;
-    top: 90%;
-    right: 3%;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 200px;
-    list-style: none;
-    padding: 0.5rem 0;
-    margin: 0;
-    opacity: 0;
-    transform: translateY(-10px);
-    pointer-events: none;
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  }
+  position: absolute;
+  top: 90%;
+  right: 3%;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  list-style: none;
+  padding: 0.5rem 0;
+  margin: 0;
+  opacity: 0; /* Initially hidden */
+  transform: translateY(-10px); /* Slightly above the final position */
+  visibility: hidden; /* Hidden but not blocking interactions */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0.3s; /* Delayed visibility to sync with opacity */
+}
+
+.dropdownMenu.show {
+  opacity: 1; /* Fully visible */
+  transform: translateY(0); /* Final position */
+  visibility: visible; /* Make it visible */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0s; /* Immediate visibility */
+}
+
+.dropdownMenu li {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.dropdownMenu li:hover {
+  background-color: #f0f0f0;
+}
+
   
-  .dropdownMenu.open {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-  
-  .dropdownMenu li {
-    padding: 0.5rem 1rem;
-    cursor: pointer;
-  }
-  
-  .dropdownMenu li:hover {
-    background-color: #f0f0f0;
-  }
   
   @media(max-width: 1081px) {
     .container{

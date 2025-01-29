@@ -8,6 +8,7 @@ import { useAppContext } from "../../../contextAPi/useAppContext";
 export const Header = () => {
   const { handleMenuDropDown, isMenuOpen } = useAppContext();
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
@@ -36,14 +37,14 @@ export const Header = () => {
         />
       </div>
 
-      {isMenuOpen && (
+      {
         <ul
-          className={`${styles.dropdownMenu} ${isMenuOpen ? styles.open : ""}`}
+          className={`${styles.dropdownMenu} ${isMenuOpen ? styles.show : ""}`}
         >
           <li>Log in</li>
           <li>Download the app</li>
         </ul>
-      )}
+      }
     </div>
   );
 };

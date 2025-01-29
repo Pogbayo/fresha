@@ -9,7 +9,7 @@ export const Available = () => {
         <span>
           <h3>Available on</h3>
           <IoLogoApple size={30} />
-          <FaGoogle size={30} />
+          <FaGoogle size={23} />
         </span>
         <h1>Download the Spag app</h1>
         <p>

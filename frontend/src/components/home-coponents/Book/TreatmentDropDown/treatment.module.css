@@ -1,0 +1,21 @@
+.container{
+    max-width: 500px;
+    width: 400px;
+    text-align: center; 
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid gray;
+}
+
+.container ul li {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+    padding: 10px;
+    margin: 0; 
+  }
+  
+  .container ul li div:first-child {
+    margin-right: 10px; 
+  }
+  

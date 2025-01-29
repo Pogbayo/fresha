@@ -1,0 +1,100 @@
+.container{
+    width: 100%;
+    background-color: rgb(236, 232, 232);
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.firstDiv{
+    width: 45%;
+    display: flex;
+    gap: 30px;
+    padding:20px ;
+    justify-content: space-evenly;
+}
+.firstDiv .one p{
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.firstDiv .one span{
+    width: 150px;
+    padding: 15px;
+    background-color: white;
+    gap: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+}
+.secondDiv{
+    width: 45%;
+    display: flex;
+    gap: 10px;
+    gap: 20px;
+    padding:20px;
+    justify-content: space-around;
+}
+.container h1{
+    font-size: 1.3rem;
+    font-style: normal;
+    font-weight: 900;
+}
+
+
+
+/* @media(max-width:1267px){
+    .container{
+        flex-direction: column;
+        justify-items: start;
+        border: 2px solid red;
+        height: auto;
+    }
+    .firstDiv{
+        width:70%;  
+        justify-content: space-between;
+        padding: 0;
+        margin: 0;
+    }
+    .secondDiv{
+        width: 30%;  
+        margin-right: 600px;
+        justify-content: space-between;
+        padding: 0;
+    }
+} */
+@media(max-width:1022px){
+    .container{
+        height: auto;
+        flex-direction: column;
+        
+    }
+    .firstDiv{
+        width: 90%;
+        flex-direction: column;
+    }
+    .secondDiv{
+        width: 90%;
+        flex-direction: column;
+    }
+}
+
+
+@media(max-width:690px){
+    .container{
+        margin-top: 30px;
+    }
+    .firstDiv .one span{
+        width: auto;
+        padding: 10px;
+        font-size: 14px;
+        background-color: black;
+        gap: 5px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 30px;
+    }
+}

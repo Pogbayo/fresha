@@ -8,12 +8,9 @@ import { useAppContext } from "../../../contextAPi/useAppContext";
 export const Header = () => {
   const { handleMenuDropDown, isMenuOpen } = useAppContext();
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [screenHeight, setScreenHeight] = useState(window.innerHeight);
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
-      setScreenHeight(window.innerHeight);
     };
 
     window.addEventListener("resize", handleResize);
@@ -22,6 +19,7 @@ export const Header = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
   return (
     <div className={styles.container}>
       <h3 className={styles.logo}>spag {screenWidth}</h3>

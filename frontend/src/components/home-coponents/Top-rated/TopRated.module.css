@@ -6,7 +6,6 @@
     font-size: 3rem;
     font-weight: 900;
     margin: 0;
-    background-color: white;
 }
 section p{
     font-size: 1.4rem;
@@ -19,6 +18,7 @@ section p{
     font-size: 5rem;
     font-weight: 900;
     margin-bottom: 0;
+    color: rgb(28, 28, 87);
 }
 .hori{
     display: flex;

@@ -8,7 +8,8 @@
     margin: 0 auto;
     box-sizing: border-box;
     overflow-x: hidden;
-    margin-top: 90px;
+    margin-top: 70px;
+
 }
 .bigFont{
     color: black;
@@ -25,6 +26,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 .formContainer span {
     display: flex;
@@ -91,11 +93,9 @@
 .formContainer span button:hover{
     background-color: white;
     color: black;
-    font-weight: 900;
-    font-size: 1rem;
+    font-weight: 700;
     border: 1px solid gray;
 }
-
 
 .qrCodeButton{
     padding: 20px;
@@ -112,6 +112,35 @@
     background-color: rgb(235, 230, 230);
 }
 
+.calendarDropDown {
+    position: absolute;
+    top: 55%; 
+    right: 30%;
+    z-index: 10;
+  }
+
+  .dateInputWrapper {
+    position: relative;
+  }
+  .TreatmentDropDown{
+    position: absolute;
+    top: 53%; 
+    z-index: 10;
+  }  
+
+  .locationDropDown{
+    position: absolute;
+    top: 55%; 
+    z-index: 10;
+  }  
+  
+  .timeDropDown{
+    position: absolute;
+    top: 54%; 
+    z-index: 10;
+    height: 90px;
+  }  
+  
 @media(max-width:1021px){
     .container{
         text-align: center;
@@ -247,4 +276,11 @@
     }
 
 }
-   
+@media(max-width:593px){
+    .formContainer{
+        width: 95%;
+     }
+     .bigFont{
+        font-size: 2rem;
+     }
+}

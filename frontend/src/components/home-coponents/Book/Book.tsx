@@ -9,7 +9,7 @@ import { MyCalendar } from "./calendar/MyCalendar";
 import { useRef, useEffect } from "react";
 import { Treatment } from "./TreatmentDropDown/Treatment";
 import { Location } from "./location/Location";
-import { Time } from "./Time-picker/TIme";
+import { Time } from "./Time-picker/Time";
 
 export const Book = () => {
   const {

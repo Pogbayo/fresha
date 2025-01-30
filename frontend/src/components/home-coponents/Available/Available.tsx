@@ -26,8 +26,6 @@ export const Available = () => {
           muted
           loop
           playsInline
-          onCanPlay={() => console.log("Video can play")}
-          onError={() => console.log("Error loading video")}
         />
       </div>
     </div>

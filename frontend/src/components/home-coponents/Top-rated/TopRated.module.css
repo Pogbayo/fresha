@@ -14,12 +14,20 @@ section p{
 .div1{
     margin: 60px;
 }
-.div1 big{
+.div1 big {
     font-size: 5rem;
     font-weight: 900;
     margin-bottom: 0;
     color: rgb(28, 28, 87);
-}
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  .div1 big:hover {
+    transform: scale(1.4) translateY(-5px);
+    color: rgb(17, 70, 143); /* Optional color change */
+  }
+  
 .hori{
     display: flex;
     margin: 0 auto;

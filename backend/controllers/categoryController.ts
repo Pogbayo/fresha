@@ -1,26 +1,99 @@
 import { NextFunction, Request, Response } from "express";
-import { Category } from "../models/CategorySchema"; 
+import { Category, Shop } from "../models/CategorySchema"; 
 
 
 export const getCategories = async (req:Request, res:Response, next:NextFunction):Promise<void>  => {
 try {
-    const categories = await Category.find();
-    res.status(200).json(categories)
-
+    const categories = await Category.find().populate({
+        path:"shops",
+        populate:{
+            path:"services",
+            populate:{
+                path:"subservices",
+            }
+        }
+    });
+     res.status(200).json({categories})
 } catch (error) {
-    res.status(500).json({message:`Server error`, error})
+    console.error("Error fetching categories:", error);
+    res.status(500).json({ message: `Server error`, error });
 }}
 
+
+
 export const createCategory = async (req:Request, res: Response, next:NextFunction):Promise<void>  => {
-    const {name,services,images, reviews,team} = req.body
+    const {name} = req.body
 
     try {
-        const newCategory = new Category({name,services,images,reviews,team});
+        const existingCategory = await Category.findOne({name});
+        if (existingCategory) {
+            res.status(409).json({ message: "Category already exists" });
+            return;
+          }
+        const newCategory = new Category({name});
         await newCategory.save();
-        res.status(200).json({message:'Category created successfully'});
+
+        res.status(200).json({message:'Category created successfully',newCategory});
     } catch (error) {
         console.error("Error details:", error); 
-
         res.status(500).json({ message: 'Error creating category', error: (error as Error).message || error });
     }
 };
+
+
+export const createShop = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    const { categoryId } = req.params;  // Or req.body, depending on your design
+    const { name, address, services, team, reviews, about, openingTimes } = req.body;
+  
+    try {
+      const category = await Category.findById(categoryId);
+      if (!category) {
+         res.status(404).json({ message: "Category not found" });
+      }
+  
+      const newShop = new Shop({
+        name,
+        address,
+        category: categoryId,  
+        services,
+        team,
+        reviews,
+        about,
+        openingTimes,
+      });
+  
+      await newShop.save();
+      res.status(201).json({ message: "Shop created successfully", shop: newShop });
+    } catch (error) {
+      console.error("Error creating shop:", error);
+      res.status(500).json({ message: "Error creating shop", error });
+    }
+  };
+  
+
+export const addShopToCategory = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    const { categoryId, shopId } = req.body;
+  
+    try {
+      const category = await Category.findById(categoryId);
+      if (!category) {
+         res.status(404).json({ message: "Category not found" });
+      }
+  
+      const shop = await Shop.findById(shopId);
+      if (!shop) {
+         res.status(404).json({ message: "Shop not found" });
+         return;
+      }
+  
+      category?.shops.push(shopId);
+  
+      await category?.save();
+  
+      res.status(200).json({ message: "Shop added to category successfully", category });
+    } catch (error) {
+      console.error("Error adding shop to category:", error);
+      res.status(500).json({ message: "Error adding shop to category", error: (error as Error).message || error });
+    }
+  };
+  

@@ -1,13 +1,84 @@
-.container span{
+.container {
+    padding: 10px;
     display: flex;
-    height: 400px;
-    padding-left: 20px;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; 
+    margin-top: 20px;
+  }
+  .container::-webkit-scrollbar{
+    display: none;
+  }
+  .boxDiv {
+    padding: 15px;
+    flex: 0 0 300px; 
+    border: 1px solid gray;
+    height: 350px;
+    background-color: rgb(231, 229, 229);
+    position: relative; 
+    margin-right: 10px; 
+    scroll-snap-align: start; 
+    border-radius: 6px ;
+  }
+  .boxDiv section{
+    display: flex;
     gap: 10px;
-    background-color: white;
-    padding-right: 20px;
-}
-span>div{
-    width: 400px;
-    background-color: rgb(192, 190, 190);
+    padding: 10px;
+    align-items: center;
+    position: absolute; 
+    bottom: 0; 
+    width: 80%; 
+  }
+  .boxDiv section .firstLetter{
+    border: 1px solid gray;
+    color: black;
+    padding: 10px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+  }
+  .boxDiv section .secondLetter{
+    font-size: 1.2rem;
+  }
 
-}
+  @media(max-width:1100px){
+    .container{
+        gap: 13px;
+    }
+    .boxDiv{
+        flex: 0 0 250px;
+        height: 300px;
+    }
+  }
+  @media(max-width:808px){
+    .container{
+        gap: 11px;
+    }
+    .boxDiv{
+        flex: 0 0 200px;
+        height: 280px;
+    }
+    .boxDiv section{
+        margin-top: 30px;
+        width: 68%;
+        padding: 0;
+
+    }
+    .boxDiv section .firstLetter{
+        border: 1px solid gray;
+        color: black;
+        padding: 5px;
+        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        border-radius: 50%;
+      }
+      .boxDiv section .secondLetter{
+        font-size: 15px;
+      }
+  }

@@ -17,14 +17,22 @@ const shopSchema = new mongoose.Schema({
     name: { type: String, required: true },
     address: { type: String, required: true },
     category: { type: mongoose.Schema.Types.ObjectId, ref: "Category", required: true }, 
-    services: [{ type: mongoose.Schema.Types.ObjectId, ref: "Service" }], 
+    services: { type:[serviceSchema],required:true}, 
+    images: {type:[String],required:true},
     team: [
       {
         name: { type: String, required: true },
         role: { type: String, required: true },
       },
     ],
-    reviews: { type: [String], required: true },
+    reviews: [ 
+      {
+        name:{ type: String, required: true }
+      },
+      {
+        comment:{ type: String, required: true }
+      }
+    ],
     about: { type: String, required: true },
     openingTimes: {
       monday: { type: String, required: true },

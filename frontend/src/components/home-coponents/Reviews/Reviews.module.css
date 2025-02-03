@@ -1,3 +1,6 @@
+/* .section{
+  display: block;
+} */
 .container {
     padding: 10px;
     display: flex;
@@ -9,12 +12,45 @@
   .container::-webkit-scrollbar{
     display: none;
   }
+
+.section{
+    position: relative;
+}
+.scrollButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    color: black;
+    border: none;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%;
+    z-index: 10;
+    opacity: 0.5;
+    display: none;
+
+  }
+  
+  .section:hover .scrollButton {
+    display: block;
+  }
+  .leftArrow {
+    left: 0;
+    opacity: 3;
+  }
+  
+  .rightArrow {
+    right: 0;
+    opacity: 3;
+  }
+
   .boxDiv {
     padding: 15px;
-    flex: 0 0 300px; 
+    flex: 0 0 280px; 
     border: 1px solid gray;
     height: 350px;
-    background-color: rgb(231, 229, 229);
+    background-color: rgb(235, 233, 233);
     position: relative; 
     margin-right: 10px; 
     scroll-snap-align: start; 

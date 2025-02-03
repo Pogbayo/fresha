@@ -91,8 +91,7 @@
 
 
 .formContainer span button:hover{
-    background-color: white;
-    color: black;
+ 
     font-weight: 700;
     border: 1px solid gray;
 }
@@ -296,11 +295,14 @@
         border: none;
         width: 100%;
         background-color: black;
-        border-radius: 30px;
+        border-radius: 10px;
         color: white;
         border-right: 1px solid gray;
+        transition: width 0.3s ease-in-out; 
     }
-
+    .formContainer span button:active{
+        width: 82%;
+    }
 }
 
 @media(max-width:593px){

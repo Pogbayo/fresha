@@ -3,7 +3,7 @@ import styles from "./Header.module.css";
 import { FaAngleDown } from "react-icons/fa6";
 import { IoMdMenu } from "react-icons/io";
 import { FaChevronUp } from "react-icons/fa";
-import { useAppContext } from "../../../contextAPi/useAppContext";
+import { useAppContext } from "../../../contextAPi/AppContextApi/useAppContext"; // Adjust the import path as necessary
 
 export const Header = () => {
   const { handleMenuDropDown, isMenuOpen } = useAppContext();

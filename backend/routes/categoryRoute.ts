@@ -1,5 +1,5 @@
 import express from "express"
-import { getCategories,createCategory, createShop, addShopToCategory } from "../controllers/categoryController"
+import { getCategories,createCategory, addShopToCategory, deleteCategory } from "../controllers/categoryController"
 
 const router = express.Router();
 
@@ -7,11 +7,10 @@ const router = express.Router();
 router.get("/categories", getCategories);
 
 //ROute to create or add a category
-router.post("/categories", createCategory)
+router.post("/categories", createCategory,)
 
-//Route to create shop
-router.post("/categories",createShop)
+router.delete("/categories",deleteCategory)
 
 //Route to addShop to categories
-router.post("/categories",addShopToCategory)
+router.post("/categories/addShop-to-category",addShopToCategory)
 export {router as categoryRoute}

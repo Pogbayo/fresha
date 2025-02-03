@@ -4,9 +4,9 @@ import { CiLocationOn } from "react-icons/ci";
 import { MdDateRange } from "react-icons/md";
 import { IoTimeOutline } from "react-icons/io5";
 import { IoQrCode } from "react-icons/io5";
-import { useAppContext } from "../../../contextAPi/useAppContext";
 import { MyCalendar } from "./calendar/MyCalendar";
 import { useRef, useEffect } from "react";
+import { useAppContext } from "../../../contextAPi/AppContextApi/useAppContext"; // Adjust the import path as necessary
 import { Treatment } from "./TreatmentDropDown/Treatment";
 import { Location } from "./location/Location";
 import { Time } from "./Time-picker/Time";
@@ -89,9 +89,11 @@ export const Book = () => {
           <CiSearch size={20} />
           <input
             type="text"
+            id="treatment"
             placeholder="All Treatments and venues"
             value={treatmentInputValue}
             onClick={handleTreatmentsDropDown}
+            onChange={(e) => setTreatmentInputValue(e.target.value)}
           />
         </span>
 
@@ -99,7 +101,9 @@ export const Book = () => {
           <CiLocationOn />
           <input
             type="text"
+            id="location"
             placeholder="Current location"
+            onChange={(e) => setLocationInputValue(e.target.value)}
             value={locationInputValue}
             onClick={handleCurrentLocationDropDown}
           />
@@ -109,8 +113,10 @@ export const Book = () => {
           <input
             type="text"
             placeholder="Any Date"
+            id="date"
             value={calendarInputValue}
             onClick={handleCalendarDropDown}
+            onChange={(e) => setCalendarInputValue(e.target.value)}
           />
         </span>
         <span>
@@ -119,6 +125,8 @@ export const Book = () => {
             type="text"
             placeholder="Any time"
             onClick={handleTimeDropDown}
+            id="time"
+            onChange={(e) => setCalendarInputValue(e.target.value)}
           />
         </span>
         <span>

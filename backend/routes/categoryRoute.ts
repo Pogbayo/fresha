@@ -3,14 +3,12 @@ import { getCategories,createCategory, addShopToCategory, deleteCategory } from 
 
 const router = express.Router();
 
-//Route to get all categories
 router.get("/categories", getCategories);
 
-//ROute to create or add a category
 router.post("/categories", createCategory,)
 
-router.delete("/categories",deleteCategory)
+router.delete("/categories/:categoryId",deleteCategory)
 
-//Route to addShop to categories
-router.post("/categories/addShop-to-category",addShopToCategory)
+router.post("/categories/addShop-to-category",addShopToCategory);
+
 export {router as categoryRoute}

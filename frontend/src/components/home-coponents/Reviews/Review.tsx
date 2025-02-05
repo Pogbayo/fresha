@@ -29,6 +29,8 @@ export const Review = () => {
     `hsl(${Math.floor(Math.random() * 360)}, 70%, 90%)`; // Pastel-like shades
   return (
     <div className={styles.section}>
+      <h1 className={styles.reviewHeader}>Reviews</h1>
+
       <button
         className={`${styles.scrollButton} ${styles.leftArrow}`}
         onClick={() => scroll(reviewsRef, "left")}

@@ -9,11 +9,13 @@ import { TopRated } from "../../components/home-coponents/Top-rated/TopRated";
 import { Trending } from "../../components/home-coponents/Trending/Trending";
 import { New } from "../../components/home-coponents/New-To-Spag/New";
 import styles from "./Home.module.css";
+import { Favourite } from "../../components/home-coponents/favourites/Favourite";
 
 export const Home = () => {
   return (
     <div className={styles.container}>
       <Book />
+      <Favourite />
       <RecentlyViewed />
       <Recommended />
       <New />

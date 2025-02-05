@@ -1,0 +1,204 @@
+.container{
+    height: 88vh;
+    display: flex;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.shop{
+    margin-bottom: 50px;
+}
+.shopsColumn{
+    width: 30%;
+    padding: 10px;
+    overflow-y: scroll;
+    padding-right: 20px;
+}
+
+.shopsColumn::-webkit-scrollbar{
+    display: none;
+}
+
+.shopImage{
+    width: 100%;
+    height: 250px;
+    border-radius: 10px;
+    object-fit: cover;
+    transition: transform 0.3s ease; 
+    overflow: hidden;
+}
+.shopImage:hover{
+  transform: scale(1.1); 
+  overflow: hidden;
+}
+
+.serviceDetails{
+    padding: 0;
+    border-bottom: 1px solid rgb(214, 211, 211);
+    margin-bottom: 5px;
+}
+
+.serviceName,.ratingContainer,.address{
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.ratingContainer{
+    font-weight: 900;
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    background-color: white;
+}
+.headerDiv{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    align-items: center;
+}
+.headerDiv{
+    color: grey;
+}
+.headerDiv .filterButton{
+    width: 90px;
+    border: 1px solid rgb(206, 202, 202);
+    padding: 7px;
+    height: auto;
+    border-radius:20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer;
+}
+.address{
+    color: gray;
+    font-weight: 500;
+    margin: 5px;
+    padding: 0;
+}
+
+.subServices{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.nameAndPrice:hover{
+    background-color: rgb(224, 223, 223);
+    border-radius: 5px;
+}
+.span{
+    display: flex;
+    justify-content: space-between;
+}
+.nameAndPrice{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0;
+    font-weight: 700;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(58, 57, 57);
+}
+
+.subServiceDuration,.subServicePrice,.subServiceName{
+    margin: 0;
+    padding: 0;
+}
+.subServiceDuration{
+    font-weight: 500;
+    color: grey;
+    font-size: 0.8rem;
+}
+.subServices button{
+    text-align: start;
+    border: none;
+    color: rgb(238, 51, 238);
+    margin: 0;
+    width: 80px;
+    background-color: white;
+    cursor: pointer;
+}
+.mapContainer{
+    width: 75%;
+}
+
+
+
+
+/* .loaderContainer {
+    display: flex;
+    gap: 10px;
+    border: 2px solid blue;
+    height: auto;
+    width: 100%;
+    flex-direction: column;
+  }
+   */
+  .loaderOne, .loaderTwo, .loaderThree{
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(45deg, #e0e0e0, #c0c0c0, #e0e0e0);
+    background-size: 200% 200%;
+    animation: shimmer 2s infinite linear;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0.8;
+  }
+  .mapContainer{
+    background: linear-gradient(45deg, #e0e0e0, #c0c0c0, #e0e0e0);
+    background-size: 200% 200%;
+    animation: shimmer 2s infinite linear;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0.8;
+  }
+  .upperDiv p, .upperDivbutton{
+    background: linear-gradient(45deg, #e0e0e0, #c0c0c0, #e0e0e0);
+    background-size: 200% 200%;
+    animation: shimmer 2s infinite linear;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0.8;
+  }
+ 
+
+
+  .loaderTwo {
+    animation-delay: 0.3s;
+  }
+  .upperDiv{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    align-items: center;
+ }
+ .upperDiv p, .upperDivbutton{
+   height: 30px;
+   width: 80px;
+   border: none;
+ }
+ .upperDiv p{
+    width: 150px;
+ }
+  .loaderThree {
+    animation-delay: 0.6s;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0%;
+    }
+    100% {
+      background-position: -200% 0%;
+    }
+  }
+  
+  @media(max-width:2000px){
+    .loaderContainer{
+      width: 100%;  
+  }
+    .loaderOne, .loaderTwo, .loaderThree,.loadingHeader {
+       width: 87%;
+       margin: 20px;
+       height: 240px;
+    }
+  }

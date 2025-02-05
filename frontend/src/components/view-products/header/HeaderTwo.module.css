@@ -1,0 +1,344 @@
+.container{
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    margin: 0 auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 30px;
+    border-bottom: 1px solid rgb(216, 216, 216);
+}
+
+.logo{
+    color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.7rem;
+    line-height: 1.2ch;
+    margin: 10px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.formContainer {
+    height: 45px;
+    width: auto;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 60px;
+    background-color:white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+/* 09134145872 */
+.formContainer span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height:auto;
+    border: none;
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
+    border-bottom-right-radius: 60px;
+    border-bottom-left-radius: 60px;
+    background-color:white;
+    padding: 4px;
+}
+
+.formContainer span input{
+    width: 150px;
+    height:100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: none;
+    background-color:white;
+    font-size: 0.8rem;
+    padding-left: 15px;
+}
+
+.formContainer span input:focus {
+    border: none;
+    outline: none; 
+}
+
+.formContainer span input::placeholder{
+   color: black;
+}
+
+.formContainer span:nth-of-type(2) {
+    border-left: 1px solid gray;
+}
+.formContainer span:nth-of-type(3) {
+    border-left: 1px solid gray;
+
+}
+.formContainer span:nth-of-type(4) {
+    border-left: 1px solid gray;
+
+} 
+
+
+/* .formContainer span:hover{
+    background-color: rgb(235, 230, 230);
+}
+.formContainer span input:hover{
+    background-color: rgb(235, 230, 230);
+}
+.formContainer span:nth-of-type(5):hover{
+    background-color:white;
+} */
+
+
+.formContainer span button{
+    height: 30px;
+    padding: 2px;
+    border: none;
+    width: 10cqh;
+    background-color: black;
+    border-radius: 30px;
+    color: white;
+    display: none;
+    border-right: 1px solid gray;
+}
+
+.formContainer span button:hover{
+    font-weight: 700;
+    border: 1px solid gray;
+}
+
+
+.calendarDropDown {
+    position: absolute;
+    top: 9%; 
+    right: 30%;
+    z-index: 10;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0; 
+    transform: translateY(-10px); 
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0.3s; /* Delayed visibility to sync with opacity */
+  }
+
+ @media(max-width:1219px){
+   .calendarDropDown{
+    right: 25%;
+   }
+ }
+  .treatmentDropDown{
+    position: absolute;
+    top: 8%; 
+    left: 20%;
+    z-index: 10;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0; 
+    transform: translateY(-10px); 
+    visibility: hidden; 
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0.3s; /* Delayed visibility to sync with opacity */
+  }  
+
+  .locationDropDown{
+    position: absolute;
+    top: 8%; 
+    left: 40%;
+    z-index: 10;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0; 
+    transform: translateY(-10px); 
+    visibility: hidden; 
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0.3s; /* Delayed visibility to sync with opacity */
+  }  
+  
+  .timedropdown{
+    position: absolute;
+    top: 8%; 
+    right: 28%;
+    z-index: 10;
+    height: 90px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(-10px); 
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0.3s; /* Delayed visibility to sync with opacity */
+  }  
+
+ .timedropdown.show, .locationDropDown.show,.treatmentDropDown.show,.calendarDropDown.show{
+    opacity: 1; 
+    transform: translateY(0); 
+    visibility: visible; 
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0s; /* Immediate visibility */
+  }
+  .headerButtons{
+    margin: 0;
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding-top: 5px;
+
+}
+
+.buttonTwo{
+    border: 1px solid rgb(212, 210, 210);
+    padding: 15px;
+    width: auto;
+    border-radius: 20px;
+    margin: 0;
+    font-size: 0.9rem;
+    background-color: white;
+    font-weight: 700;
+    display: flex;
+    gap: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.buttonTwo:hover{
+    background-color: rgb(238, 237, 237);
+}
+
+.IoMdMenu{
+    cursor: pointer;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 10%;
+  right: 15%;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  list-style: none;
+  padding: 0.5rem 0;
+  margin: 0;
+  opacity: 0; 
+  z-index: 2;
+  transform: translateY(-10px); 
+  visibility: hidden; 
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0.3s; /* Delayed visibility to sync with opacity */
+}
+
+@media(max-width:1667px){
+  .dropdownMenu{
+    right: 5%;
+  }
+}
+.dropdownMenu.show {
+  opacity: 1; 
+  transform: translateY(0); 
+  visibility: visible; 
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0s; /* Immediate visibility */
+}
+
+.dropdownMenu li {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.dropdownMenu li:hover {
+  background-color: #f0f0f0;
+}
+.smallScreenHeader{
+    display: none;
+}
+@media(max-width:1095px){
+    .formContainer span input{
+        width: 110px;
+    }
+    
+}
+@media(max-width:1181px){
+   .locationDropDown{
+    right: 32%;
+   }
+}
+
+@media(max-width:1020px){
+    .logo,.formContainer,.headerButtons{
+        display: none;
+    }
+    .container{
+        border-bottom: none;
+    }
+    .smallScreenHeader{
+        display: block;
+        border: 1px solid rgb(202, 197, 197);
+        display: flex;
+        width: 100vw;
+        border-radius: 60px;
+        align-items: center;
+        padding: 10px;
+    }
+    .iconContainer{
+        display: flex;
+        align-items: center;
+        text-align: center;
+        border-radius: 50%;
+        height: 30px;
+        padding: 10px;
+    }
+    .iconContainer:hover{
+        background-color: rgb(202, 201, 201);
+    }
+    .textContainer{
+        display: flex;
+        padding: 0;
+        flex-direction: column;
+    }
+    .textContainer span p{
+        margin: 0;
+        padding: 0;
+        font-weight: 100;
+    }
+    .textContainer p {
+        margin: 0;
+        font-weight: 700;
+    }
+    .textContainer span {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 10px;
+    }
+    .locationIcon{
+      margin-left: auto;  
+      border: 1px solid rgb(202, 197, 197);
+      border-radius: 50%;
+      padding: 7px;
+    }
+    .calendarDropDown{
+        display: none;
+    }
+    .treatmentDropDown{
+        display: none;
+    }
+    .locationDropDown{
+        display: none;
+    }
+    .timedropdown{
+        display: none;
+    }
+    .dropdownMenu{
+        display: none;
+    }
+}
+@media(max-widht:1397px){
+    .timedropdown{   
+    right: 10%;
+    }
+  }  
+ @media(max-widht:1397px){
+    .timedropdown{   
+    right: 0;
+  }  
+}
+ 

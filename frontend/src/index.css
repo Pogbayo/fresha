@@ -5,10 +5,12 @@
   font-weight: 400;
 
   color: black;
-  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  background-color: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
   
 }
-
+html{
+  background-color: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+}
 body {
   /* font-family: var(--font-family); */
   font-weight: var(--font-weight);
@@ -27,7 +29,7 @@ body::-webkit-scrollbar {
 }
 
 .app{
-  width: 75vw;
+  width: 80vw;
   margin: 0 auto;
   overflow-x: hidden;
   padding-bottom: 30px;

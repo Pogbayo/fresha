@@ -1,10 +1,10 @@
-import styles from "./RecentlyViewed.module.css";
+import styles from "./Favourite.module.css";
 import { FaStar, FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { shopType } from "../../../contextAPi/ApiResponseContext/ApiContext";
 import { useApiContext } from "../../../contextAPi/ApiResponseContext/useApiContext";
 
-export const RecentlyViewed = () => {
-  const { recentlyArray, scroll, recentlyRef } = useApiContext();
+export const Favourite = () => {
+  const { scroll, favouritesRef, favouritesArray } = useApiContext();
 
   function getRandomInteger(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -12,29 +12,29 @@ export const RecentlyViewed = () => {
 
   return (
     <div className={styles.section}>
-      {recentlyArray.length > 0 && (
-        <p className={styles.newHeader}>Recently Viewed</p>
+      {favouritesArray.length > 0 && (
+        <p className={styles.newHeader}>Favourites</p>
       )}
 
-      {recentlyArray.length >= 7 && (
+      {favouritesArray.length >= 7 && (
         <>
           <button
             className={`${styles.scrollButton} ${styles.leftArrow}`}
-            onClick={() => scroll(recentlyRef, "left")}
+            onClick={() => scroll(favouritesRef, "left")}
           >
             <FaAngleLeft size={20} />
           </button>
           <button
             className={`${styles.scrollButton} ${styles.rightArrow}`}
-            onClick={() => scroll(recentlyRef, "right")}
+            onClick={() => scroll(favouritesRef, "right")}
           >
             <FaAngleRight size={20} />
           </button>
         </>
       )}
 
-      <div className={styles.container} ref={recentlyRef}>
-        {recentlyArray.map((shop: shopType, index: number) => (
+      <div className={styles.container} ref={favouritesRef}>
+        {favouritesArray.map((shop: shopType, index: number) => (
           <div key={index} className={styles.boxDiv}>
             <img src={shop.images[1]} alt="" />
             <div className={styles.detailBox}>

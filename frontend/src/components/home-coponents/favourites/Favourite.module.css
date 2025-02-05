@@ -4,7 +4,6 @@
     overflow-x: scroll;
     scroll-snap-type: x mandatory;
     scrollbar-width: none; 
-    margin-top: 20px;
     gap: 15px;
 }
 .container::-webkit-scrollbar{
@@ -26,21 +25,19 @@
     z-index: 10;
     opacity: 0.5;
     display: none;
-
-  }
-  
-  .section:hover .scrollButton {
+}
+.section:hover .scrollButton {
     display: block;
-  }
+}
   .leftArrow {
     left: 10px;
     opacity: 3;
-  }
+}
   
-  .rightArrow {
+.rightArrow {
     right: 0;
     opacity: 3;
-  }
+}
 
 .boxDiv {
     flex: 0 0 300px; 
@@ -52,7 +49,6 @@
     border-radius: 10px ;
     overflow: hidden;
     padding-bottom: 15px;
-   
 }
 
 .newHeader{
@@ -70,36 +66,39 @@
 }
 
 .boxDiv img{
-    width: 99.9%;
-    height: 60%; 
+  width: 99.9%;
+  height: 60%; 
     object-fit: cover;
     transition: transform 0.3s ease; 
     overflow: hidden;
 }
+
 .boxDiv img:hover{
     transform: scale(1.2); 
 }
+
 .shopName, .rating, .address, .categoryName{
     margin: 0;
     display: flex;
     gap: 5px;
     align-items: center;
-  }
-
-.categoryName{
-   border: 1px solid rgb(214, 213, 213);
-   display: inline-block; 
-   padding: 2px 4px; 
-   border-radius: 20px;
-   /* font-size: 1rem; */
-   width: fit-content;
-   font-size: small;
-   font-weight: 100;
 }
 
+.categoryName{
+    border: 1px solid rgb(214, 213, 213);
+    display: inline-block; 
+    padding: 2px 4px; 
+    border-radius: 20px;
+    /* font-size: 1rem; */
+    width: fit-content;
+    font-size: small;
+    font-weight: 100;
+}
 
-@media(max-width:1128px){
-  .boxDiv{
-      flex: 0 0 250px; 
-  }
+  @media(max-width:1128px){
+    .boxDiv{
+        flex: 0 0 220px;
+        height: 220px; 
+        padding-bottom: 20px;
+    }
 }

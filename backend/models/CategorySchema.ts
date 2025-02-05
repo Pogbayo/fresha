@@ -8,6 +8,12 @@ const subServiceSchema = new mongoose.Schema({
     },
 })
 
+const addressSchema = new mongoose.Schema({
+  street: { type: String, required: true },
+  city: { type: String, required: true },
+  country: { type: String, required: true },
+});
+
 const serviceSchema = new mongoose.Schema({
     name:{type:String,required:true},
     subServices:{type:[subServiceSchema],required:true}
@@ -15,7 +21,7 @@ const serviceSchema = new mongoose.Schema({
 
 const shopSchema = new mongoose.Schema({
     name: { type: String, required: true },
-    address: { type: String, required: true },
+    address: [{ type: addressSchema, required: true }], 
     category: { type: mongoose.Schema.Types.ObjectId, ref: "Category", required: true }, 
     services: { type:[serviceSchema],required:true}, 
     images: {type:[String],required:true},

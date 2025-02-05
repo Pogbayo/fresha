@@ -22,11 +22,11 @@ export const FFB = () => {
         </span>
       </div>
       <div className={styles.divTwo}>
-        <img
+        {/* <img
           src="/images/homeMedia/forBusinessMedia.png"
           alt=""
           className={styles.img}
-        />
+        /> */}
       </div>
     </div>
   );

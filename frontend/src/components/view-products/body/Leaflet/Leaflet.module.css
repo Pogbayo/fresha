@@ -1,0 +1,8 @@
+.container {
+    height: 88vh;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+  

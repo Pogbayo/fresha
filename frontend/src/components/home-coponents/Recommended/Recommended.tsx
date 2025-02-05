@@ -3,13 +3,30 @@ import { FaStar, FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { Loading } from "../../loader/Loading";
 import { shopType } from "../../../contextAPi/ApiResponseContext/ApiContext";
 import { useApiContext } from "../../../contextAPi/ApiResponseContext/useApiContext";
+import { useEffect, useState } from "react";
 
 export const Recommended = () => {
-  const { recommendedCombinedArray, scroll, recommendedRef } = useApiContext();
+  const {
+    recommendedCombinedArray,
+    scroll,
+    recommendedRef,
+    addToFavouritesArray,
+  } = useApiContext();
+  const [header, setHeader] = useState("");
+
+  function getRandomInteger(min: number, max: number) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      setHeader("Recommended");
+    }, 1500);
+  });
 
   return (
     <div className={styles.section}>
-      <p className={styles.newHeader}>Trending</p>
+      <p className={styles.newHeader}>{header}</p>
       <button
         className={`${styles.scrollButton} ${styles.leftArrow}`}
         onClick={() => scroll(recommendedRef, "left")}
@@ -28,13 +45,20 @@ export const Recommended = () => {
           <Loading />
         ) : (
           recommendedCombinedArray.map((shop: shopType, index: number) => (
-            <div key={index} className={styles.boxDiv}>
-              <img src={shop.images[1]} alt="" />
+            <div
+              key={index}
+              className={styles.boxDiv}
+              onClick={() => addToFavouritesArray(shop)}
+            >
+              <img src={shop.images[0]} alt="" />
               <div className={styles.detailBox}>
                 <h4 className={styles.shopName}>{shop.name}</h4>
-                <p className={styles.rating}>
+                <p
+                  className={styles.rating}
+                  style={{ display: "flex", gap: 9 }}
+                >
                   5.0
-                  <FaStar />
+                  <FaStar />({getRandomInteger(1, 2000)})
                 </p>
                 <h3 className={styles.categoryName}>{shop.name}</h3>
               </div>

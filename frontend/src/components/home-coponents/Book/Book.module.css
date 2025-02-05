@@ -5,12 +5,13 @@
     flex-direction: column;
     align-items: center;
     gap: 30px;
+    width: 100% !important;
     margin: 0 auto;
     box-sizing: border-box;
     overflow-x: hidden;
     margin-top: 70px;
-
 }
+
 .bigFont{
     color: black;
     font-size: 6rem;
@@ -120,9 +121,9 @@
     top: 55%; 
     z-index: 10;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    opacity: 0; /* Initially hidden */
-    transform: translateY(-10px); /* Slightly above the final position */
-    visibility: hidden; /* Hidden but not blocking interactions */
+    opacity: 0; 
+    transform: translateY(-10px); 
+    visibility: hidden; 
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0.3s; /* Delayed visibility to sync with opacity */
   }
 
@@ -143,10 +144,10 @@
     top: 55%; 
     z-index: 10;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    opacity: 0; /* Initially hidden */
-    transform: translateY(-10px); /* Slightly above the final position */
-    visibility: hidden; /* Hidden but not blocking interactions */
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0.3s; /* Delayed visibility to sync with opacity */
+    opacity: 0; 
+    transform: translateY(-10px); 
+    visibility: hidden; 
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0.3s; 
   }  
   
   .timedropdown{
@@ -155,17 +156,18 @@
     z-index: 10;
     height: 90px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    opacity: 0; /* Initially hidden */
-    transform: translateY(-10px); /* Slightly above the final position */
-    visibility: hidden; /* Hidden but not blocking interactions */
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0.3s; /* Delayed visibility to sync with opacity */
+    opacity: 0; 
+    transform: translateY(-10px); 
+    visibility: hidden; 
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0.3s; 
   }  
   .timedropdown.show, .locationDropDown.show,.treatmentDropDown.show,.calendarDropDown.show{
-    opacity: 1; /* Fully visible */
-    transform: translateY(0); /* Final position */
-    visibility: visible; /* Make it visible */
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0s; /* Immediate visibility */
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible; 
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0s; 
   }
+
 @media(max-width:1021px){
     .container{
         text-align: center;

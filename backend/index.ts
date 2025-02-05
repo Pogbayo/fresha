@@ -28,8 +28,8 @@ const startServer = async () => {
     }));
 
     app.use(express.json());
-    app.use('/api', userRoutes);
-    app.use('/api', categoryRoute);
+    app.use("/api", userRoutes);
+    app.use("/api", categoryRoute);
     app.use("/api", reviewRoute);
     app.use("/api", shopRoute);
     app.use("/api", deleteRoute);

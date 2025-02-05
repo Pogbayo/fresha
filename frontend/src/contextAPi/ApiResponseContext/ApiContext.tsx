@@ -11,7 +11,7 @@ export interface subServiceType {
 
 export interface serviceType {
   name: string;
-  subService: [subServiceType];
+  subServices: [subServiceType];
 }
 
 export interface teamType {
@@ -33,10 +33,15 @@ export interface openingTimetype {
   saturday: string;
   sunday: string;
 }
+export interface addressType {
+  street: string;
+  city: string;
+  country: string;
+}
 
 export interface shopType {
   name: string;
-  address: string;
+  address: addressType[];
   categoryId: string;
   services: serviceType[];
   images: string[];
@@ -61,8 +66,17 @@ export interface ApiContextType {
   jointArray: shopType[];
   trendingRef: React.RefObject<HTMLDivElement>;
   recommendedRef: React.RefObject<HTMLDivElement>;
+  recentlyRef: React.RefObject<HTMLDivElement>;
+  favouritesRef: React.RefObject<HTMLDivElement>;
+  appointmentRef: React.RefObject<HTMLDivElement>;
   trendingCombinedArray: shopType[];
   recommendedCombinedArray: shopType[];
+  recentlyArray: shopType[];
+  favouritesArray: shopType[];
+  appointmentArray: shopType[];
+  addToRecentlyViewedArray: (shop: shopType) => void;
+  addToFavouritesArray: (shop: shopType) => void;
+  addToAppointmentArray: (shop: shopType) => void;
 }
 
 interface ApiProviderProps {
@@ -77,6 +91,12 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
   const trendingRef = React.useRef<HTMLDivElement | null>(null);
   const recommendedRef = React.useRef<HTMLDivElement | null>(null);
   const reviewsRef = React.useRef<HTMLDivElement | null>(null);
+  const recentlyRef = React.useRef<HTMLDivElement | null>(null);
+  const favouritesRef = React.useRef<HTMLDivElement | null>(null);
+  const appointmentRef = React.useRef<HTMLDivElement | null>(null);
+
+  const [favouritesArray, setFavouritesArry] = useState<shopType[]>([]);
+  const [appointmentArray, setAppointmentArray] = useState<shopType[]>([]);
   const [categoryArray, setCategoryArray] = useState<categoryType[]>([]);
   const [jointArray, setJointArray] = useState<shopType[]>([]);
   const [trendingCombinedArray, setTrendingCombinedArray] = useState<
@@ -85,6 +105,7 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
   const [recommendedCombinedArray, setRecommendedCombinedArray] = useState<
     shopType[]
   >([]);
+  const [recentlyArray, setRecentlyArray] = useState<shopType[]>([]);
 
   useEffect(() => {
     const fetchedData = async () => {
@@ -125,6 +146,37 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
     }
   };
 
+  const addToRecentlyViewedArray = (shop: shopType) => {
+    setRecentlyArray((prev) => {
+      const existingItem = prev.find((item) => item.name === shop.name);
+      if (existingItem) {
+        return prev;
+      }
+      return [...prev, shop];
+    });
+  };
+
+  const addToFavouritesArray = (shop: shopType) => {
+    setFavouritesArry((prev) => {
+      const existingItem = prev.find((item) => item.name === shop.name);
+      if (existingItem) {
+        return prev;
+      }
+      return [...prev, shop];
+    });
+  };
+
+  const addToAppointmentArray = (shop: shopType) => {
+    setAppointmentArray((prev) => {
+      const existingItem = prev.find((item) => item.name === shop.name);
+      if (existingItem) {
+        return prev;
+      }
+      return [...prev, shop];
+    });
+    // localStorage.setItem("localStorageAppointmentArray")
+  };
+
   useEffect(() => {
     const combinedArray = categoryArray.flatMap((category) => {
       const firstArray = category.shops[0];
@@ -134,7 +186,7 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
 
     const trendingArray = categoryArray.flatMap((category) => {
       const firstArray = category.shops[1];
-      const secondArray = category.shops[3];
+      const secondArray = category.shops[2];
       return [secondArray, firstArray].filter(Boolean);
     });
 
@@ -155,11 +207,20 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
         scroll,
         containerRef,
         jointArray,
+        favouritesRef,
+        appointmentRef,
         trendingCombinedArray,
         trendingRef,
         recommendedRef,
         reviewsRef,
+        recentlyRef,
+        recentlyArray,
+        favouritesArray,
+        appointmentArray,
         recommendedCombinedArray,
+        addToRecentlyViewedArray,
+        addToFavouritesArray,
+        addToAppointmentArray,
       }}
     >
       {children}

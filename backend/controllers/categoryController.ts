@@ -44,7 +44,8 @@ export const createCategory = async (req:Request, res: Response, next:NextFuncti
 };
 
 export const deleteCategory = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-  const {categoryId} = req.body
+  const {categoryId} = req.params
+  console.log(categoryId)
   try {
     const category = await Category.findByIdAndDelete(categoryId)
     if (!category) {

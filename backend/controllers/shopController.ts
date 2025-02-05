@@ -52,6 +52,27 @@ export const getShop = async (req: Request, res: Response, next: NextFunction): 
    }
 }
 
+export const updateAddress = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+   try {
+    const {shopId} = req.params;
+    const {address} = req.body;
+    console.log(address);
+
+    const updatedShop = await Shop.findByIdAndUpdate(
+      shopId,
+      {address},
+      {new:true,runValidators:true}
+    );
+
+    if (!updatedShop) {
+      res.status(400).send("Shop not found")
+    }
+   res.status(200).send(updatedShop?.address)
+   } catch (error) {
+    res.status(500).send((error) as Error["message"])
+   }
+}
+
 export const updateImgUrl = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   try {
     const {shopId} = req.params;

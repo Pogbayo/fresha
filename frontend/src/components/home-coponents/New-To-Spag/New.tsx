@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { useApiContext } from "../../../contextAPi/ApiResponseContext/useApiContext";
 import { Loading } from "../../loader/Loading";
 import styles from "./New.module.css";
@@ -5,10 +6,21 @@ import { FaStar, FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 export const New = () => {
   const { jointArray, scroll, containerRef } = useApiContext();
+  const [header, setHeader] = useState("");
+
+  function getRandomInteger(min: number, max: number) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      setHeader("News");
+    }, 1500);
+  });
 
   return (
     <div className={styles.section}>
-      <p className={styles.newHeader}>New to Spag</p>
+      <p className={styles.newHeader}>{header}</p>
       <button
         className={`${styles.scrollButton} ${styles.leftArrow}`}
         onClick={() => scroll(containerRef, "left")}
@@ -31,9 +43,12 @@ export const New = () => {
               <img src={shop.images[0]} alt="" />
               <div className={styles.detailBox}>
                 <h4 className={styles.shopName}>{shop.name}</h4>
-                <p className={styles.rating}>
+                <p
+                  className={styles.rating}
+                  style={{ display: "flex", gap: 9 }}
+                >
                   5.0
-                  <FaStar />
+                  <FaStar />({getRandomInteger(1, 700)})
                 </p>
                 <h3 className={styles.categoryName}>{shop.name}</h3>
               </div>

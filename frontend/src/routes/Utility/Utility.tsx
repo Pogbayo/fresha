@@ -2,7 +2,7 @@ import { UtilityBody } from "../../components/utility-components/utilityBody/Uti
 
 export const Utility = () => {
   return (
-    <div>
+    <div className="app">
       <UtilityBody />
     </div>
   );

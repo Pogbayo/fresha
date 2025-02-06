@@ -1,0 +1,39 @@
+.imgContainer{
+    height: 450px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.imgOne{
+    height: 100%;
+    width: 68%;
+    border-radius: 10px;
+    transition: transform 0.1s ease; 
+    overflow: hidden;
+
+}
+@media(max-width:734px){
+    .imgContainer{
+        width: 100% !important;
+        margin-top: 2px;
+    }
+    .imgTwo{
+        display: none;
+    }
+    .imgOne{
+        width: 100%;
+    }
+}
+.imgTwo{
+    height: 100%;
+    width: 30%;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.1s ease; 
+    overflow: hidden;
+}
+
+.imgTwo:hover,.imgOne:hover {
+  transform: scale(1.01);
+}

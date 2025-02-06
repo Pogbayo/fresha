@@ -20,7 +20,7 @@ export const Header = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
+  console.log(screenWidth);
   return (
     <div className={styles.container}>
       <h3 className={styles.logo}>spag {screenWidth}</h3>

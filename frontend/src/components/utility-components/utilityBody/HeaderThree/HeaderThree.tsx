@@ -3,11 +3,11 @@ import { CiSearch, CiLocationOn } from "react-icons/ci";
 import { IoTimeOutline } from "react-icons/io5";
 import { MdDateRange } from "react-icons/md";
 import styles from "./HeaderThree.module.css";
-import { useAppContext } from "../../../contextAPi/AppContextApi/useAppContext";
-import { MyCalendar } from "../../home-coponents/Book/calendar/MyCalendar";
-import { Time } from "../../home-coponents/Book/Time-picker/Time";
-import { Treatment } from "../../home-coponents/Book/TreatmentDropDown/Treatment";
-import { Location } from "../../home-coponents/Book/location/Location";
+import { useAppContext } from "../../../../contextAPi/AppContextApi/useAppContext";
+import { MyCalendar } from "../../../home-coponents/Book/calendar/MyCalendar";
+import { Time } from "../../../home-coponents/Book/Time-picker/Time";
+import { Treatment } from "../../../home-coponents/Book/TreatmentDropDown/Treatment";
+import { Location } from "../../../home-coponents/Book/location/Location";
 import { FaAngleDown } from "react-icons/fa6";
 import { FaChevronUp } from "react-icons/fa";
 // import { GoArrowLeft } from "react-icons/go";
@@ -160,18 +160,10 @@ export const HeaderThree = () => {
       </div>
 
       <div className={styles.smallScreenHeader}>
-        <div className={styles.iconContainer}>
-          {/* <GoArrowLeft size={30} onClick={() => navigate("/")} /> */}
-        </div>
-        <div className={styles.textContainer}>
-          <p>All treatments and venues</p>
-          <span>
-            <p>Any date</p> · <p>Map area</p>
-          </span>
-        </div>
-        <div className={styles.locationIcon}>
-          {/* <GrMapLocation size={20} /> */}
-        </div>
+        <p className={styles.first}>Home ·</p>
+        <p className={styles.second}>Hair salons ·</p>
+        <p className={styles.third}>Lagos ·</p>
+        <p className={styles.fourth}>TasalaHQ Hair and Beauty</p>
       </div>
 
       {

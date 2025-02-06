@@ -48,6 +48,7 @@ export interface shopType {
   team: teamType[];
   reviews: reviewType[];
   about: string;
+  openingTime: openingTimetype;
 }
 
 export interface categoryType {
@@ -77,6 +78,8 @@ export interface ApiContextType {
   addToRecentlyViewedArray: (shop: shopType) => void;
   addToFavouritesArray: (shop: shopType) => void;
   addToAppointmentArray: (shop: shopType) => void;
+  utilityShop: shopType | [];
+  viewUtilityShop: (shop: shopType) => void;
 }
 
 interface ApiProviderProps {
@@ -99,6 +102,7 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
   const [appointmentArray, setAppointmentArray] = useState<shopType[]>([]);
   const [categoryArray, setCategoryArray] = useState<categoryType[]>([]);
   const [jointArray, setJointArray] = useState<shopType[]>([]);
+  const [utilityShop, setUtilityShop] = useState<shopType | []>([]);
   const [trendingCombinedArray, setTrendingCombinedArray] = useState<
     shopType[]
   >([]);
@@ -122,6 +126,10 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
     fetchedData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const viewUtilityShop = (shop: shopType) => {
+    setUtilityShop(shop);
+  };
 
   const scroll = (
     ref: React.RefObject<HTMLDivElement>,
@@ -221,6 +229,8 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
         addToRecentlyViewedArray,
         addToFavouritesArray,
         addToAppointmentArray,
+        utilityShop,
+        viewUtilityShop,
       }}
     >
       {children}

@@ -161,7 +161,7 @@ export const HeaderTwo = () => {
 
       <div className={styles.smallScreenHeader}>
         <div className={styles.iconContainer}>
-          <GoArrowLeft size={30} />
+          <GoArrowLeft size={30} onClick={() => navigate("/")} />
         </div>
         <div className={styles.textContainer}>
           <p>All treatments and venues</p>

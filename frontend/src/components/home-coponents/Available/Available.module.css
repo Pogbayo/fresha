@@ -18,6 +18,8 @@
     font-size: 1.8rem;
     font-weight: 900;
     margin-right: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
 .boxOne h1{
     font-size: 5rem;
@@ -27,7 +29,9 @@
 }
 .boxOne p{
     font-size: 1.3rem;
-    font-weight: 700;
+    font-weight: 500;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
 .boxOne img{
     width:100px;

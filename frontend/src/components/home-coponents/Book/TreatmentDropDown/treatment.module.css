@@ -5,8 +5,8 @@
     background-color: white;
     border-radius: 20px;
     border: 1px solid gray;
-    height: 300px;
-    overflow-y: auto; /* Enable vertical scrolling */
+    height: 400px;
+    overflow-y: auto;   
 
 }
 .container::-webkit-scrollbar {

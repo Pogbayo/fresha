@@ -1,38 +1,43 @@
-import styles from "./Book.module.css";
-import { CiSearch } from "react-icons/ci";
-import { CiLocationOn } from "react-icons/ci";
-import { MdDateRange } from "react-icons/md";
+import { useRef, useEffect, useState } from "react";
+import { CiSearch, CiLocationOn } from "react-icons/ci";
 import { IoTimeOutline } from "react-icons/io5";
-import { IoQrCode } from "react-icons/io5";
-import { MyCalendar } from "./calendar/MyCalendar";
-import { useRef, useEffect } from "react";
-import { useAppContext } from "../../../contextAPi/AppContextApi/useAppContext"; // Adjust the import path as necessary
-import { Treatment } from "./TreatmentDropDown/Treatment";
-import { Location } from "./location/Location";
-import { Time } from "./Time-picker/Time";
+import { MdDateRange } from "react-icons/md";
+import styles from "./HeaderThree.module.css";
+import { useAppContext } from "../../../contextAPi/AppContextApi/useAppContext";
+import { MyCalendar } from "../../home-coponents/Book/calendar/MyCalendar";
+import { Time } from "../../home-coponents/Book/Time-picker/Time";
+import { Treatment } from "../../home-coponents/Book/TreatmentDropDown/Treatment";
+import { Location } from "../../home-coponents/Book/location/Location";
+import { FaAngleDown } from "react-icons/fa6";
+import { FaChevronUp } from "react-icons/fa";
+// import { GoArrowLeft } from "react-icons/go";
+// import { GrMapLocation } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
 
-export const Book = () => {
+export const HeaderThree = () => {
   const {
-    isCalendarOpen,
-    handleCalendarDropDown,
-    calendarInputValue,
-    setCalendarInputValue,
-    setIsCalendarOpen,
-    isTreatmentsOpen,
-    setIsTreatmentsOpen,
+    handleCurrentLocationDropDown,
     handleTreatmentsDropDown,
+    handleCalendarDropDown,
+    setTreatmentInputValue,
+    setCalendarInputValue,
+    setLocationInputValue,
+    setIsCurrentLocation,
+    setIsTreatmentsOpen,
+    handleMenuDropDown,
     isTime,
     setIsTime,
-    handleTimeDropDown,
+    isMenuOpen,
+    isCalendarOpen,
+    isTreatmentsOpen,
+    setIsCalendarOpen,
     isCurrentLocation,
-    setIsCurrentLocation,
-    handleCurrentLocationDropDown,
+    handleTimeDropDown,
     treatmentInputValue,
-    setTreatmentInputValue,
+    calendarInputValue,
     locationInputValue,
-    setLocationInputValue,
   } = useAppContext();
+
   const calendarRef = useRef<HTMLDivElement | null>(null);
   const treatmentRef = useRef<HTMLDivElement | null>(null);
   const locationRef = useRef<HTMLDivElement | null>(null);
@@ -49,7 +54,15 @@ export const Book = () => {
   const handleCalendarValueInput = (value: string) => {
     setCalendarInputValue(value);
   };
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  console.log(typeof screenWidth);
   useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+
     const handleClickOutside = (event: MouseEvent) => {
       if (
         calendarRef.current &&
@@ -74,21 +87,23 @@ export const Book = () => {
         setIsTime(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
+
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+
+      window.removeEventListener("resize", handleResize);
     };
   }, [setIsCalendarOpen, setIsTreatmentsOpen, setIsTime, setIsCurrentLocation]);
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.bigFont}>
-        Book local beauty and wellness services
-      </h1>
+      <h3 className={styles.logo} onClick={() => navigate("/")}>
+        spag
+      </h3>
       <form action="" className={styles.formContainer}>
         <span>
-          <CiSearch size={20} />
+          <CiSearch size={23} />
           <input
             type="text"
             id="treatment"
@@ -114,7 +129,7 @@ export const Book = () => {
           <MdDateRange />
           <input
             type="text"
-            placeholder="Any Date"
+            placeholder={screenWidth.toString()}
             id="date"
             value={calendarInputValue}
             onClick={handleCalendarDropDown}
@@ -131,15 +146,43 @@ export const Book = () => {
             onChange={(e) => setCalendarInputValue(e.target.value)}
           />
         </span>
-        <span>
-          <button onClick={() => navigate("secondary")}>Search spag</button>
-        </span>
+
+        {/* <span>
+          <button>S</button>
+        </span> */}
       </form>
-      <h2>403,834 appointments booked today</h2>
-      <button className={styles.qrCodeButton}>
-        Get the app
-        <IoQrCode />
-      </button>
+
+      <div className={styles.headerButtons}>
+        <button className={styles.buttonTwo} onClick={handleMenuDropDown}>
+          Menu
+          {isMenuOpen ? <FaChevronUp /> : <FaAngleDown />}
+        </button>
+      </div>
+
+      <div className={styles.smallScreenHeader}>
+        <div className={styles.iconContainer}>
+          {/* <GoArrowLeft size={30} onClick={() => navigate("/")} /> */}
+        </div>
+        <div className={styles.textContainer}>
+          <p>All treatments and venues</p>
+          <span>
+            <p>Any date</p> · <p>Map area</p>
+          </span>
+        </div>
+        <div className={styles.locationIcon}>
+          {/* <GrMapLocation size={20} /> */}
+        </div>
+      </div>
+
+      {
+        <ul
+          className={`${styles.dropdownMenu} ${isMenuOpen ? styles.show : ""}`}
+        >
+          <li>Log in</li>
+          <li>Download the app</li>
+        </ul>
+      }
+
       {
         <div
           ref={treatmentRef}
@@ -150,6 +193,7 @@ export const Book = () => {
           <Treatment handleTreatmentInput={handleTreatmentInput} />
         </div>
       }
+
       {
         <div
           ref={locationRef}
@@ -160,6 +204,7 @@ export const Book = () => {
           <Location handleLocationValueInput={handleLocationValueInput} />
         </div>
       }
+
       {
         <div
           ref={calendarRef}
@@ -170,6 +215,7 @@ export const Book = () => {
           <MyCalendar handleCalendarValueInput={handleCalendarValueInput} />
         </div>
       }
+
       {
         <div
           ref={timeRef}

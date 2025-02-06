@@ -9,9 +9,13 @@
     scrollbar-width: none; 
     margin-bottom: 50px;
     gap: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
   }
 .reviewHeader{
   padding-left: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
   .container::-webkit-scrollbar{
     display: none;

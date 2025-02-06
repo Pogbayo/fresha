@@ -8,6 +8,7 @@ import { IoMdStar } from "react-icons/io";
 import { HiAdjustmentsVertical } from "react-icons/hi2";
 import { Leaflet } from "./Leaflet/Leaflet";
 import { useEffect, useState } from "react";
+import { TbCurrencyNaira } from "react-icons/tb";
 
 export const Body = () => {
   const { categoryArray } = useApiContext();
@@ -20,7 +21,7 @@ export const Body = () => {
   function generateRandomDecimal() {
     let num;
     do {
-      num = Math.random() * 4 + 3;
+      num = Math.random() * 4 + 1;
       num = parseFloat(num.toFixed(1));
     } while (num % 1 === 0);
     return num;
@@ -46,7 +47,6 @@ export const Body = () => {
                 Filter
               </button>
             </div>
-
             {allShops.map((shop: shopType, index) => (
               <div className={styles.shop} key={index}>
                 <img
@@ -88,7 +88,10 @@ export const Body = () => {
                         <span className={styles.span}>
                           <p className={styles.subServiceName}>{item.name}</p>
                           <p className={styles.subServicePrice}>
-                            ${item.price}.00
+                            <TbCurrencyNaira />
+                            {item.price === 2
+                              ? `${item.price}000`
+                              : `${item.price},000`}
                           </p>
                         </span>
                         <p className={styles.subServiceDuration}>

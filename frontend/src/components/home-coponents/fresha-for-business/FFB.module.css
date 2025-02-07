@@ -4,7 +4,7 @@
     align-items: center;
 }
 .divOne{
-    padding-left: 20px;
+    /* padding-left: 20px; */
     display: flex;
     flex-direction: column;
 
@@ -15,6 +15,7 @@
     font-weight: 900;
     line-height: 1.1;
     margin-bottom: 2px;
+
 }
 .divOne p{
     font-size: 1.6rem;
@@ -33,7 +34,6 @@
 .divTwo{
     height: 600px;
     width: 70%;
-    border: 2px solid red;
     background-image: url('/public/images/homeMedia/forBusinessMedia.png');
 }
 .img{
@@ -82,11 +82,13 @@
         font-size: 3rem;
         margin: 0;
         padding: 0;
+
     }
     .divOne p{
         font-size: 1.3rem;
         width: 400px;
         margin:10px;
+
     }
     .divTwo{
         width: 100%;
@@ -96,6 +98,7 @@
     .img{
         height: 400px;
         width: 100%;
+        margin-right: 30px;
     }
 }
 @media(max-width:498px){

@@ -1,0 +1,87 @@
+.teamContainer{
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    padding: 10px;
+}
+.teamContainer h1{
+    font-weight: 900;
+}
+.teamContainer span{
+    height: fit-content;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top:50px;
+}
+.teamContainer span div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 150px; 
+    min-width: 150px; 
+    text-align: center;
+}
+.teamContainer span div p:nth-child(4){
+   display: flex;
+   flex-direction: column-reverse;
+}
+.teamContainer span::-webkit-scrollbar{
+   display: none;
+}
+.firstLetter{
+    width: 40px;
+    padding: 30px;
+    height: 40px;
+    font-size: 2rem;
+    font-weight: 700;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(1, 13, 22, 0.842);
+    position: relative;
+    transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+}
+.firstLetter:hover{
+    background-color: rgb(205, 206, 207);
+    color: black;
+}
+.firstLetter,.role,.name,.randomNumber{
+    margin: 0;
+}
+.randomNumber{
+    border: 1px solid rgb(155, 152, 152);
+    position: relative;
+    bottom: 20px;
+    width: 50px;
+    left: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 10px;
+    background-color: white;
+}
+.name{
+    font-weight: 500;
+}
+@media(max-width:700px){
+    .teamContainer span {
+        overflow-x: scroll;
+        gap: 30px;
+        margin-top: 0;
+      }
+      .teamContainer span div {
+        width: 150px;
+        min-width: 150px; 
+      }
+    .firstLetter{
+        width: 30px;
+        padding: 30px;
+        height: 30px;
+        font-size: 2rem;
+    
+    }
+}

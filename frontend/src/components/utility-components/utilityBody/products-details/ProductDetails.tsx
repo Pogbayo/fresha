@@ -44,7 +44,7 @@ export const ProductDetails = ({ shop }: { shop: shopType }) => {
                   <MdOutlineStarPurple500 />
                 </small>
               </span>
-              <p className={styles.randomNumber}>
+              <p className={styles.randomNumber} style={{ color: "blue" }}>
                 ({generateRandomNumber(1, 1000)})
                 <small className={styles.dot}> · </small>
               </p>

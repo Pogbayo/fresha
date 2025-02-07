@@ -1,0 +1,37 @@
+.Utility{
+    width: 80vw;
+    margin: 0 auto;
+    padding-bottom: 30px;
+  }  
+  @media(max-width:1742px){
+    .Utility{
+      width: 83vw;
+    }
+  }
+  @media(max-width:1673px){
+    .Utility{
+      width: 92vw;
+    }
+  }
+  @media(max-width:1560px){
+    .Utility{
+      width: 96vw;
+    }
+  }
+  @media(max-width:1433px){
+    .Utility{
+      width: 97vw;
+    }
+  }
+  @media(max-width:1086px){
+    .Utility{
+      width: 95vw;
+    }
+  }
+  @media(max-width:600px){
+    .Utility{
+      width: 97vw;
+    }
+  }
+  
+  

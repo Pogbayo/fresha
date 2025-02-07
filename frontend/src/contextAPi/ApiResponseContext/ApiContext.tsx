@@ -48,7 +48,7 @@ export interface shopType {
   team: teamType[];
   reviews: reviewType[];
   about: string;
-  openingTime: openingTimetype;
+  openingTimes: openingTimetype;
 }
 
 export interface categoryType {

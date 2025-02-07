@@ -1,5 +1,5 @@
 .imgContainer{
-    height: 450px;
+    height: 480px;
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
@@ -11,8 +11,16 @@
     border-radius: 10px;
     transition: transform 0.1s ease; 
     overflow: hidden;
-
 }
+
+/* .loading{
+    background-color: red;
+    border: 2px solid red;
+    width: 100%;
+    height: 20px;
+    width: fit-content;
+} */
+
 @media(max-width:734px){
     .imgContainer{
         width: 100% !important;
@@ -23,6 +31,9 @@
     }
     .imgOne{
         width: 100%;
+    }
+    .imgContainer{
+        height: 400px;
     }
 }
 .imgTwo{

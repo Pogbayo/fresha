@@ -55,7 +55,7 @@ export const HeaderThree = () => {
     setCalendarInputValue(value);
   };
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  console.log(typeof screenWidth);
+  // console.log(typeof screenWidth);
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);

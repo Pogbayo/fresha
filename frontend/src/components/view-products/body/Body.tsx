@@ -35,6 +35,7 @@ export const Body = () => {
       setShowMap(true);
     }, 2000);
   }, []);
+
   return (
     <div className={styles.container}>
       <div className={styles.shopsColumn}>

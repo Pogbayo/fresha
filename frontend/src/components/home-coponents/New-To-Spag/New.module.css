@@ -45,7 +45,7 @@
 .boxDiv {
     flex: 0 0 300px; 
     border: 1px solid rgb(192, 188, 188);
-    height:26autopx ;
+    height:auto ;
     position: relative; 
     margin-right: 10px; 
     scroll-snap-align: start; 

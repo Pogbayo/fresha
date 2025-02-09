@@ -14,8 +14,7 @@ html{
 body {
   /* font-family: var(--font-family); */
   font-weight: var(--font-weight);
-  font-family: 'EB Garamond', serif;
-
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
   color: var(--text-color);
   background-color: var(--background-color);
   margin: 0;

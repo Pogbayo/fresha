@@ -56,6 +56,10 @@
 .openingTime,.location{
   margin: 0;
 }
+.location{
+    color: gray;
+    font-weight: 500;
+}
 .stars{
     display: flex;
     /* align-items: center; */

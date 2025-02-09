@@ -1,86 +1,112 @@
 
 .App{
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+.lowerDiv{
+   display: flex;
+   justify-content: space-between;
+}
+.firstDiv{
+   width: 68%;
+   margin-bottom: 40px;
+}
+.secondDiv{
+  width: 30%;
+  position: sticky;
+  top: 0;
+  z-index: 10; 
+}
+
+.loaderContainer {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.one {
+  width: 50%;
+  height: 50px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  background-size: 200% 100%;
+  animation: shimmer 2.5s infinite ease-in-out;
+}
+
+.spanOne {
+  width: 60%;
+  border-radius: 10px;
+  animation: shimmer 2.5s infinite ease-in-out;
+  background: linear-gradient(110deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+}
+
+.spanTwo {
+  width: 30%;
+  height: 50px;
+  border-radius: 10px;
+  animation: shimmer 2.5s infinite ease-in-out;
+  background: linear-gradient(110deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+  background-size: 200% 100%;
+}
+
+.two {
+  width: 60%;
+  height: 100px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #dcdcdc, #f0f0f0, #dcdcdc);
+  background-size: 200% 100%;
+  animation: shimmer 2.5s infinite ease-in-out;
+  margin-bottom: 20px;
+}
+
+.three {
+  width: 100%;
+  height: 500px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #d6d6d6, #f0f0f0, #d6d6d6);
+  background-size: 200% 100%;
+  animation: shimmer 2.5s infinite ease-in-out;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  50% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 
+/* .spanOne, .spanTwo {
+  display: block;
+  height: 15px;
+  background: #d6d6d6;
+  border-radius: 4px;
+  margin-top: 5px;
+} */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    @media(max-width:734px){
-     .smallScreenHeader{
+@media (max-width: 1277px) {
+    .firstContainer {
+      width: 90%;
+    }
+    .firstDiv{
+     width: 100%;
+    }
+    .bookNow{
+      display: block;
+    }
+    .secondDiv {
       display: none;
-     }
     }
-    
-
- @media(max-width:490px){
-    .smallScreenHeader .first,.second,.third,.fourth{
-       margin-top: 0;
-       margin-bottom: 0;
-       font-size: 0.8rem;
-       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-       color: grey;
-    }   
-    .fourth{
-       font-weight: 700;
-       color: black;
-    }
-  }
+}

@@ -31,7 +31,6 @@
     font-size: 1.3rem;
     font-weight: 500;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-
 }
 .boxOne img{
     width:100px;
@@ -83,7 +82,10 @@
     .boxTwo{
         width: 55%;
     }
-    
+    .boxOne h1{
+        font-size: 4rem;
+        width: 450px;
+    }
 }
 @media(max-width:1162px){
     .container{

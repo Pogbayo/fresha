@@ -1,0 +1,372 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.appointmentButtonDivs {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.appointmentButtonDivs button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background-color: lightgray;
+  transition: background-color 0.3s ease;
+}
+
+.appointmentButtonDivs button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
+
+
+
+
+.teamContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  padding: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.teamContainer h1 {
+  font-weight: 900;
+  text-align: center;
+}
+
+.teamContainer span {
+  flex-wrap: wrap;
+  display: flex;
+  max-height: 720px;
+  overflow-y: auto;
+  width: 100%;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.teamContainer span div {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 150px;
+  min-width: 150px;
+  margin: 20px;
+  border: 1px solid rgb(209, 207, 207);
+  text-align: center;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
+
+  /* Animation properties */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease-in;
+  animation: fadeInEase 0.4s forwards;
+}
+
+@keyframes fadeInEase {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.teamContainer span div:active {
+  border: 2px solid purple;
+}
+
+.teamMember {
+  cursor: pointer;
+  padding: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.teamMember.active {
+  border: 2px solid purple;
+  background-color: #f3f0ff;
+}
+
+.teamContainer span div p:nth-child(4) {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.teamContainer span::-webkit-scrollbar {
+  display: none;
+}
+
+.firstLetter {
+  width: 40px;
+  padding: 30px;
+  height: 40px;
+  font-size: 2rem;
+  font-weight: 700;
+  display: flex;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(1, 13, 22, 0.842);
+  position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+}
+
+.firstLetter:hover {
+  background-color: rgb(205, 206, 207);
+  color: black;
+}
+
+.firstLetter,
+.role,
+.name,
+.randomNumber {
+  margin: 0;
+}
+
+.randomNumber {
+  border: 1px solid rgb(155, 152, 152);
+  position: relative;
+  bottom: 20px;
+  width: 50px;
+  left: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.name {
+  font-weight: 700;
+  color: grey;
+}
+
+.workerName {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+  border-bottom: 1px solid grey;
+}
+
+.bookNow {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  height: 650px;
+  max-width: 900px;
+  position: relative;
+  margin-top: 60px;
+  border: 1px solid rgb(219, 217, 217);
+
+}
+
+.reviewBooking {
+  color: black;
+  margin: 0;
+}
+
+.one {
+  padding: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.one img {
+  width: 100px;
+  height: 70px;
+  border-radius: 10px;
+}
+
+.bookName {
+  font-weight: 700;
+  font-size: 1.3rem;
+  margin: 0;
+}
+
+.one div p {
+  margin: 0;
+}
+
+.span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 150px;
+}
+
+.starTag {
+  display: flex;
+  align-items: center;
+}
+
+
+
+
+
+
+
+
+.two {
+  margin-top: 30px;
+  display: flex;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border-bottom: 1px solid rgb(216, 212, 212);
+  padding: 10px;
+  justify-content: space-between;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(15px);
+  animation: fadeInTwo 0.5s ease-in forwards;
+}
+
+@keyframes fadeInTwo {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.spanOne p {
+  margin: 0;
+  font-weight: 500;
+  color: grey;
+}
+
+.spanTwo p {
+  font-weight: 700;
+}
+
+.three {
+  display: flex;
+  justify-content: space-between;
+  height: fit-content;
+}
+
+.three p {
+  font-weight: 700;
+  color: black;
+  padding: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+.continueButton {
+  background-color: black;
+  color: white;
+  font-weight: 700;
+  width: 90%;
+  border-radius: 10px;
+  height: 50px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 10px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.continueButton:hover {
+  transform: translateX(-50%) translateY(-3px);
+}
+
+.twoContainer {
+  height: 61%;
+  max-height: 400px;
+  overflow-y: scroll;
+}
+
+.twoContainer::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 1048px) {
+  .teamContainer span {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1000px) {
+  .teamContainer {
+    width: 99%;
+    padding: 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .container {
+    width: 95%;
+  }
+
+  .teamContainer span {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .teamContainer span div {
+    width: 30%;
+    min-width: 120px;
+  }
+
+  .firstLetter {
+    width: 30px;
+    height: 30px;
+    font-size: 1.5rem;
+  }
+
+  .teamContainer {
+    width: 99%;
+    padding: 0;
+  }
+
+  .teamContainer h1 {
+    font-size: 1.2rem;
+  }
+  .bookNow{
+    margin-right: 20px;
+    width: 96%;
+    margin-top: 10px;
+  }
+  .appointmentButtonDivs{
+    margin-right: 20px;
+  }
+  .appointmentButtonDivs button {
+   width:40px;
+   height: 40px;
+  }
+}

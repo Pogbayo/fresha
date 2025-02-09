@@ -7,6 +7,7 @@ export interface subServiceType {
   desdcription: string;
   price: number;
   duration: string;
+  handleContinue: () => void;
 }
 
 export interface serviceType {
@@ -58,6 +59,7 @@ export interface categoryType {
 
 export interface ApiContextType {
   categoryArray: categoryType[];
+  showAppointment: boolean;
   scroll: (
     ref: React.RefObject<HTMLDivElement>,
     direction: "left" | "right"
@@ -75,11 +77,16 @@ export interface ApiContextType {
   recentlyArray: shopType[];
   favouritesArray: shopType[];
   appointmentArray: shopType[];
+  setShowAppointment: (value: boolean) => void;
   addToRecentlyViewedArray: (shop: shopType) => void;
   addToFavouritesArray: (shop: shopType) => void;
   addToAppointmentArray: (shop: shopType) => void;
   utilityShop: shopType | [];
+  subServiceArray: subServiceType[];
   viewUtilityShop: (shop: shopType) => void;
+  handleContinue: () => void;
+  totalPrice: number;
+  addSubService: (subService: subServiceType) => void;
 }
 
 interface ApiProviderProps {
@@ -110,6 +117,40 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
     shopType[]
   >([]);
   const [recentlyArray, setRecentlyArray] = useState<shopType[]>([]);
+  const [subServiceArray, setsubServiceArray] = useState<subServiceType[] | []>(
+    []
+  );
+  const addPurpleBorder = (subService: subServiceType) => {
+    const existingItem = subServiceArray.find(
+      (item) => item.name === subService.name
+    );
+
+    const element = document.querySelector(".subService") as HTMLElement;
+
+    if (element) {
+      element.style.border = existingItem
+        ? "2px solid grey"
+        : "2px solid purple";
+    }
+  };
+
+  const addSubService = (subService: subServiceType) => {
+    setsubServiceArray((prevArray) => {
+      const existingItem = prevArray.find(
+        (item) => item.name === subService.name
+      );
+      if (!existingItem) {
+        return [...prevArray, subService];
+      }
+      return [...prevArray];
+    });
+    addPurpleBorder(subService);
+  };
+
+  const totalPrice = subServiceArray.reduce(
+    (sum, subService) => sum + subService.price,
+    0
+  );
 
   useEffect(() => {
     const fetchedData = async () => {
@@ -208,6 +249,12 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
     setRecommendedCombinedArray(recommendedArray);
   }, [categoryArray]);
 
+  const [showAppointment, setShowAppointment] = useState(false);
+
+  const handleContinue = () => {
+    setShowAppointment(true);
+  };
+
   return (
     <ApiContext.Provider
       value={{
@@ -231,6 +278,12 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
         addToAppointmentArray,
         utilityShop,
         viewUtilityShop,
+        handleContinue,
+        showAppointment,
+        setShowAppointment,
+        subServiceArray,
+        totalPrice,
+        addSubService,
       }}
     >
       {children}

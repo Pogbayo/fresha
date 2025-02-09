@@ -1,0 +1,66 @@
+.bookNow {
+    position: fixed;
+    bottom: 0;
+    z-index: 11;
+    height: 60px;
+    left: 0;
+    background-color: white;
+    width: 100%;
+    padding: 0 20px;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    display: none;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+  }
+  
+  .spanOne {
+    font-size: 1rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  
+  .spanTwo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .bookNow p {
+    color: gray;
+    font-weight: 700;
+  }
+  
+  .bookNow button {
+    width: fit-content;
+    background-color: black;
+    border-radius: 10px;
+    color: white;
+    font-weight: 700;
+    padding: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    max-width: 100%; 
+  }
+  
+  @media (max-width: 1277px) {
+    .bookNow {
+      display: flex;
+    }
+  }
+  
+  @media (max-width: 700px) {
+    .bookNow {
+      display: flex;
+    }
+    .spanOne{
+      font-weight: 500;
+      font-size: 1rem;
+    }
+    .spanTwo p{
+      font-size: 0.8rem;
+    }
+  }
+  

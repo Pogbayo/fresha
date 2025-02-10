@@ -12,9 +12,9 @@ import { OpeningTime } from "./OpeningTime/OpeningTime";
 import { useEffect, useState } from "react";
 
 export const UtilityBody = () => {
-  const { categoryArray } = useApiContext();
+  const { categoryArray, utilShop } = useApiContext();
   const shopsFromCategoryOne = categoryArray?.[4]?.shops;
-  const shopFromShopOne = shopsFromCategoryOne?.[1];
+  const shopFromShopOne = utilShop ? utilShop : shopsFromCategoryOne[0];
   const [loading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -22,7 +22,8 @@ export const UtilityBody = () => {
       setIsLoading(false);
     }
   }, [categoryArray]);
-  console.log(shopFromShopOne);
+  console.log("Hhhhhh", utilShop);
+
   return (
     <div className={styles.App}>
       <HeaderThree />

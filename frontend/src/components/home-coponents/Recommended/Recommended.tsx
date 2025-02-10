@@ -4,6 +4,7 @@ import { Loading } from "../../loader/Loading";
 import { shopType } from "../../../contextAPi/ApiResponseContext/ApiContext";
 import { useApiContext } from "../../../contextAPi/ApiResponseContext/useApiContext";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Recommended = () => {
   const {
@@ -11,9 +12,10 @@ export const Recommended = () => {
     scroll,
     recommendedRef,
     addToFavouritesArray,
+    displayUtilShop,
   } = useApiContext();
   const [header, setHeader] = useState("");
-
+  const navigate = useNavigate();
   function getRandomInteger(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
@@ -23,7 +25,11 @@ export const Recommended = () => {
       setHeader("Recommended");
     }, 1500);
   });
-
+  const handleDisplayUtilShop = (shop: shopType) => {
+    addToFavouritesArray(shop);
+    displayUtilShop(shop);
+    navigate("/utility");
+  };
   return (
     <div className={styles.section}>
       <p className={styles.newHeader}>{header}</p>
@@ -48,7 +54,7 @@ export const Recommended = () => {
             <div
               key={index}
               className={styles.boxDiv}
-              onClick={() => addToFavouritesArray(shop)}
+              onClick={() => handleDisplayUtilShop(shop)}
             >
               <img src={shop.images[0]} alt="" />
               <div className={styles.detailBox}>

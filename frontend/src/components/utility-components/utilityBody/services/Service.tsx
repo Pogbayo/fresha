@@ -44,7 +44,11 @@ export const Service = ({ shop }: { shop: shopType }) => {
         <div className={styles.subServiceContainer}>
           {activeArray?.subServices?.slice(0, 3)?.map((item, index) => {
             return (
-              <div key={index} className={styles.subService}>
+              <div
+                key={index}
+                className={styles.subService}
+                onClick={() => navigate("/select")}
+              >
                 <span>
                   <p className={styles.name}>{item.name}</p>
                   <p className={styles.duration}>{item.duration}</p>

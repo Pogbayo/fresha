@@ -6,6 +6,7 @@ import { FaAngleUp } from "react-icons/fa";
 import { useRef, useState } from "react";
 import styles from "./sticky.module.css";
 import { shopType } from "../../../../contextAPi/ApiResponseContext/ApiContext";
+import { useNavigate } from "react-router-dom";
 
 export const Sticky = ({ shop }: { shop: shopType }) => {
   const [isOpeningTimeVisible, setIsOpeningTimeVisible] = useState(false);
@@ -13,6 +14,7 @@ export const Sticky = ({ shop }: { shop: shopType }) => {
   function generateRandomNumber(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
+  const navigate = useNavigate();
   return (
     <div ref={fixedBoxRef} className={styles.fixedBox}>
       <div className={styles.upperDiv}>
@@ -31,7 +33,7 @@ export const Sticky = ({ shop }: { shop: shopType }) => {
           <p style={{ color: "blue" }}>({generateRandomNumber(400, 1000)})</p>
         </div>
         <p className={styles.dealsButton}>Deals</p>
-        <button>Book now</button>
+        <button onClick={() => navigate("/select")}> Book now</button>
       </div>
       <div className={styles.lowerDiv}>
         <span>

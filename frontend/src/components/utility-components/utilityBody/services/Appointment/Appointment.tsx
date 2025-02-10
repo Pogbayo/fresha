@@ -1,5 +1,6 @@
 import { useApiContext } from "../../../../../contextAPi/ApiResponseContext/useApiContext";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // For page navigation
 import styles from "./Appointment.module.css";
 import { IoIosStar } from "react-icons/io";
 import { VscClose } from "react-icons/vsc";
@@ -10,145 +11,218 @@ export const Appointment = () => {
   const {
     setShowAppointment,
     categoryArray,
-    handleContinue,
     subServiceArray,
-    totalPrice,
+    setsubServiceArray,
+    formattedTotalPrice,
+    utilShop,
   } = useApiContext();
+  const navigate = useNavigate();
+
   const shopsFromCategoryOne = categoryArray?.[4]?.shops;
-  const shopFromShopOne = shopsFromCategoryOne?.[1];
+  const shopFromShopOne = utilShop ? utilShop : shopsFromCategoryOne?.[1];
   const shop = shopFromShopOne;
 
   const [selectedMember, setSelectedMember] = useState<string | null>(null);
   const [showBookNowDiv, setShowBookNowDiv] = useState(false);
-
-  function generateRandomDecimal() {
-    let num;
-    do {
-      num = Math.random() * (5.0 - 3.7) + 3.7;
-      num = parseFloat(num.toFixed(1));
-    } while (num % 1 === 0);
-    return num;
-  }
+  const [isLoading, setIsLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const handleShowConfirmBookingDiv = (name: string) => {
     setSelectedMember(name);
     setShowBookNowDiv(true);
   };
 
+  const handleConfirmAppointment = () => {
+    setIsLoading(true);
+    setSuccessMessage(null);
+
+    // Simulate async task before showing success message
+    setTimeout(() => {
+      setIsLoading(false);
+      setTimeout(() => {
+        navigate("/utility"); // Navigate back after success message
+      }, 1000);
+      setSuccessMessage(
+        "Appointment booked. Kindly check your email for more details."
+      );
+      setsubServiceArray([]);
+      // Hide content and show success message for 3 seconds
+    }, 2500);
+  };
+
   return (
-    <div className={styles.container}>
-      <div className={styles.appointmentButtonDivs}>
-        <button
-          onClick={() => setShowAppointment(false)}
-          className={styles.goBackButton}
-        >
-          <IoIosArrowRoundBack size={30} />
-        </button>
-        <button>
-          <VscClose size={30} />
-        </button>
-      </div>
-
-      {!showBookNowDiv && (
-        <div className={styles.teamContainer}>
-          <h1>Team</h1>
-          <span>
-            {shop?.team?.map((member, index) => (
-              <div
-                key={index}
-                onClick={() => handleShowConfirmBookingDiv(member.name)}
-                className={`${styles.teamMember} ${
-                  selectedMember === member.name ? styles.active : ""
-                }`}
-              >
-                <p className={styles.firstLetter}>{member.name[0]}</p>
-                <p className={styles.randomNumber}>
-                  {generateRandomDecimal()}
-                  <IoIosStar />
-                </p>
-                <p className={styles.name}>{member.name}</p>
-                <p className={styles.role}>{member.role}</p>
-              </div>
-            ))}
-          </span>
+    <div>
+      {isLoading ? (
+        <div className={styles.overlay}>
+          <div className={styles.loader}>
+            <div className={styles.boxOne}></div>
+            <div className={styles.boxTwo}></div>
+            <div className={styles.boxThree}></div>
+          </div>
         </div>
-      )}
-
-      {showBookNowDiv && (
+      ) : (
         <>
-          <div style={{ margin: 0, fontWeight: 900 }}>Review booking</div>
-          <div className={styles.bookNow}>
-            <div className={styles.one}>
-              <img src={shop?.images[0]} alt="" />
-              <div>
-                <p className={styles.bookName}>
-                  {shop?.name} - {shop?.address[0].city}
-                </p>
-                <span className={styles.span}>
-                  <p>4.6</p>
-                  <p className={styles.starTag}>
-                    <IoIosStar />
-                    <IoIosStar />
-                    <IoIosStar />
-                    <IoIosStar />
-                    <IoIosStar />
-                  </p>
-                  <p>(578)</p>
-                </span>
-                <p>
-                  {shop?.address[0].city}, {shop?.address[0].country}
-                </p>
-              </div>
-            </div>
+          {/* Show success message after loader */}
+          {successMessage && (
+            <div className={styles.successPopup}>{successMessage}</div>
+          )}
 
-            <div className={styles.twoContainer}>
-              {subServiceArray?.map((subservice, index) => (
-                <div
-                  key={index}
-                  className={styles.two}
-                  style={{ animationDelay: `${index * 0.1}s` }}
+          {/* Hide page content when successMessage is active */}
+          {!successMessage && (
+            <div className={styles.container}>
+              <div className={styles.appointmentButtonDivs}>
+                <button
+                  onClick={() => setShowAppointment(false)}
+                  className={styles.goBackButton}
                 >
-                  <span className={styles.spanOne}>
-                    <p style={{ color: "black" }}>{subservice?.name}</p>
-                    <p>{subservice?.duration}</p>
-                  </span>
-                  <span className={styles.spanTwo}>
-                    <p
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        color: "grey",
-                      }}
-                    >
-                      <TbCurrencyNaira />
-                      {subservice.price},000
-                    </p>
+                  <IoIosArrowRoundBack size={30} />
+                </button>
+                <button>
+                  <VscClose size={30} />
+                </button>
+              </div>
+
+              {!showBookNowDiv && (
+                <div className={styles.teamContainer}>
+                  <h1>Select a professional</h1>
+                  <span>
+                    {shop?.team?.map((member, index) => (
+                      <div
+                        key={index}
+                        onClick={() => handleShowConfirmBookingDiv(member.name)}
+                        className={`${styles.teamMember} ${
+                          selectedMember === member.name ? styles.active : ""
+                        }`}
+                      >
+                        <p className={styles.firstLetter}>{member.name[0]}</p>
+                        <p className={styles.randomNumber}>
+                          4.7 <IoIosStar />
+                        </p>
+                        <p className={styles.name}>{member.name}</p>
+                        <p className={styles.role}>{member.role}</p>
+                      </div>
+                    ))}
                   </span>
                 </div>
-              ))}
-            </div>
-
-            <span className={styles.three}>
-              <p>Total:</p>
-              {subServiceArray.length > 0 ? (
-                <p
-                  style={{
-                    fontWeight: 900,
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
-                  <TbCurrencyNaira />
-                  {totalPrice},000
-                </p>
-              ) : (
-                <p>Free</p>
               )}
-            </span>
-            <button className={styles.continueButton} onClick={handleContinue}>
-              Make Payment
-            </button>
-          </div>
+
+              {showBookNowDiv && (
+                <>
+                  <div style={{ margin: 0, fontWeight: 900 }}>
+                    Review booking
+                  </div>
+                  <div className={styles.bookNow}>
+                    <div className={styles.one}>
+                      <img src={shop?.images[0]} alt="" />
+                      <div>
+                        <p className={styles.bookName}>
+                          {shop?.name} - {shop?.address[0].city}
+                        </p>
+                        <span className={styles.span}>
+                          <p
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              fontWeight: 700,
+                              color: "grey",
+                            }}
+                          >
+                            4.6
+                          </p>
+                          <p className={styles.starTag}>
+                            <IoIosStar />
+                            <IoIosStar />
+                            <IoIosStar />
+                            <IoIosStar />
+                            <IoIosStar />
+                          </p>
+                          <p>(578)</p>
+                        </span>
+                        <p>
+                          {shop?.address[0].city}, {shop?.address[0].country}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className={styles.twoContainer}>
+                      {subServiceArray.length === 0 ? (
+                        <small
+                          style={{
+                            display: "block",
+                            textAlign: "center",
+                            padding: 10,
+                            marginTop: 20,
+                            fontWeight: 700,
+                            fontSize: "2rem",
+                            color: "grey",
+                          }}
+                        >
+                          No service yet
+                        </small>
+                      ) : (
+                        subServiceArray.map((subservice, index) => (
+                          <div
+                            key={index}
+                            className={styles.two}
+                            style={{ animationDelay: `${index * 0.1}s` }}
+                          >
+                            <span className={styles.spanOne}>
+                              <p style={{ color: "black" }}>
+                                {subservice?.name}
+                              </p>
+                              <p>{subservice?.duration}</p>
+                            </span>
+                            <span className={styles.spanTwo}>
+                              <p
+                                style={{
+                                  display: "flex",
+                                  alignItems: "center",
+                                  color: "grey",
+                                }}
+                              >
+                                <TbCurrencyNaira />
+                                {subservice.price},000
+                              </p>
+                            </span>
+                          </div>
+                        ))
+                      )}
+                    </div>
+
+                    <span className={styles.three}>
+                      <p>Total:</p>
+                      {subServiceArray.length > 0 ? (
+                        <p
+                          style={{
+                            fontWeight: 900,
+                            display: "flex",
+                            alignItems: "center",
+                          }}
+                        >
+                          <TbCurrencyNaira />
+                          {formattedTotalPrice},000
+                        </p>
+                      ) : (
+                        <p>Free</p>
+                      )}
+                    </span>
+
+                    <button
+                      onClick={handleConfirmAppointment}
+                      className={`${styles.continueButton} ${
+                        subServiceArray.length === 0
+                          ? styles.disabledButton
+                          : ""
+                      }`}
+                      disabled={subServiceArray.length === 0}
+                    >
+                      Confirm appointment
+                    </button>
+                  </div>
+                </>
+              )}
+            </div>
+          )}
         </>
       )}
     </div>

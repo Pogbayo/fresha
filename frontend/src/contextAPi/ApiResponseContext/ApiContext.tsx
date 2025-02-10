@@ -85,8 +85,11 @@ export interface ApiContextType {
   subServiceArray: subServiceType[];
   viewUtilityShop: (shop: shopType) => void;
   handleContinue: () => void;
-  totalPrice: number;
+  formattedTotalPrice: string;
   addSubService: (subService: subServiceType) => void;
+  setsubServiceArray: (subservice: subServiceType[]) => void;
+  displayUtilShop: (shop: shopType) => void;
+  utilShop: shopType | undefined;
 }
 
 interface ApiProviderProps {
@@ -120,6 +123,11 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
   const [subServiceArray, setsubServiceArray] = useState<subServiceType[] | []>(
     []
   );
+  const [utilShop, setUtilShop] = useState<shopType | undefined>(undefined);
+
+  const displayUtilShop = (shop: shopType) => {
+    setUtilShop(shop);
+  };
   const addPurpleBorder = (subService: subServiceType) => {
     const existingItem = subServiceArray.find(
       (item) => item.name === subService.name
@@ -142,7 +150,7 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
       if (!existingItem) {
         return [...prevArray, subService];
       }
-      return [...prevArray];
+      return [...prevArray.filter((item) => item.name !== subService.name)];
     });
     addPurpleBorder(subService);
   };
@@ -151,6 +159,10 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
     (sum, subService) => sum + subService.price,
     0
   );
+
+  const formattedTotalPrice = totalPrice.toLocaleString("en-US");
+
+  console.log(formattedTotalPrice);
 
   useEffect(() => {
     const fetchedData = async () => {
@@ -282,8 +294,11 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
         showAppointment,
         setShowAppointment,
         subServiceArray,
-        totalPrice,
+        formattedTotalPrice,
         addSubService,
+        setsubServiceArray,
+        displayUtilShop,
+        utilShop,
       }}
     >
       {children}

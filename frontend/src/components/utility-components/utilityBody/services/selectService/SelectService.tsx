@@ -22,31 +22,35 @@ export const SelectService = () => {
     shopType["services"][number] | null
   >(null);
   const [selectedSubServices, setSelectedSubServices] = useState<string[]>([]);
-
   const {
-    categoryArray,
+    // categoryArray,
     handleContinue,
     showAppointment,
-    totalPrice,
+    formattedTotalPrice,
     addSubService,
     subServiceArray,
+    utilShop,
   } = useApiContext();
-  const shopsFromCategoryOne = categoryArray?.[4]?.shops;
-  const shopFromShopOne = shopsFromCategoryOne?.[1];
-  const shop = shopFromShopOne;
+
+  // const shopsFromCategoryOne = categoryArray?.[4]?.shops;
+  // const shopFromShopOne = shopsFromCategoryOne?.[1];
+  // const shop = shopFromShopOne;
+  const [isImageLoading, setIsImageLoading] = useState(true);
 
   useEffect(() => {
-    if (shop?.services?.length) {
-      setActiveService(shop.services[0].name);
-      setActiveArray(shop.services[0]);
+    if (utilShop?.services?.length) {
+      setActiveService(utilShop.services[0].name);
+      setActiveArray(utilShop.services[0]);
     }
-  }, [shop]);
+  }, [utilShop]);
 
-  const services = shop?.services?.map((service) => service.name) || [];
-
+  const services = utilShop?.services?.map((service) => service.name) || [];
+  console.log();
   const handleSetActiveSerice = (item: string, index: number) => {
     setActiveService(item);
-    setActiveArray(shop.services[index]);
+    if (utilShop) {
+      setActiveArray(utilShop.services[index]);
+    }
   };
 
   const toggleSubServiceSelection = (subService: subServiceType) => {
@@ -57,6 +61,7 @@ export const SelectService = () => {
     );
     addSubService(subService);
   };
+
   const handleLoader = () => {
     loadingButton(true);
 
@@ -72,10 +77,13 @@ export const SelectService = () => {
       {!showAppointment ? (
         <div className={styles.serviceContainer}>
           <div className={styles.firstContainer}>
-            <IoArrowBackOutline
-              size={23}
-              onClick={() => navigate("/utility")}
-            />
+            <span className={styles.goBack}>
+              <IoArrowBackOutline
+                size={23}
+                onClick={() => navigate("/utility")}
+              />
+            </span>
+
             <h1>Select services</h1>
             <div className={styles.tagContainer}>
               <div className={styles.miniTags}>
@@ -120,51 +128,79 @@ export const SelectService = () => {
 
           <div className={styles.bookNow}>
             <div className={styles.one}>
-              <img src={shop?.images[0]} alt="" />
-              <div>
-                <p className={styles.bookName}>
-                  {shop?.name} - {shop?.address[0].city}
-                </p>
-                <span className={styles.span}>
-                  <p>4.6</p>
-                  <p className={styles.starTag}>
-                    <IoIosStar />
-                    <IoIosStar />
-                    <IoIosStar />
-                    <IoIosStar />
-                    <IoIosStar />
+              {isImageLoading && (
+                <div className={styles.imageLoader}>Loading image...</div>
+              )}
+              <img
+                src={utilShop?.images[0]}
+                alt=""
+                style={{ display: isImageLoading ? "none" : "block" }}
+                onLoad={() => setIsImageLoading(false)}
+              />
+              {!isImageLoading && (
+                <div>
+                  <p className={styles.bookName}>
+                    {utilShop?.name} - {utilShop?.address[0].city}
                   </p>
-                  <p> (578)</p>
-                </span>
-                <p>
-                  {shop?.address[0].city}, {shop?.address[0].country}
-                </p>
-              </div>
+                  <span className={styles.span}>
+                    <p>4.6</p>
+                    <p className={styles.starTag}>
+                      <IoIosStar />
+                      <IoIosStar />
+                      <IoIosStar />
+                      <IoIosStar />
+                      <IoIosStar />
+                    </p>
+                    <p> (578)</p>
+                  </span>
+                  <p>
+                    {utilShop?.address[0].city}, {utilShop?.address[0].country}
+                  </p>
+                </div>
+              )}
             </div>
 
             <div className={styles.twoContainer}>
-              {subServiceArray?.map((subservice) => {
-                return (
-                  <div className={styles.two}>
-                    <span className={styles.spanOne}>
-                      <p style={{ color: "black" }}> {subservice?.name}</p>
-                      <p> {subservice.duration}</p>
-                    </span>
-                    <span className={styles.spanTwo}>
-                      <p
-                        style={{
-                          display: "flex",
-                          alignItems: "center",
-                          color: "grey",
-                        }}
-                      >
-                        <TbCurrencyNaira />
-                        {shop?.services[0].subServices[0].price},000
-                      </p>
-                    </span>
-                  </div>
-                );
-              })}
+              {subServiceArray.length === 0 ? (
+                <small
+                  style={{
+                    display: "block",
+                    textAlign: "center",
+                    padding: 10,
+                    marginTop: 20,
+                    fontWeight: 900,
+                    color: "grey",
+                  }}
+                >
+                  no service yet
+                </small>
+              ) : (
+                <>
+                  {" "}
+                  {subServiceArray?.map((subservice) => {
+                    return (
+                      <div className={styles.two}>
+                        <span className={styles.spanOne}>
+                          <p style={{ color: "black" }}> {subservice?.name}</p>
+                          <p> {subservice.duration}</p>
+                        </span>
+                        <span className={styles.spanTwo}>
+                          <p
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              color: "grey",
+                            }}
+                          >
+                            <TbCurrencyNaira />
+                            {subservice.price},000
+                          </p>
+                        </span>
+                      </div>
+                    );
+                  })}
+                </>
+              )}
             </div>
 
             <span className={styles.three}>
@@ -179,7 +215,7 @@ export const SelectService = () => {
                     }}
                   >
                     <TbCurrencyNaira />
-                    {totalPrice},000
+                    {formattedTotalPrice},000
                   </p>
                 </>
               ) : (
@@ -209,7 +245,7 @@ export const SelectService = () => {
           <Appointment />
         </div>
       )}
-      {!showAppointment && <BookNowDiv shop={shop} />}
+      {!showAppointment && utilShop && <BookNowDiv shop={utilShop} />}
     </div>
   );
 };

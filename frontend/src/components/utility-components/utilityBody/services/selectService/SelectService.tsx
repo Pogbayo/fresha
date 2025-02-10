@@ -176,7 +176,6 @@ export const SelectService = () => {
                 </small>
               ) : (
                 <>
-                  {" "}
                   {subServiceArray?.map((subservice) => {
                     return (
                       <div className={styles.two}>

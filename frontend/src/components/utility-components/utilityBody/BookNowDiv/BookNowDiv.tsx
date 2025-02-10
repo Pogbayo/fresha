@@ -3,9 +3,11 @@ import { shopType } from "../../../../contextAPi/ApiResponseContext/ApiContext";
 import { useApiContext } from "../../../../contextAPi/ApiResponseContext/useApiContext";
 import styles from "./BookNowDiv.module.css";
 import { useLocation } from "react-router-dom";
+import { TbCurrencyNaira } from "react-icons/tb";
 
 export const BookNowDiv = ({ shop }: { shop: shopType }) => {
-  const { handleContinue } = useApiContext();
+  const { handleContinue, formattedTotalPrice, subServiceArray } =
+    useApiContext();
   const navigate = useNavigate();
   const location = useLocation();
   const handleClick = () => {
@@ -15,10 +17,21 @@ export const BookNowDiv = ({ shop }: { shop: shopType }) => {
       handleContinue();
     }
   };
+  console.log(shop);
   return (
     <div className={styles.bookNow}>
       <span className={styles.spanOne}>
-        {shop?.name} - {shop?.address[0].city}
+        <small>{subServiceArray.length} service(s)</small>
+        <small
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "5px",
+          }}
+        >
+          <TbCurrencyNaira size={18} />
+          <p>{formattedTotalPrice},000</p>
+        </small>
       </span>
       <span className={styles.spanTwo}>
         <p>23 services available</p>

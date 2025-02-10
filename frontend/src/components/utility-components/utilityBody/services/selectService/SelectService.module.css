@@ -248,8 +248,9 @@
 }
 .twoContainer{
     height: 61%;
-    max-height: 400px;
+    max-height: 300px;
     overflow-y: scroll;
+
 }
 .twoContainer::-webkit-scrollbar{
    display: none;
@@ -287,6 +288,7 @@
     display: flex;
     justify-content: space-between;
     height: fit-content;
+
 }
 .three p{
    font-weight: 700;
@@ -303,6 +305,7 @@
     height: 50px;
     position: absolute;
     bottom: 10px;
+    cursor:pointer;
 } 
 
 

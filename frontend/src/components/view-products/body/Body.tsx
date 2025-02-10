@@ -9,10 +9,12 @@ import { HiAdjustmentsVertical } from "react-icons/hi2";
 import { Leaflet } from "./Leaflet/Leaflet";
 import { useEffect, useState } from "react";
 import { TbCurrencyNaira } from "react-icons/tb";
+import { useNavigate } from "react-router-dom";
 
 export const Body = () => {
-  const { categoryArray } = useApiContext();
+  const { categoryArray, displayUtilShop } = useApiContext();
   const [showMap, setShowMap] = useState(false);
+  const navigate = useNavigate();
   const allShops = categoryArray.flatMap((category) => {
     const shops = category.shops.slice(0, 7);
     return shops.filter(Boolean);
@@ -35,7 +37,10 @@ export const Body = () => {
       setShowMap(true);
     }, 2000);
   }, []);
-
+  const handleDisplayClick = (shop: shopType) => {
+    displayUtilShop(shop);
+    navigate("/utility");
+  };
   return (
     <div className={styles.container}>
       <div className={styles.shopsColumn}>
@@ -100,7 +105,13 @@ export const Body = () => {
                         </p>
                       </div>
                     ))}
-                  <button>See more</button>
+                  <button
+                    onClick={() => {
+                      handleDisplayClick(shop);
+                    }}
+                  >
+                    See more
+                  </button>
                 </div>
               </div>
             ))}

@@ -36,17 +36,16 @@ export const Appointment = () => {
     setIsLoading(true);
     setSuccessMessage(null);
 
-    // Simulate async task before showing success message
     setTimeout(() => {
       setIsLoading(false);
-      setTimeout(() => {
-        navigate("/utility"); // Navigate back after success message
-      }, 1000);
       setSuccessMessage(
         "Appointment booked. Kindly check your email for more details."
       );
+      setTimeout(() => {
+        navigate("/utility");
+      }, 2500);
+
       setsubServiceArray([]);
-      // Hide content and show success message for 3 seconds
     }, 2500);
   };
 
@@ -62,47 +61,69 @@ export const Appointment = () => {
         </div>
       ) : (
         <>
-          {/* Show success message after loader */}
           {successMessage && (
             <div className={styles.successPopup}>{successMessage}</div>
           )}
 
-          {/* Hide page content when successMessage is active */}
           {!successMessage && (
             <div className={styles.container}>
-              <div className={styles.appointmentButtonDivs}>
-                <button
-                  onClick={() => setShowAppointment(false)}
-                  className={styles.goBackButton}
-                >
-                  <IoIosArrowRoundBack size={30} />
-                </button>
-                <button>
-                  <VscClose size={30} />
-                </button>
-              </div>
+              {showBookNowDiv && (
+                <div className={styles.appointmentButtonDivs}>
+                  <button
+                    onClick={() => setShowAppointment(false)}
+                    className={styles.goBackButton}
+                  >
+                    <IoIosArrowRoundBack size={30} />
+                  </button>
+                  <button>
+                    <VscClose size={30} />
+                  </button>
+                </div>
+              )}
 
               {!showBookNowDiv && (
-                <div className={styles.teamContainer}>
-                  <h1>Select a professional</h1>
-                  <span>
-                    {shop?.team?.map((member, index) => (
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
+                  <div className={styles.teamContainer}>
+                    <div
+                      style={{ display: "flex", justifyContent: "flex-start" }}
+                    >
                       <div
-                        key={index}
-                        onClick={() => handleShowConfirmBookingDiv(member.name)}
-                        className={`${styles.teamMember} ${
-                          selectedMember === member.name ? styles.active : ""
-                        }`}
+                        onClick={() => setShowAppointment(false)}
+                        className={styles.selectServiceButton}
+                        style={{ marginLeft: "0px" }}
                       >
-                        <p className={styles.firstLetter}>{member.name[0]}</p>
-                        <p className={styles.randomNumber}>
-                          4.7 <IoIosStar />
-                        </p>
-                        <p className={styles.name}>{member.name}</p>
-                        <p className={styles.role}>{member.role}</p>
+                        <IoIosArrowRoundBack size={30} />
+                        <button>Select service</button>
                       </div>
-                    ))}
-                  </span>
+                    </div>
+
+                    <h1>Select a professional</h1>
+                    <span>
+                      {shop?.team?.map((member, index) => (
+                        <div
+                          key={index}
+                          onClick={() =>
+                            handleShowConfirmBookingDiv(member.name)
+                          }
+                          className={`${styles.teamMember} ${
+                            selectedMember === member.name ? styles.active : ""
+                          }`}
+                        >
+                          <p className={styles.firstLetter}>{member.name[0]}</p>
+                          <p className={styles.randomNumber}>
+                            4.7 <IoIosStar />
+                          </p>
+                          <p className={styles.name}>{member.name}</p>
+                          <p className={styles.role}>{member.role}</p>
+                        </div>
+                      ))}
+                    </span>
+                  </div>
                 </div>
               )}
 

@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 export const UtilityBody = () => {
   const { categoryArray, utilShop } = useApiContext();
   const shopsFromCategoryOne = categoryArray?.[4]?.shops;
-  const shopFromShopOne = utilShop ? utilShop : shopsFromCategoryOne[0];
+  const shopFromShopOne = utilShop ? utilShop : shopsFromCategoryOne?.[0];
   const [loading, setIsLoading] = useState(true);
 
   useEffect(() => {

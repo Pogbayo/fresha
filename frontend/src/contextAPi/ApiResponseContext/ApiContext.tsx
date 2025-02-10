@@ -89,7 +89,7 @@ export interface ApiContextType {
   addSubService: (subService: subServiceType) => void;
   setsubServiceArray: (subservice: subServiceType[]) => void;
   displayUtilShop: (shop: shopType) => void;
-  utilShop: shopType | undefined;
+  utilShop: shopType | null;
 }
 
 interface ApiProviderProps {
@@ -123,11 +123,20 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
   const [subServiceArray, setsubServiceArray] = useState<subServiceType[] | []>(
     []
   );
-  const [utilShop, setUtilShop] = useState<shopType | undefined>(undefined);
+  const [utilShop, setUtilShop] = useState<shopType | null>(() => {
+    try {
+      const storedShop = localStorage.getItem("utilShop");
+      return storedShop ? JSON.parse(storedShop) : null;
+    } catch {
+      return null;
+    }
+  });
 
   const displayUtilShop = (shop: shopType) => {
     setUtilShop(shop);
+    localStorage.setItem("utilShop", JSON.stringify(shop));
   };
+
   const addPurpleBorder = (subService: subServiceType) => {
     const existingItem = subServiceArray.find(
       (item) => item.name === subService.name

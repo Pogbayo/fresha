@@ -5,6 +5,7 @@ import { Secondary } from "../routes/Secondary/Secondary";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Utility } from "../routes/Utility/Utility";
 import { SelectService } from "../components/utility-components/utilityBody/services/selectService/SelectService";
+import { Profile } from "../routes/Profile/Profile";
 
 const Big = () => {
   return (
@@ -17,6 +18,7 @@ const Big = () => {
               <Route path={"secondary"} element={<Secondary />} />
               <Route path={"utility"} element={<Utility />} />
               <Route path={"select"} element={<SelectService />} />
+              <Route path={"profile"} element={<Profile />} />
             </Routes>
           </ApiProvider>
         </AppProvider>

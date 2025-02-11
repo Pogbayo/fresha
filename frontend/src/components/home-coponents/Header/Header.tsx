@@ -23,7 +23,7 @@ export const Header = () => {
   console.log(screenWidth);
   return (
     <div className={styles.container}>
-      <h3 className={styles.logo}>spag {screenWidth}</h3>
+      <h3 className={styles.logo}>Spag {screenWidth}</h3>
       <div className={styles.headerButtons}>
         <button className={styles.buttonOne}>For business</button>
         <button className={styles.buttonTwo} onClick={handleMenuDropDown}>

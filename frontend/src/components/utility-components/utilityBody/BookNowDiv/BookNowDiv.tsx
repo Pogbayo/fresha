@@ -6,8 +6,12 @@ import { useLocation } from "react-router-dom";
 import { TbCurrencyNaira } from "react-icons/tb";
 
 export const BookNowDiv = ({ shop }: { shop: shopType }) => {
-  const { handleContinue, formattedTotalPrice, subServiceArray } =
-    useApiContext();
+  const {
+    handleContinue,
+    formattedTotalPrice,
+    subServiceArray,
+    // setFormattedTotalPrice,
+  } = useApiContext();
   const navigate = useNavigate();
   const location = useLocation();
   const handleClick = () => {
@@ -16,6 +20,7 @@ export const BookNowDiv = ({ shop }: { shop: shopType }) => {
     } else {
       handleContinue();
     }
+    // setFormattedTotalPrice("");
   };
   console.log(shop);
   return (

@@ -1,6 +1,7 @@
 .container {
     display: flex;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0 auto;
   }
 
   .firstContainer {
@@ -157,4 +158,12 @@
     }
   }
  
-  
+  @media (max-width: 900px) {
+    .container{
+      width: 100%;
+      margin: 0 auto;
+    }
+    .firstContainer h1{
+     font-size: 1.7rem;
+    }
+  }

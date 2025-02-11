@@ -160,8 +160,20 @@ export const HeaderThree = () => {
       </div>
 
       <div className={styles.smallScreenHeader}>
-        <p className={styles.first}>Home ·</p>
-        <p className={styles.second}>Hair salons ·</p>
+        <p
+          className={styles.first}
+          style={{ cursor: "pointer" }}
+          onClick={() => navigate("/")}
+        >
+          Home ·
+        </p>
+        <p
+          className={styles.second}
+          style={{ cursor: "pointer" }}
+          onClick={() => navigate("/secondary")}
+        >
+          Hair salons ·
+        </p>
         <p className={styles.third}>Lagos ·</p>
         <p className={styles.fourth}>TasalaHQ Hair and Beauty</p>
       </div>

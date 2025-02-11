@@ -1,6 +1,6 @@
 import { useApiContext } from "../../../../../contextAPi/ApiResponseContext/useApiContext";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // For page navigation
+import { useNavigate } from "react-router-dom";
 import styles from "./Appointment.module.css";
 import { IoIosStar } from "react-icons/io";
 import { VscClose } from "react-icons/vsc";
@@ -43,10 +43,10 @@ export const Appointment = () => {
       );
       setTimeout(() => {
         navigate("/utility");
-      }, 2500);
+      }, 2000);
 
       setsubServiceArray([]);
-    }, 2500);
+    }, 3500);
   };
 
   return (
@@ -174,7 +174,7 @@ export const Appointment = () => {
                             padding: 10,
                             marginTop: 20,
                             fontWeight: 700,
-                            fontSize: "2rem",
+                            fontSize: "1.2rem",
                             color: "grey",
                           }}
                         >

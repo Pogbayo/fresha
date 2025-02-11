@@ -8,9 +8,11 @@
 .imgOne{
     height: 100%;
     width: 68%;
+    /* width: 90%; */
     border-radius: 10px;
     transition: transform 0.1s ease; 
     overflow: hidden;
+    
 }
 
 /* .loading{
@@ -31,6 +33,7 @@
     }
     .imgOne{
         width: 100%;
+        margin: 0 auto;
     }
     .imgContainer{
         height: 400px;

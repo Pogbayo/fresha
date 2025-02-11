@@ -3,11 +3,19 @@ import { useApiContext } from "../../../contextAPi/ApiResponseContext/useApiCont
 import { Loading } from "../../loader/Loading";
 import styles from "./New.module.css";
 import { FaStar, FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import { shopType } from "../../../contextAPi/ApiResponseContext/ApiContext";
+import { useNavigate } from "react-router-dom";
 
 export const New = () => {
-  const { jointArray, scroll, containerRef } = useApiContext();
+  const {
+    jointArray,
+    scroll,
+    containerRef,
+    addToRecentlyViewedArray,
+    displayUtilShop,
+  } = useApiContext();
   const [header, setHeader] = useState("");
-
+  const navigate = useNavigate();
   function getRandomInteger(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
@@ -17,7 +25,11 @@ export const New = () => {
       setHeader("News");
     }, 1500);
   });
-
+  const handleDisplayUtilShop = (shop: shopType) => {
+    addToRecentlyViewedArray(shop);
+    displayUtilShop(shop);
+    navigate("/utility");
+  };
   return (
     <div className={styles.section}>
       <p className={styles.newHeader}>{header}</p>
@@ -39,7 +51,13 @@ export const New = () => {
           <Loading />
         ) : (
           jointArray.map((shop, index) => (
-            <div key={index} className={styles.boxDiv}>
+            <div
+              key={index}
+              className={styles.boxDiv}
+              onClick={() => {
+                handleDisplayUtilShop(shop);
+              }}
+            >
               <img src={shop.images[0]} alt="" />
               <div className={styles.detailBox}>
                 <h4 className={styles.shopName}>{shop.name}</h4>

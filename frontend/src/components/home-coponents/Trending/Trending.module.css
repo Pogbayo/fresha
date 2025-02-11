@@ -86,7 +86,11 @@
     gap: 5px;
     align-items: center;
   }
-
+  .rating{
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: rgb(34, 33, 33);
+  }
 .categoryName{
    border: 1px solid rgb(214, 213, 213);
    display: inline-block; 

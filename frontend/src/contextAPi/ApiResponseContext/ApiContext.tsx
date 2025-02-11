@@ -90,6 +90,7 @@ export interface ApiContextType {
   setsubServiceArray: (subservice: subServiceType[]) => void;
   displayUtilShop: (shop: shopType) => void;
   utilShop: shopType | null;
+  setFormattedTotalPrice: (value: string) => void;
 }
 
 interface ApiProviderProps {
@@ -108,7 +109,6 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
   const favouritesRef = React.useRef<HTMLDivElement | null>(null);
   const appointmentRef = React.useRef<HTMLDivElement | null>(null);
 
-  const [favouritesArray, setFavouritesArry] = useState<shopType[]>([]);
   const [appointmentArray, setAppointmentArray] = useState<shopType[]>([]);
   const [categoryArray, setCategoryArray] = useState<categoryType[]>([]);
   const [jointArray, setJointArray] = useState<shopType[]>([]);
@@ -119,10 +119,26 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
   const [recommendedCombinedArray, setRecommendedCombinedArray] = useState<
     shopType[]
   >([]);
-  const [recentlyArray, setRecentlyArray] = useState<shopType[]>([]);
   const [subServiceArray, setsubServiceArray] = useState<subServiceType[] | []>(
     []
   );
+  const addToRecentlyViewedArray = (shop: shopType) => {
+    setRecentlyArray((prev) => {
+      if (!Array.isArray(prev)) prev = []; // Ensure prev is always an array
+      const existingItem = prev.find((item) => item.name === shop.name);
+      if (existingItem) return prev;
+
+      const updatedArray = [...prev, shop];
+      localStorage.setItem("recentlyArray", JSON.stringify(updatedArray));
+      return updatedArray;
+    });
+  };
+
+  const [recentlyArray, setRecentlyArray] = useState<shopType[]>(() => {
+    const savedData = localStorage.getItem("recentlyArray");
+    return savedData ? (JSON.parse(savedData) as shopType[]) : [];
+  });
+
   const [utilShop, setUtilShop] = useState<shopType | null>(() => {
     try {
       const storedShop = localStorage.getItem("utilShop");
@@ -164,14 +180,17 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
     addPurpleBorder(subService);
   };
 
-  const totalPrice = subServiceArray.reduce(
-    (sum, subService) => sum + subService.price,
-    0
-  );
+  const [formattedTotalPrice, setFormattedTotalPrice] =
+    useState<string>("free");
 
-  const formattedTotalPrice = totalPrice.toLocaleString("en-US");
-
-  console.log(formattedTotalPrice);
+  useEffect(() => {
+    const totalPrice = subServiceArray.reduce(
+      (sum, subService) => sum + subService.price,
+      0
+    );
+    const price = totalPrice.toLocaleString("en-US");
+    setFormattedTotalPrice(price);
+  }, [subServiceArray]);
 
   useEffect(() => {
     const fetchedData = async () => {
@@ -215,24 +234,28 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
       });
     }
   };
-
-  const addToRecentlyViewedArray = (shop: shopType) => {
-    setRecentlyArray((prev) => {
-      const existingItem = prev.find((item) => item.name === shop.name);
-      if (existingItem) {
-        return prev;
-      }
-      return [...prev, shop];
-    });
-  };
+  const [favouritesArray, setFavouritesArray] = useState<shopType[]>(() => {
+    const savedData = localStorage.getItem("favouritesArray");
+    return savedData ? JSON.parse(savedData) : [];
+  });
 
   const addToFavouritesArray = (shop: shopType) => {
-    setFavouritesArry((prev) => {
-      const existingItem = prev.find((item) => item.name === shop.name);
-      if (existingItem) {
-        return prev;
+    setFavouritesArray((prev) => {
+      const updatedArray = Array.isArray(prev) ? [...prev] : [];
+      const existingItemIndex = updatedArray.findIndex(
+        (item) => item.name === shop.name
+      );
+
+      let newFavourites;
+
+      if (existingItemIndex > -1) {
+        newFavourites = updatedArray.filter((item) => item.name !== shop.name);
+      } else {
+        newFavourites = [...updatedArray, shop];
       }
-      return [...prev, shop];
+
+      localStorage.setItem("favouritesArray", JSON.stringify(newFavourites));
+      return newFavourites;
     });
   };
 
@@ -308,6 +331,7 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
         setsubServiceArray,
         displayUtilShop,
         utilShop,
+        setFormattedTotalPrice,
       }}
     >
       {children}

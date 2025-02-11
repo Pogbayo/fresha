@@ -7,17 +7,19 @@ import { useApiContext } from "../../../../contextAPi/ApiResponseContext/useApiC
 import { shopType } from "../../../../contextAPi/ApiResponseContext/ApiContext";
 
 export const ProductDetails = ({ shop }: { shop: shopType }) => {
-  const { categoryArray } = useApiContext();
+  const { categoryArray, addToFavouritesArray, favouritesArray } =
+    useApiContext();
+
   const categoryname = categoryArray[0]?.name;
   const city = shop?.address?.[0].city;
   const country = shop?.address?.[0].country;
   const shopname = shop?.name;
 
-  const isLiked = false;
-  // console.log(utilityShop);
-  function generateRandomNumber(min: number, max: number) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
+  const isFavorite = favouritesArray.some((fav) => fav.name === shop?.name);
+
+  const handleFavoriteToggle = () => {
+    addToFavouritesArray(shop);
+  };
 
   return (
     <div>
@@ -47,27 +49,29 @@ export const ProductDetails = ({ shop }: { shop: shopType }) => {
                     </small>
                   </span>
                   <p className={styles.randomNumber} style={{ color: "blue" }}>
-                    ({generateRandomNumber(1, 1000)})
+                    ({Math.floor(Math.random() * 1000)})
                     <small className={styles.dot}> · </small>
                   </p>
                   <p className={styles.openingTime}>
                     Open until
-                    {/* {shop.shops?.[0].openingTime.friday || "hold ..."} */}
                     <small className={styles.dot}> · </small>
                   </p>
                   <p className={styles.location}>
-                    {city},{country}
+                    {city}, {country}
                   </p>
                 </div>
                 <div className={styles.two}>
                   <div className={styles.iconOne}>
                     <IoMdShareAlt />
                   </div>
-                  <div className={styles.iconTwo}>
-                    {isLiked ? (
-                      <CiHeart size={30} />
-                    ) : (
+                  <div
+                    className={styles.iconTwo}
+                    onClick={handleFavoriteToggle}
+                  >
+                    {isFavorite ? (
                       <IoHeart color="red" size={30} />
+                    ) : (
+                      <CiHeart size={30} />
                     )}
                   </div>
                 </div>
@@ -76,13 +80,11 @@ export const ProductDetails = ({ shop }: { shop: shopType }) => {
           </div>
         </>
       ) : (
-        <>
-          <div className={styles.loading}>
-            <div className={styles.one}></div>
-            <div className={styles.one}></div>
-            <div className={styles.one}></div>
-          </div>
-        </>
+        <div className={styles.loading}>
+          <div className={styles.one}></div>
+          <div className={styles.one}></div>
+          <div className={styles.one}></div>
+        </div>
       )}
     </div>
   );

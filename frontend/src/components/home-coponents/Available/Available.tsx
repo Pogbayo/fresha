@@ -1,21 +1,14 @@
 import styles from "./Available.module.css";
 import { IoLogoApple } from "react-icons/io";
 import { FaGoogle } from "react-icons/fa6";
-import { motion, useAnimation } from "framer-motion";
-import { useEffect } from "react";
+import { motion } from "framer-motion";
 
 export const Available = () => {
-  const controls = useAnimation();
-
-  useEffect(() => {
-    controls.start({ x: 0, opacity: 1 });
-  }, [controls]);
-
   return (
     <motion.div
-      initial={{ x: -300, opacity: 0 }}
-      animate={controls}
-      transition={{ duration: 0.6 }}
+      initial={{ x: "100vw", opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
+      transition={{ type: "spring", stiffness: 50, damping: 10, duration: 0.8 }}
     >
       <div className={styles.container}>
         <div className={styles.boxOne}>

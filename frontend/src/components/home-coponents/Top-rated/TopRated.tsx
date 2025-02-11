@@ -16,16 +16,16 @@ export const TopRated = () => {
 
       <div className={styles.hori}>
         <div className={styles.div2}>
-          <big>120 + countries</big>
-          <p>using spag</p>
+          <big>120+ countries</big>
+          <p style={{ fontWeight: 700 }}>using spag</p>
         </div>
         <div className={styles.div3}>
           <big>120,000+</big>
-          <p>partner businesses</p>
+          <p style={{ fontWeight: 700 }}>partner businesses</p>
         </div>
         <div className={styles.div4}>
           <big>450,000+</big>
-          <p>stylists and professionals</p>
+          <p style={{ fontWeight: 700 }}>stylists and professionals</p>
         </div>
       </div>
     </div>

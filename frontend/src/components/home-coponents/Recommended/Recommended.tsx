@@ -11,7 +11,7 @@ export const Recommended = () => {
     recommendedCombinedArray,
     scroll,
     recommendedRef,
-    addToFavouritesArray,
+    addToRecentlyViewedArray,
     displayUtilShop,
   } = useApiContext();
   const [header, setHeader] = useState("");
@@ -26,7 +26,7 @@ export const Recommended = () => {
     }, 1500);
   });
   const handleDisplayUtilShop = (shop: shopType) => {
-    addToFavouritesArray(shop);
+    addToRecentlyViewedArray(shop);
     displayUtilShop(shop);
     navigate("/utility");
   };

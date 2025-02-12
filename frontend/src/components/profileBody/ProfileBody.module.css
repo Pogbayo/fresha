@@ -1,8 +1,60 @@
-.header{
-    padding-left: 15px;
-    padding-right: 15px;
+.container{
+    height: 99vh;
+    margin: 0;
 }
+.header{
+    padding:0 15px 0 15px ;
+    margin: 0;
+}
+.profileBody{
+    display: flex;
+    gap: 10px;
+    height: 90vh;
+}
+.chinaro{
+    display: none;
+}
+.bodyContainer{
+    width: 90%;;
+    display: flex;
+    overflow-y: scroll;
+    justify-content: center; 
+    padding-top: 20px;
+    flex-direction: column;
+    align-items: center;
+}
+.Navcontainer{
+    display: none;
+}
+
 .sideBar{
     width:16%;
     max-width: 250px;
 }
+
+
+.bodyContainer::-webkit-scrollbar{
+   display: none;
+}
+
+@media(max-width:1442px){
+    .sideBar{
+      display: none;
+    }
+    .bodyContainer{
+        width: 100%;
+    }
+   
+} 
+@media(max-width:750px){
+.header{
+        display: none;
+ }
+    
+ .chinaro{
+        display: block;
+    }
+.bodyContainer{
+   justify-content: flex-start;
+}
+} 

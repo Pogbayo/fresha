@@ -4,39 +4,37 @@ import { CiHeart } from "react-icons/ci";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { useState } from "react";
 import styles from "./Sidebar.module.css";
+
 export const Sidebar = () => {
-  const [active, setOnActive] = useState(false);
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  const menuItems = [
+    { id: 0, icon: <CgProfile size={20} />, label: "Profile" },
+    { id: 1, icon: <TbBrandBooking size={20} />, label: "Appointments" },
+    { id: 2, icon: <CiHeart size={20} />, label: "Favourites" },
+    { id: 3, icon: <RiDeleteBin6Fill size={20} />, label: "Delete account" },
+  ];
+
   return (
     <div className={styles.container}>
       <h3>Name</h3>
-      <div
-        className={`${styles.liLink} ${active ? styles.active : ""}`}
-        onClick={() => setOnActive(true)}
-      >
-        <CgProfile size={20} />
-        Profile
-      </div>
-      <div
-        className={`${styles.liLink} ${active ? styles.active : ""}`}
-        onClick={() => setOnActive(true)}
-      >
-        <TbBrandBooking size={20} />
-        Appointments
-      </div>
-      <div
-        className={`${styles.liLink} ${active ? styles.active : ""}`}
-        onClick={() => setOnActive(true)}
-      >
-        <CiHeart size={20} />
-        Favourites
-      </div>
-      <div
-        className={`${styles.liLink} ${active ? styles.active : ""}`}
-        onClick={() => setOnActive(true)}
-      >
-        <RiDeleteBin6Fill size={20} />
-        Delete account
-      </div>
+      {menuItems.map((item) => (
+        <div
+          key={item.id}
+          className={`${styles.liLink} ${
+            activeIndex === item.id ? styles.active : ""
+          }`}
+          style={{
+            backgroundColor:
+              activeIndex === item.id ? "lightblue" : "transparent",
+            transition: "background-color 0.3s ease-in-out",
+          }}
+          onClick={() => setActiveIndex(item.id)}
+        >
+          {item.icon}
+          {item.label}
+        </div>
+      ))}
     </div>
   );
 };

@@ -1,10 +1,20 @@
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contextAPi/Auth/useAuthContext";
 import { Header } from "../home-coponents/Header/Header";
-// import { HeaderThree } from "../utility-components/utilityBody/HeaderThree/HeaderThree";
 import { BodyTwo } from "./body2/BodyTwo";
 import { HeaderFour } from "./HeaderFour/HeaderFour";
 import styles from "./ProfileBody.module.css";
 import { Sidebar } from "./sidebar/Sidebar";
+import { useEffect } from "react";
 export const ProfileBody = () => {
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!user) {
+      navigate("/auth");
+    }
+  });
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>

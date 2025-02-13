@@ -4,10 +4,17 @@ import { Loading } from "../../loader/Loading";
 import { shopType } from "../../../contextAPi/ApiResponseContext/ApiContext";
 import { useApiContext } from "../../../contextAPi/ApiResponseContext/useApiContext";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Trending = () => {
-  const { trendingCombinedArray, scroll, trendingRef } = useApiContext();
-
+  const {
+    trendingCombinedArray,
+    scroll,
+    trendingRef,
+    displayUtilShop,
+    addToRecentlyViewedArray,
+  } = useApiContext();
+  const navigate = useNavigate();
   function getRandomInteger(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
@@ -19,7 +26,11 @@ export const Trending = () => {
       setHeader("Trending");
     }, 1500);
   });
-
+  const handleDisplayUtilShop = (shop: shopType) => {
+    addToRecentlyViewedArray(shop);
+    displayUtilShop(shop);
+    navigate("/utility");
+  };
   return (
     <div className={styles.section}>
       <p className={styles.newHeader}>{header}</p>
@@ -47,7 +58,11 @@ export const Trending = () => {
           <Loading />
         ) : (
           trendingCombinedArray.map((shop: shopType, index: number) => (
-            <div key={index} className={styles.boxDiv}>
+            <div
+              key={index}
+              className={styles.boxDiv}
+              onClick={() => handleDisplayUtilShop(shop)}
+            >
               <img src={shop.images[0]} alt="" />
               <div className={styles.detailBox}>
                 <h4 className={styles.shopName}>{shop.name}</h4>

@@ -5,18 +5,19 @@ import { categoryRoute } from './routes/categoryRoute';
 import { reviewRoute } from './routes/reviewRoute';
 import cors from 'cors';
 import { shopRoute } from './routes/shopRouter';
-import { Category } from './models/CategorySchema';
 import { deleteRoute } from './routes/deteteShop';
+import cookieParser from "cookie-parser";
+import { dashboardRoute } from './routes/dashboard';
 
 const app = express();
+app.use(cookieParser()); 
+
 const PORT = 5000;
 
 const startServer = async () => {
   try {
-    // Connect to the database
     await connectDB();
 
-    // Middleware
     app.get("/", (req, res) => {
       res.send("Backend is running");
     });
@@ -33,9 +34,7 @@ const startServer = async () => {
     app.use("/api", reviewRoute);
     app.use("/api", shopRoute);
     app.use("/api", deleteRoute);
-
-    const category = await Category.findById("679bc41a240d6de7bbf32c6f");
-    // console.log("Fetched Category:", category);
+    app.use("/api", dashboardRoute);
 
     app.listen(PORT, () => {
       console.log(`Server is running on http://localhost:${PORT}`);

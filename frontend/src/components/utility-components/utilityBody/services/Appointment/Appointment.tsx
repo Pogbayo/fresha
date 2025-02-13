@@ -6,6 +6,7 @@ import { IoIosStar } from "react-icons/io";
 import { VscClose } from "react-icons/vsc";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { TbCurrencyNaira } from "react-icons/tb";
+import { shopType } from "../../../../../contextAPi/ApiResponseContext/ApiContext";
 
 export const Appointment = () => {
   const {
@@ -15,6 +16,7 @@ export const Appointment = () => {
     setsubServiceArray,
     formattedTotalPrice,
     utilShop,
+    addToAppointmentArray,
   } = useApiContext();
   const navigate = useNavigate();
 
@@ -32,11 +34,12 @@ export const Appointment = () => {
     setShowBookNowDiv(true);
   };
 
-  const handleConfirmAppointment = () => {
+  const handleConfirmAppointment = (shop: shopType) => {
     setIsLoading(true);
     setSuccessMessage(null);
 
     setTimeout(() => {
+      addToAppointmentArray(shop);
       setIsLoading(false);
       setSuccessMessage(
         "Appointment booked. Kindly check your email for more details."
@@ -229,7 +232,7 @@ export const Appointment = () => {
                     </span>
 
                     <button
-                      onClick={handleConfirmAppointment}
+                      onClick={() => handleConfirmAppointment(shop)}
                       className={`${styles.continueButton} ${
                         subServiceArray.length === 0
                           ? styles.disabledButton

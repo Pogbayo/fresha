@@ -14,11 +14,14 @@ import mongoose from "mongoose";
     password:{
         type:String,
         required:true,
-        minlength: [8, 'Password must be at least 8 characters long'],
-        match: [
-          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/,
-          'Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character',
-        ],
-    }
+        minlength: 8,
+        // match: [
+        //     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+        //     'Password must contain at least one lowercase letter, one uppercase letter, one number, and one special character (@, $, !, %, *, ?, &)',
+        //   ],
+          
+    },
+    telephone: { type: String, required: true }
+
 })
 export const User = mongoose.model('user',userSchema)

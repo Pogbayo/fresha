@@ -1,0 +1,104 @@
+
+.container {
+    padding: 10px;
+    display: flex;
+    overflow-y: scroll;
+    flex-wrap: wrap;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none; 
+    gap: 15px;
+}
+.container::-webkit-scrollbar{
+    display: none;
+}
+.section{
+    position: relative;
+    width: 70%;
+}
+.boxDiv {
+    flex: 0 0 250px; 
+    border: 1px solid rgb(192, 188, 188);
+    position: relative; 
+    margin-right: 10px; 
+    scroll-snap-align: start; 
+    border-radius: 10px ;
+    overflow: hidden;
+    padding-bottom: 15px;
+    height: 300px;
+}
+.newHeader{
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+.boxDiv .detailBox{
+     height: auto; 
+     padding: 10px;
+     display: flex;
+     flex-direction: column;
+     gap: 5px;
+     width: fit-content;
+}
+.boxDiv img{
+  width: 99.9%;
+  height: 70%; 
+  object-fit: cover;
+  transition: transform 0.3s ease; 
+  overflow: hidden;
+}
+
+.boxDiv img:hover{
+    transform: scale(0.9); 
+}
+
+.shopName, .rating, .address, .categoryName{
+    margin: 0;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.rating{
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: rgb(34, 33, 33);
+  }
+.categoryName{
+    border: 1px solid rgb(214, 213, 213);
+    display: inline-block; 
+    padding: 2px 4px; 
+    border-radius: 20px;
+    width: fit-content;
+    font-size: small;
+    font-weight: 100;
+}
+
+@media(max-width:1128px){
+    .boxDiv{
+        flex: 0 0 220px;
+        padding-bottom: 20px;
+    }
+}
+
+@media(max-width:800px){
+    .boxDiv{
+        width: 90%; 
+        flex: 0 0 100%;
+        padding: 20px;
+        text-align: center; 
+        margin: 0 auto;
+    }
+    .boxDiv img{
+        height: 50%; 
+    }
+    .container{
+        flex-direction: column;
+        align-items: center;
+    }
+    .section{
+        width: 100%;
+    }
+    .newHeader{
+        font-weight: 700;
+        font-size: 1.5rem;
+        padding-left: 20px;
+    }
+}

@@ -4,9 +4,11 @@ import { CiHeart } from "react-icons/ci";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 import { useState } from "react";
 import styles from "./Sidebar.module.css";
+import { useApiContext } from "../../../contextAPi/ApiResponseContext/useApiContext";
 
 export const Sidebar = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const { setActiveComponent } = useApiContext();
 
   const menuItems = [
     { id: 0, icon: <CgProfile size={20} />, label: "Profile" },
@@ -15,6 +17,23 @@ export const Sidebar = () => {
     { id: 3, icon: <RiDeleteBin6Fill size={20} />, label: "Delete account" },
   ];
 
+  const handleClick = (id: number) => {
+    setActiveIndex(id);
+    switch (id) {
+      case 0:
+        setActiveComponent("deets");
+        break;
+      case 1:
+        setActiveComponent("appointment");
+        break;
+      case 2:
+        setActiveComponent("fav");
+        break;
+
+      default:
+        setActiveComponent(null);
+    }
+  };
   return (
     <div className={styles.container}>
       <h3>Name</h3>
@@ -29,7 +48,7 @@ export const Sidebar = () => {
               activeIndex === item.id ? "lightblue" : "transparent",
             transition: "background-color 0.3s ease-in-out",
           }}
-          onClick={() => setActiveIndex(item.id)}
+          onClick={() => handleClick(item.id)}
         >
           {item.icon}
           {item.label}

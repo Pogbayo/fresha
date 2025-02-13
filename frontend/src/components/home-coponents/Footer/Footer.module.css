@@ -81,7 +81,11 @@
     }
 }
 
-
+@media(max-width:690px){
+   .secondDiv{
+    display: none;
+   }
+}
 @media(max-width:690px){
     .container{
         margin-top: 30px;

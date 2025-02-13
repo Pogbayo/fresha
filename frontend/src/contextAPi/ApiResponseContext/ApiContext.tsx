@@ -91,6 +91,10 @@ export interface ApiContextType {
   displayUtilShop: (shop: shopType) => void;
   utilShop: shopType | null;
   setFormattedTotalPrice: (value: string) => void;
+  activeComponent: "deets" | "fav" | "appointment" | null;
+  setActiveComponent: React.Dispatch<
+    React.SetStateAction<"deets" | "fav" | "appointment" | null>
+  >;
 }
 
 interface ApiProviderProps {
@@ -109,7 +113,6 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
   const favouritesRef = React.useRef<HTMLDivElement | null>(null);
   const appointmentRef = React.useRef<HTMLDivElement | null>(null);
 
-  const [appointmentArray, setAppointmentArray] = useState<shopType[]>([]);
   const [categoryArray, setCategoryArray] = useState<categoryType[]>([]);
   const [jointArray, setJointArray] = useState<shopType[]>([]);
   const [utilityShop, setUtilityShop] = useState<shopType | []>([]);
@@ -259,15 +262,22 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
     });
   };
 
+  const [appointmentArray, setAppointmentArray] = useState<shopType[]>(() => {
+    const savedData = localStorage.getItem("appointmentArray");
+    return savedData ? JSON.parse(savedData) : [];
+  });
+
   const addToAppointmentArray = (shop: shopType) => {
     setAppointmentArray((prev) => {
+      if (!Array.isArray(prev)) prev = [];
       const existingItem = prev.find((item) => item.name === shop.name);
-      if (existingItem) {
-        return prev;
-      }
-      return [...prev, shop];
+      if (existingItem) return prev;
+
+      const updatedArray = [...prev, shop];
+      localStorage.setItem("appointmentArray", JSON.stringify(updatedArray));
+      return updatedArray;
+      // console.log(updatedArray);
     });
-    // localStorage.setItem("localStorageAppointmentArray")
   };
 
   useEffect(() => {
@@ -298,10 +308,18 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
   const handleContinue = () => {
     setShowAppointment(true);
   };
+  const [activeComponent, setActiveComponent] = useState<
+    "deets" | "fav" | "appointment" | null
+  >(null);
+  useEffect(() => {
+    setActiveComponent("deets");
+  }, []);
 
   return (
     <ApiContext.Provider
       value={{
+        activeComponent,
+        setActiveComponent,
         categoryArray,
         scroll,
         containerRef,

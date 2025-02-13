@@ -195,9 +195,14 @@
 
 .name {
   font-weight: 700;
-  color: grey;
+  color: black;
+  font-size: 1rem;
 }
-
+.role{
+  font-weight: 500;
+  color: grey;
+  font-size: 1rem;
+}
 .workerName {
   font-size: 2rem;
   font-weight: 700;

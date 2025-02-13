@@ -1,11 +1,11 @@
 import express from "express"
-import { createUser, getUsers } from "../controllers/userController";
+import {  deleteAccount, getUsers, login, register } from "../controllers/userController";
 
 const router = express.Router();
 
-//ROute to get all users
 router.get("/users",getUsers);
+router.post("/users",register)
+router.post("/users/login",login)
+router.delete("/users",deleteAccount)
 
-//ROute to create a user
-router.post("/users",createUser)
 export { router as userRoutes };

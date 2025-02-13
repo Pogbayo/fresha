@@ -2,6 +2,7 @@ import { useAuth } from "../../../../contextAPi/Auth/useAuthContext";
 import styles from "./ProfileDeets.module.css";
 export const ProfileDeets = () => {
   const { user } = useAuth();
+  const userNameFirstLetter = user?.firstname.charAt(0);
   // console.log("This is the user", user);
   return (
     <div className={styles.mainContainer}>
@@ -9,7 +10,7 @@ export const ProfileDeets = () => {
 
       <div className={styles.container}>
         <div className={styles.imageDiv}>
-          <span className={styles.span}></span>
+          <span className={styles.span}>{userNameFirstLetter}</span>
           <p>
             {user?.firstname} {user?.lastname}
           </p>

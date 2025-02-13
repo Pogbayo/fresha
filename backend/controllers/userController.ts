@@ -83,18 +83,35 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
 
 
 export const deleteAccount = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-   const {email} = req.body;
    try {
-    const existingUser = await User.findOneAndDelete({email})
-    if (!existingUser) {
-        res.status(400).json("Error deleting user");
-        return;
-    }
-    res.status(200).json(`Account ${existingUser.firstname} deleted successfully`);
+   const token = req.headers.authorization?.split(" ")[1];
+   if (!token) {
+       res.status(400).json({error:"Unauthorized"});
+       return;
+   }
+
+   const SECRET_KEY = process.env.JWT_SECRET;
+
+   if (!SECRET_KEY) {
+       throw new Error("JWT_SECRET is not defined in environment variables");
+   }
+
+   const decoded = jwt.verify(token, SECRET_KEY as string);
+   const userEmail = (decoded as jwt.JwtPayload).email;
+
+   const deletedUser = await User.findOneAndDelete({email: userEmail});
+
+   if (!deletedUser) {
+       res.status(404).json({error:"User not found"});
+       return;
+   }
+   res.status(200).json({message:"User deleted successfully"});
    } catch (error) {
     res.status(400).json({error: (error as Error).message})
    }
 }
+
+
 
 export const logout = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
    res.clearCookie("loginToken",{

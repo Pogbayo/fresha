@@ -29,7 +29,9 @@ export const Sidebar = () => {
       case 2:
         setActiveComponent("fav");
         break;
-
+      case 3:
+        setActiveComponent("deleteaccount");
+        break;
       default:
         setActiveComponent(null);
     }

@@ -1,75 +1,79 @@
 .container {
-    padding: 10px 30px 10px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    z-index: 100; 
-    width: 80vw;
-    margin: 0 auto;
-    background-color: white; 
-    background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  z-index: 100;
+  width: 80vw;
+  margin: 0 auto;
+  background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
 }
 
-.logo{
+.logo {
   color: black;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-size: 1.7rem;
-  line-height: 1.2ch;
   font-weight: 900;
   cursor: pointer;
 }
-.headerButtons{
-    margin: 0;
-    width: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    padding-top: 5px;
 
-}
-.buttonOne{
-    border: 1px solid gray;
-    padding: 15px;
-    width: auto;
-    border-radius: 20px;
-    margin: 0;
-    font-size: 0.9rem;
-    background-color: white;
-    font-weight: 700;
-    cursor: pointer;
-}
-.buttonOne:hover{
-    background-color: rgb(238, 237, 237);
-}
-.buttonTwo{
-    border: 1px solid gray;
-    padding: 15px;
-    width: auto;
-    border-radius: 20px;
-    margin: 0;
-    font-size: 0.9rem;
-    background-color: white;
-    font-weight: 700;
-    display: flex;
-    gap: 5px;
-    cursor: pointer;
-
-}
-.buttonTwo:hover{
-    background-color: rgb(238, 237, 237);
+.headerButtons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 5px;
 }
 
-.IoMdMenu{
-    display: none;
-    cursor: pointer;
+.buttonOne, .buttonTwo {
+  border: 1px solid gray;
+  background-color: white;
+  font-weight: 700;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 15px;
 }
 
+.buttonOne:hover, .buttonTwo:hover {
+  background-color: rgb(238, 237, 237);
+}
+
+.buttonTwo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 90px;
+  height: 50px;
+  padding: 7px;
+}
+
+.firstLetter {
+  height: 25px;
+  width: 25px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ff7eb3, #1b243b);
+  border: 1px solid rgb(245, 242, 242);
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.firstLetter:hover {
+  background: linear-gradient(135deg, #ff7eb3, #4a5266);
+  color: white;
+}
+
+.IoMdMenu {
+  display: none;
+  cursor: pointer;
+}
 
 .dropdownMenu {
   position: absolute;
@@ -79,132 +83,128 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 200px;
+  width: 250px;
   list-style: none;
   padding: 0.5rem 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
   opacity: 0;
-  transform: translateY(-10px); 
-  visibility: hidden;  
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0.3s; /* Delayed visibility to sync with opacity */
+  transform: translateY(-10px);
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0.3s;
 }
 
 .dropdownMenu.show {
-  opacity: 1; 
-  transform: translateY(0); 
-  visibility: visible; 
-  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0s; /* Immediate visibility */
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .dropdownMenu li {
-  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 0.7rem 1rem;
   cursor: pointer;
+  font-size: 1rem;
 }
 
 .dropdownMenu li:hover {
   background-color: #f0f0f0;
 }
 
-  
-  
-  @media(max-width: 1081px) {
-    .container{
-     padding-left: 10px;
-     padding-right: 10px;
-    }
- }
-
- 
-
-@media(max-width: 1016px) {
-    .IoMdMenu {
-        display: block !important;
-    }
-    .buttonTwo {
-        display: none ;
-    }
-    .headerButtons{
-        gap: 15px;
-    }
+.backButton {
+  display: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background-color: #d6d8db;
 }
 
-
-@media(max-width: 1012px) {
-    .dropdownMenu {
-        position: absolute;
-        top: 98%;
-        right: 2%;
-      
-      }
-}
-
-
-@media(max-width: 772px) {
-    .container{
-        padding-left: 15px;
-        padding-right:15px ;
-    }
-    .buttonOne{
-        display: none;
-    }
-    .dropdownMenu {
-        position: absolute;
-        top: 95%;
-        right: 2%;
-      
-      }
-}
-
-
-@media(max-width: 442px) {
-    
-    .dropdownMenu {
-        position: absolute;
-        top: 84%;
-        right: 3%;
-      
-      }
-}
-
-
-
-
-
-@media(max-width:1742px){
-    .container{
-        width: 83vw;
-    }
+@media (max-width: 1081px) {
+  .container {
+      padding: 10px;
   }
-  @media(max-width:1673px){
-    .container{
+}
+
+@media (max-width: 1016px) {
+  .IoMdMenu {
+      display: block !important;
+  }
+  .buttonTwo {
+      display: none;
+  }
+}
+
+@media (max-width: 772px) {
+  .buttonOne {
+      display: none;
+  }
+}
+
+@media (max-width: 646px) {
+  .dropdownMenu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: white;
+      display: flex;
+      gap: 30px;
+      padding: 20px;
+      justify-content: center;
+  }
+  .dropdownMenu li{
+    /* background-color: #4a5266; */
+    width: 85%;
+  }
+  .backButton {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      display: block;
+  }
+}
+
+@media (max-width: 1742px) {
+  .container {
+      width: 83vw;
+  }
+}
+
+@media (max-width: 1673px) {
+  .container {
       width: 92vw;
-      padding-left: 10px;
-      padding-right: 10px;
-    }
   }
-  @media(max-width:1560px){
-    .container{
-      width: 96vw;
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-  }
-  @media(max-width:1433px){
-    .container{
-      width: 97vw;
-      padding-left: 10px;
-      padding-right: 10px;
-    }
-  }
-  @media(max-width:1086px){
-    .container{
-      width: 93vw;
+}
 
-    }
+@media (max-width: 1560px) {
+  .container {
+      width: 96vw;
   }
-  @media(max-width:600px){
-    .container{
+}
+
+@media (max-width: 1433px) {
+  .container {
+      width: 97vw;
+  }
+}
+
+@media (max-width: 1086px) {
+  .container {
       width: 93vw;
-    }
   }
-  
+}
+
+@media (max-width: 600px) {
+  .container {
+      width: 93vw;
+  }
+}

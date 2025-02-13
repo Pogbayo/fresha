@@ -43,7 +43,6 @@
     border-radius: 10px;
     overflow: hidden;
     padding-bottom: 15px;
-
     opacity: 0;
     transform: translateY(20px);
     animation: fadeIn 0.5s ease-in forwards;
@@ -76,7 +75,7 @@
 }
 
 .boxDiv img:hover {
-    transform: scale(0.9); 
+    transform: scale(0.97); 
 }
 
 .shopName, .rating, .address, .categoryName {
@@ -107,6 +106,9 @@
         flex: 0 0 220px;
         height: 220px; 
         padding-bottom: 20px;
+    }
+    .section{
+        width: 90%;
     }
 }
 

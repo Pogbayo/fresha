@@ -26,7 +26,7 @@ export const ProfileFav = () => {
           <div
             key={index}
             className={styles.boxDiv}
-            style={{ animationDelay: "0.4s" }}
+            style={{ animationDelay: "0.2s" }}
           >
             <img src={shop.images[1]} alt="" />
             <div className={styles.detailBox}>

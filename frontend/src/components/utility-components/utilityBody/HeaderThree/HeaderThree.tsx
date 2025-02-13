@@ -10,9 +10,8 @@ import { Treatment } from "../../../home-coponents/Book/TreatmentDropDown/Treatm
 import { Location } from "../../../home-coponents/Book/location/Location";
 import { FaAngleDown } from "react-icons/fa6";
 import { FaChevronUp } from "react-icons/fa";
-// import { GoArrowLeft } from "react-icons/go";
-// import { GrMapLocation } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../../../contextAPi/Auth/useAuthContext";
 
 export const HeaderThree = () => {
   const {
@@ -37,7 +36,8 @@ export const HeaderThree = () => {
     calendarInputValue,
     locationInputValue,
   } = useAppContext();
-
+  const { user } = useAuth();
+  const firstLetter = user?.firstname.charAt(0);
   const calendarRef = useRef<HTMLDivElement | null>(null);
   const treatmentRef = useRef<HTMLDivElement | null>(null);
   const locationRef = useRef<HTMLDivElement | null>(null);
@@ -146,15 +146,11 @@ export const HeaderThree = () => {
             onChange={(e) => setCalendarInputValue(e.target.value)}
           />
         </span>
-
-        {/* <span>
-          <button>S</button>
-        </span> */}
       </form>
 
       <div className={styles.headerButtons}>
         <button className={styles.buttonTwo} onClick={handleMenuDropDown}>
-          Menu
+          {!user ? "Menu" : <p className={styles.firstLetter}>{firstLetter}</p>}
           {isMenuOpen ? <FaChevronUp /> : <FaAngleDown />}
         </button>
       </div>

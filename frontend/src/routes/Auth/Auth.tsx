@@ -74,8 +74,14 @@ export const Auth = () => {
           setIsSignUp(false);
           setSuccessMessage("");
         }, 3000);
-      } catch (error) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch (error: any) {
         console.error("Error submitting form", error);
+        if (error.response && error.response.data.message) {
+          setErrors({ general: error.response.data.message });
+        } else {
+          setErrors({ general: "Something went wrong. Please try again." });
+        }
       }
       setLoading(false);
     }, 2500);
@@ -125,8 +131,19 @@ export const Auth = () => {
           navigate("/profile");
         }, 2000);
       }
-    } catch (error) {
+    } catch (error: unknown) {
       console.error("Login Error:", error);
+      if (
+        axios.isAxiosError(error) &&
+        error.response &&
+        error.response.data.message
+      ) {
+        setErrors({ general: error.response.data.message });
+      } else {
+        setErrors({
+          general: "Invalid email or password. Please try again.",
+        });
+      }
     } finally {
       setLoading(false);
     }
@@ -214,6 +231,7 @@ export const Auth = () => {
               {errors.phone && <p className={styles.error}>{errors.phone}</p>}
             </div>
           )}
+          {errors.general && <p className={styles.error}>{errors.general}</p>}
 
           <button
             type="submit"

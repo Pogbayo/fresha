@@ -36,8 +36,8 @@
     border: none;
 }
 
-
 /* 09134145872 */
+
 .formContainer span {
     display: flex;
     align-items: center;
@@ -192,22 +192,35 @@
 }
 
 .buttonTwo{
-    border: 1px solid rgb(212, 210, 210);
-    padding: 15px;
-    width: auto;
+    border: 1px solid gray;
+    padding: 7px;
+    width: 90px;
     border-radius: 20px;
     margin: 0;
     font-size: 0.9rem;
     background-color: white;
     font-weight: 700;
     display: flex;
-    gap: 5px;
+    gap: 8px;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    height: 50px;
 }
-
-.buttonTwo:hover{
-    background-color: rgb(238, 237, 237);
+.firstLetter{
+  padding: 5px;
+  height: 25px;
+  width: 25px;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #ff7eb3, #1b243b); 
+  border: 1px solid rgb(245, 242, 242);
+  border-radius: 50%;
+}
+.firstLetter:hover{
+  background: linear-gradient(135deg, #ff7eb3, #4a5266); 
+  color: white;
 }
 
 .IoMdMenu{

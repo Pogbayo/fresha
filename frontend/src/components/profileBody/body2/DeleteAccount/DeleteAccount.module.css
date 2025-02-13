@@ -1,0 +1,82 @@
+.container {
+  text-align: center;
+  padding: 30px;
+  max-width: 600px;
+  margin: auto;
+  border-radius: 10px;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.warningText {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.confirmBox {
+  margin-top: 20px;
+}
+
+.dangerText {
+  color: red;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.deleteBtn {
+  background: red;
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.deleteBtn:hover {
+  background: darkred;
+}
+
+.cancelBtn {
+  background: gray;
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-left: 10px;
+  transition: 0.3s;
+}
+
+.cancelBtn:hover {
+  background: black;
+}
+
+.deleteTrigger {
+  background: black;
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.deleteTrigger:hover {
+  background: darkred;
+}
+
+@media(max-width:715px){
+    .container{
+        width: 80%;
+    }
+}

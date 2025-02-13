@@ -17,6 +17,7 @@ export const Appointment = () => {
     formattedTotalPrice,
     utilShop,
     addToAppointmentArray,
+    setActiveComponent,
   } = useApiContext();
   const navigate = useNavigate();
 
@@ -44,12 +45,13 @@ export const Appointment = () => {
       setSuccessMessage(
         "Appointment booked. Kindly check your email for more details."
       );
+      setActiveComponent("appointment");
       setTimeout(() => {
-        navigate("/utility");
+        navigate("/profile");
       }, 2000);
 
       setsubServiceArray([]);
-    }, 3500);
+    }, 4000);
   };
 
   return (

@@ -91,9 +91,11 @@ export interface ApiContextType {
   displayUtilShop: (shop: shopType) => void;
   utilShop: shopType | null;
   setFormattedTotalPrice: (value: string) => void;
-  activeComponent: "deets" | "fav" | "appointment" | null;
+  activeComponent: "deets" | "fav" | "appointment" | "deleteaccount" | null;
   setActiveComponent: React.Dispatch<
-    React.SetStateAction<"deets" | "fav" | "appointment" | null>
+    React.SetStateAction<
+      "deets" | "fav" | "appointment" | "deleteaccount" | null
+    >
   >;
 }
 
@@ -309,7 +311,7 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
     setShowAppointment(true);
   };
   const [activeComponent, setActiveComponent] = useState<
-    "deets" | "fav" | "appointment" | null
+    "deets" | "fav" | "appointment" | "deleteaccount" | null
   >(null);
   useEffect(() => {
     setActiveComponent("deets");

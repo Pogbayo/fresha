@@ -8,7 +8,8 @@ import { shopRoute } from './routes/shopRouter';
 import { deleteRoute } from './routes/deteteShop';
 import cookieParser from "cookie-parser";
 import { dashboardRoute } from './routes/dashboard';
-
+import dotenv from "dotenv";
+dotenv.config();
 const app = express();
 app.use(cookieParser()); 
 

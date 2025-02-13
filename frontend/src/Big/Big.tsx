@@ -8,20 +8,23 @@ import { SelectService } from "../components/utility-components/utilityBody/serv
 import { Profile } from "../routes/Profile/Profile";
 import { Auth } from "../routes/Auth/Auth";
 import styles from "./Big.module.css";
+import { AuthProvider } from "../contextAPi/Auth/AuthContext";
 const Big = () => {
   return (
     <div className={styles.container}>
       <Router>
         <AppProvider>
           <ApiProvider>
-            <Routes>
-              <Route path={"/"} element={<Primary />} />
-              <Route path={"secondary"} element={<Secondary />} />
-              <Route path={"utility"} element={<Utility />} />
-              <Route path={"select"} element={<SelectService />} />
-              <Route path={"profile"} element={<Profile />} />
-              <Route path={"auth"} element={<Auth />} />
-            </Routes>
+            <AuthProvider>
+              <Routes>
+                <Route path={"/"} element={<Primary />} />
+                <Route path={"secondary"} element={<Secondary />} />
+                <Route path={"utility"} element={<Utility />} />
+                <Route path={"select"} element={<SelectService />} />
+                <Route path={"profile"} element={<Profile />} />
+                <Route path={"auth"} element={<Auth />} />
+              </Routes>
+            </AuthProvider>
           </ApiProvider>
         </AppProvider>
       </Router>

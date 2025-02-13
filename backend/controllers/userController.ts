@@ -5,29 +5,35 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 dotenv.config(); 
 
-export const getUsers = (req: Request, res: Response, next: NextFunction): void => {
-    const users = [
-        {id:1,name:"John Doe"},
-        {id:2,name:"Jane Doe"}
-    ];
-     res.status(200).json(users); 
+export const getUsers = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+ try { 
+    const users = await User.find();
+    res.status(200).json(users); 
+ } catch (error) {
+    res.status(400).json({"error": error})
+ }
+   
 };
 
+
+
 export const register = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-    const {name,email,password,phone} = req.body;
+    const {firstname,lastname,email,password,phone} = req.body;
     try {
         const existingUser = await User.findOne({email})
         if (existingUser) {
              res.status(400).json({error:"Email already in use"})
         }
         const hashedPassword = await bcrypt.hash(password,10)
-        const newUser = new User({name,email,password:hashedPassword,telephone:phone});
+        const newUser = new User({firstname,lastname,email,password:hashedPassword,telephone:phone});
         await newUser.save();
-        res.status(200).json({message:`user ${name} registered successfully!`})
+        res.status(200).json({message:`user ${firstname} registered successfully!`})
     } catch (error) {
         res.status(400).json({error: (error as Error).message})
     }
 };
+
+
 
 export const login = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
    const {email,password} = req.body;
@@ -45,10 +51,15 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
     }
     const SECRET_KEY = process.env.JWT_SECRET
 
+    if (!SECRET_KEY) {
+        throw new Error("JWT_SECRET is not defined in environment variables");
+    }
+
     const token = jwt.sign(
         {
          email:existingUser.email,
-         name:existingUser.name,
+         firstname:existingUser.firstname,
+         lastname:existingUser.lastname,
          telephone:existingUser.telephone
         },
         SECRET_KEY as string,
@@ -61,11 +72,14 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
         sameSite:"strict"
     });
 
-    res.status(200).json(`Welcome back ${existingUser.name}`)
+    res.status(200).json({ message: `Welcome back ${existingUser.firstname}`, token })
+ console.log(token)
    } catch (error) {
     res.status(400).json({error: (error as Error).message})
    };
 }
+
+
 
 
 export const deleteAccount = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
@@ -76,14 +90,14 @@ export const deleteAccount = async (req: Request, res: Response, next: NextFunct
         res.status(400).json("Error deleting user");
         return;
     }
-    res.status(200).json(`Account ${existingUser.name} deleted successfully`);
+    res.status(200).json(`Account ${existingUser.firstname} deleted successfully`);
    } catch (error) {
     res.status(400).json({error: (error as Error).message})
    }
 }
 
-export const logOut = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
-   res.clearCookie("loginTToken",{
+export const logout = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+   res.clearCookie("loginToken",{
     httpOnly:true,
     secure:true,
     expires: new Date(0),

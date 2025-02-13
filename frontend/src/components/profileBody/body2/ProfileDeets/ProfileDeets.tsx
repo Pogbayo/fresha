@@ -1,5 +1,8 @@
+import { useAuth } from "../../../../contextAPi/Auth/useAuthContext";
 import styles from "./ProfileDeets.module.css";
 export const ProfileDeets = () => {
+  const { user } = useAuth();
+  console.log(user);
   return (
     <div className={styles.mainContainer}>
       <h2>Profile</h2>
@@ -7,24 +10,26 @@ export const ProfileDeets = () => {
       <div className={styles.container}>
         <div className={styles.imageDiv}>
           <img src="" alt="" />
-          <p>Adesanya Oluwasegun</p>
+          <p>
+            {user?.firstname} {user?.lastname}
+          </p>
         </div>
         <div className={styles.detailsDiv}>
           <span>
             <h3>First name</h3>
-            <p> Adebayo</p>{" "}
+            <p> {user?.firstname}</p>{" "}
           </span>
           <span>
             <h3>Last name</h3>
-            <p> Adesanya</p>{" "}
+            <p> {user?.lastname}</p>{" "}
           </span>
           <span>
             <h3>Mobile number</h3>
-            <p> 0913584072</p>{" "}
+            <p>+{user?.telephone}</p>{" "}
           </span>
           <span>
             <h3>Email</h3>
-            <p> adebayooluwasegun335@gmail.com</p>{" "}
+            <p> {user?.email}</p>{" "}
           </span>
         </div>
       </div>

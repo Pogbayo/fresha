@@ -185,7 +185,7 @@
 
 .successfulLoginMessage.show {
     visibility: visible;
-    animation: easeInOut 2s cubic-bezier(0.42, 0, 0.58, 1) forwards;
+    animation: easeInOut 3s cubic-bezier(0.42, 0, 0.58, 1) forwards;
 }
 
 @keyframes easeInOut {
@@ -208,7 +208,6 @@
 }
 
 
-
 @media (max-width: 1034px) {
     .formBox{
         width: 100%;
@@ -217,17 +216,6 @@
         display: none;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 input:-webkit-autofill,

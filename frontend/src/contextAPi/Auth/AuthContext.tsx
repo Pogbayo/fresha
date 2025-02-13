@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 
-interface DecodedUserType {
+export interface DecodedUserType {
   firstname: string;
   lastname: string;
   email: string;
@@ -12,6 +12,7 @@ interface DecodedUserType {
 interface AuthContextType {
   user: DecodedUserType | null;
   logout: () => void;
+  setUser: (value: DecodedUserType | null) => void;
 }
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -23,26 +24,39 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<DecodedUserType | null>(null);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const updateUser = () => {
+      const token = localStorage.getItem("token");
 
-    if (!token) return;
+      if (!token) {
+        setUser(null);
+        return;
+      }
 
-    try {
-      const decodedUser: DecodedUserType = jwtDecode(token);
-      console.log("Decoded User:", decodedUser);
+      try {
+        const decodedUser: DecodedUserType = jwtDecode(token);
+        // console.log("Updated Decoded User:", decodedUser);
 
-      if (decodedUser.exp * 1000 < Date.now()) {
-        console.warn("Token expired.    Logging out...");
+        if (decodedUser.exp * 1000 < Date.now()) {
+          console.warn("Token expired. Logging out...");
+          localStorage.removeItem("token");
+          setUser(null);
+        } else {
+          setUser(decodedUser);
+        }
+      } catch (error) {
+        console.error("Invalid token:", error);
         localStorage.removeItem("token");
         setUser(null);
-      } else {
-        setUser(decodedUser);
       }
-    } catch (error) {
-      console.error("Invalid token:", error);
-      localStorage.removeiitem("token");
-      setUser(null);
-    }
+    };
+
+    updateUser();
+
+    window.addEventListener("storage", updateUser);
+
+    return () => {
+      window.removeEventListener("storage", updateUser);
+    };
   }, []);
 
   const logout = () => {
@@ -50,7 +64,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setUser(null);
   };
   return (
-    <AuthContext.Provider value={{ user, logout }}>
+    <AuthContext.Provider value={{ user, logout, setUser }}>
       {children}
     </AuthContext.Provider>
   );

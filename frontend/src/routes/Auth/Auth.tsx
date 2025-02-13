@@ -5,6 +5,8 @@ import styles from "./Auth.module.css";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../contextAPi/Auth/useAuthContext";
+import { DecodedUserType } from "../../contextAPi/Auth/AuthContext";
 
 export const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -14,6 +16,7 @@ export const Auth = () => {
   const [successful, setSuccessful] = useState(false);
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [successMessage, setSuccessMessage] = useState("");
+  const { setUser } = useAuth();
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -63,7 +66,6 @@ export const Auth = () => {
         setPhone("");
         setErrors({});
 
-        // Show "Registration complete" message
         setSuccessMessage("Registration complete");
         setSuccessful(true);
 
@@ -100,10 +102,13 @@ export const Auth = () => {
         const token = response.data.token;
         if (token) {
           localStorage.setItem("token", token);
-          console.log("Token saved:", token);
+          console.log("This is my token ohhhhh", token);
 
-          const decodedUser = jwtDecode(token);
-          console.log("Decoded user:", decodedUser);
+          const decodedUser = jwtDecode<DecodedUserType>(token);
+          console.log("This is the decodedUser:", decodedUser);
+
+          setUser(decodedUser);
+          console.log("This is the decodedUser ohhhhhhhhhh", decodedUser);
         } else {
           console.error("No token received");
         }
@@ -118,7 +123,7 @@ export const Auth = () => {
           setSuccessful(false);
           setSuccessMessage("");
           navigate("/profile");
-        }, 2500);
+        }, 2000);
       }
     } catch (error) {
       console.error("Login Error:", error);
@@ -148,6 +153,7 @@ export const Auth = () => {
                 <input
                   type="text"
                   name="firstname"
+                  autoComplete="on"
                   onChange={handleChange}
                   value={formData.firstname}
                 />
@@ -160,6 +166,7 @@ export const Auth = () => {
                 <input
                   type="text"
                   name="lastname"
+                  autoComplete="on"
                   onChange={handleChange}
                   value={formData.lastname}
                 />
@@ -176,6 +183,7 @@ export const Auth = () => {
               type="email"
               name="email"
               onChange={handleChange}
+              autoComplete="on"
               value={formData.email}
             />
             {errors.email && <p className={styles.error}>{errors.email}</p>}

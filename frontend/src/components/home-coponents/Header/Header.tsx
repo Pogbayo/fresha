@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import styles from "./Header.module.css";
 import {
   FaAngleDown,
@@ -14,27 +13,19 @@ import { IoMdMenu } from "react-icons/io";
 import { useAppContext } from "../../../contextAPi/AppContextApi/useAppContext";
 import { useAuth } from "../../../contextAPi/Auth/useAuthContext";
 import { IoArrowBackOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
+import { useApiContext } from "../../../contextAPi/ApiResponseContext/useApiContext";
 
 export const Header = () => {
   const { handleMenuDropDown, isMenuOpen } = useAppContext();
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const firstLetter = user?.firstname?.charAt(0) || "";
-
-  useEffect(() => {
-    const handleResize = () => {
-      setScreenWidth(window.innerWidth);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const navigate = useNavigate();
+  const { setActiveComponent } = useApiContext();
 
   return (
     <div className={styles.container}>
-      <h3 className={styles.logo}>Spag {screenWidth}</h3>
+      <h3 className={styles.logo}>Spag </h3>
       <div className={styles.headerButtons}>
         <button className={styles.buttonOne}>For business</button>
         <button className={styles.buttonTwo} onClick={handleMenuDropDown}>
@@ -54,7 +45,7 @@ export const Header = () => {
         </button>
         {!user ? (
           <>
-            <li>
+            <li onClick={() => navigate("auth")}>
               <FaSignInAlt /> Log in
             </li>
             <li>
@@ -63,19 +54,19 @@ export const Header = () => {
           </>
         ) : (
           <>
-            <li>
+            <li onClick={() => setActiveComponent("deets")}>
               <FaUserCircle /> Profile
             </li>
-            <li>
+            <li onClick={() => setActiveComponent("fav")}>
               <FaHeart /> Favourite
             </li>
-            <li>
+            <li onClick={() => setActiveComponent("appointment")}>
               <FaCalendarCheck /> Appointment
             </li>
-            <li>
-              <FaSignInAlt /> Log in
+            <li onClick={() => logout()}>
+              <FaSignInAlt /> Log out
             </li>
-            <li>
+            <li onClick={() => setActiveComponent("deleteaccount")}>
               <FaTrash /> Delete account
             </li>
             <li>

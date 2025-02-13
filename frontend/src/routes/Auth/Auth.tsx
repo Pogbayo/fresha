@@ -277,7 +277,7 @@ export const Auth = () => {
       </div>
       <div className={styles.imageBox}>
         <img
-          src="https://www.fresha.com/assets/_next/static/images/Image1-3df0e155c21a9ca5f2441c251986cf5e.webp"
+          src="https://www.fresha.com/assets/_next/static/images/Image2-b598cd77921dc7f9a62fb3ec31bcaa48.webp"
           alt="Auth"
         />
       </div>

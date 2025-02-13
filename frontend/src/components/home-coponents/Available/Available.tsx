@@ -19,7 +19,7 @@ export const Available = () => {
           </span>
           <h1>Download the Spag app</h1>
           <p>
-            Book unforgettable beauty and wellness experiences with the Fresha
+            Book unforgettable beauty and wellness experiences with the Spag
             mobile app
           </p>
           <img src="/images/homeMedia/qrCode.png" alt="" />

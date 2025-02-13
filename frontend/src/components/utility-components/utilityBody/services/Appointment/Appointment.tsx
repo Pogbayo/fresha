@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Appointment.module.css";
 import { IoIosStar } from "react-icons/io";
-import { VscClose } from "react-icons/vsc";
+// import { VscClose } from "react-icons/vsc";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { TbCurrencyNaira } from "react-icons/tb";
 import { shopType } from "../../../../../contextAPi/ApiResponseContext/ApiContext";
@@ -80,9 +80,9 @@ export const Appointment = () => {
                   >
                     <IoIosArrowRoundBack size={30} />
                   </button>
-                  <button>
+                  {/* <button>
                     <VscClose size={30} />
-                  </button>
+                  </button> */}
                 </div>
               )}
 

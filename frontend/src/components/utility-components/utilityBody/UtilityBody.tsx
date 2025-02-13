@@ -22,11 +22,10 @@ export const UtilityBody = () => {
       setIsLoading(false);
     }
   }, [categoryArray]);
-  console.log("Hhhhhh", utilShop);
 
   return (
     <div className={styles.App}>
-      <HeaderThree />
+      <HeaderThree shop={shopFromShopOne} />
       <div className={styles.upperDiv}>
         {!loading ? (
           <>

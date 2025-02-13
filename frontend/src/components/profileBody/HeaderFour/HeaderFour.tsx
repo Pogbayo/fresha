@@ -2,16 +2,15 @@ import { useRef, useEffect, useState } from "react";
 import { CiSearch, CiLocationOn } from "react-icons/ci";
 import { IoTimeOutline } from "react-icons/io5";
 import { MdDateRange } from "react-icons/md";
-import styles from "./HeaderThree.module.css";
-import { useAppContext } from "../../../../contextAPi/AppContextApi/useAppContext";
-import { MyCalendar } from "../../../home-coponents/Book/calendar/MyCalendar";
-import { Time } from "../../../home-coponents/Book/Time-picker/Time";
-import { Treatment } from "../../../home-coponents/Book/TreatmentDropDown/Treatment";
-import { Location } from "../../../home-coponents/Book/location/Location";
+import styles from "./HeaderFour.module.css";
+import { useAppContext } from "../../../../src/contextAPi/AppContextApi/useAppContext";
+import { MyCalendar } from "../../../components/home-coponents/Book/calendar/MyCalendar";
+import { Time } from "../../../components/home-coponents/Book/Time-picker/Time";
+import { Treatment } from "../../home-coponents/Book/TreatmentDropDown/Treatment";
+import { Location } from "../../../components/home-coponents/Book/location/Location";
 import { FaAngleDown } from "react-icons/fa6";
 import { FaChevronUp } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../../../contextAPi/Auth/useAuthContext";
 import {
   FaUserCircle,
   FaHeart,
@@ -21,10 +20,10 @@ import {
   FaDownload,
 } from "react-icons/fa";
 import { IoArrowBackOutline } from "react-icons/io5";
-import { useApiContext } from "../../../../contextAPi/ApiResponseContext/useApiContext";
-import { shopType } from "../../../../contextAPi/ApiResponseContext/ApiContext";
+import { useAuth } from "../../../contextAPi/Auth/useAuthContext";
+import { useApiContext } from "../../../contextAPi/ApiResponseContext/useApiContext";
 
-export const HeaderThree = ({ shop }: { shop: shopType }) => {
+export const HeaderFour = () => {
   const {
     handleCurrentLocationDropDown,
     handleTreatmentsDropDown,
@@ -48,8 +47,8 @@ export const HeaderThree = ({ shop }: { shop: shopType }) => {
     locationInputValue,
   } = useAppContext();
   const { user, logout } = useAuth();
-  const { setActiveComponent } = useApiContext();
   const firstLetter = user?.firstname.charAt(0);
+  const { setActiveComponent } = useApiContext();
   const calendarRef = useRef<HTMLDivElement | null>(null);
   const treatmentRef = useRef<HTMLDivElement | null>(null);
   const locationRef = useRef<HTMLDivElement | null>(null);
@@ -67,6 +66,7 @@ export const HeaderThree = ({ shop }: { shop: shopType }) => {
     setCalendarInputValue(value);
   };
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  // console.log(typeof screenWidth);
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
@@ -110,7 +110,7 @@ export const HeaderThree = ({ shop }: { shop: shopType }) => {
   return (
     <div className={styles.container}>
       <h3 className={styles.logo} onClick={() => navigate("/")}>
-        spag
+        Spag
       </h3>
       <form action="" className={styles.formContainer}>
         <span>
@@ -165,7 +165,7 @@ export const HeaderThree = ({ shop }: { shop: shopType }) => {
           {isMenuOpen ? <FaChevronUp /> : <FaAngleDown />}
         </button>
       </div>
-
+      {/* 
       <div className={styles.smallScreenHeader}>
         <p
           className={styles.first}
@@ -181,9 +181,9 @@ export const HeaderThree = ({ shop }: { shop: shopType }) => {
         >
           Hair salons ·
         </p>
-        <p className={styles.third}>{shop?.address?.[0].city} ·</p>
-        <p className={styles.fourth}>{shop?.name}</p>
-      </div>
+        <p className={styles.third}>Lagos ·</p>
+        <p className={styles.fourth}>TasalaHQ Hair and Beauty</p>
+      </div> */}
 
       {
         <ul

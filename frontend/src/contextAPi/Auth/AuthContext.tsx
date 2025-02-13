@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
+import { useNavigate } from "react-router-dom";
 
 export interface DecodedUserType {
   firstname: string;
@@ -22,7 +23,7 @@ export const AuthContext = createContext<AuthContextType | undefined>(
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<DecodedUserType | null>(null);
-
+  const navigate = useNavigate();
   useEffect(() => {
     const updateUser = () => {
       const token = localStorage.getItem("token");
@@ -61,6 +62,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
   const logout = () => {
     localStorage.removeItem("token");
+    navigate("/");
     setUser(null);
   };
   return (

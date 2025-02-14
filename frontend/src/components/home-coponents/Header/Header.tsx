@@ -28,19 +28,25 @@ export const Header = () => {
   const menuRef = useRef<HTMLUListElement | null>(null);
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setIsMenuOpen(false);
+      if (
+        isMenuOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node)
+      ) {
+        setIsMenuOpen((prev) => !prev);
       }
     };
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  });
+  }); // ✅ Add isMenuOpen as a dependency
+
   return (
     <div className={styles.container}>
       <h3 className={styles.logo} onClick={() => navigate("/")}>
-        Spag{" "}
+        Spaghetti
       </h3>
       <div className={styles.headerButtons}>
         <button className={styles.buttonOne}>For business</button>
@@ -56,7 +62,7 @@ export const Header = () => {
       </div>
 
       <ul
-        ref={menuRef}
+        // ref={menuRef}
         className={`${styles.dropdownMenu} ${isMenuOpen ? styles.show : ""}`}
       >
         <button className={styles.backButton} onClick={handleMenuDropDown}>
@@ -64,7 +70,12 @@ export const Header = () => {
         </button>
         {!user ? (
           <>
-            <li onClick={() => navigate("auth")}>
+            <li
+              onClick={() => {
+                navigate("auth");
+                setIsMenuOpen(false);
+              }}
+            >
               <FaSignInAlt /> Log in
             </li>
             <li>
@@ -111,13 +122,19 @@ export const Header = () => {
             >
               <FaCalendarCheck /> Appointment
             </li>
-            <li onClick={() => logout()}>
+            <li
+              onClick={() => {
+                logout();
+                setIsMenuOpen(false);
+                navigate("/");
+              }}
+            >
               <FaSignInAlt /> Log out
             </li>
             <li
               onClick={() => {
                 setActiveComponent("deleteaccount");
-                handleMenuDropDown();
+                setIsMenuOpen(false);
                 navigate("/profile");
               }}
             >

@@ -37,6 +37,7 @@ export const HeaderThree = ({ shop }: { shop: shopType }) => {
     handleMenuDropDown,
     isTime,
     setIsTime,
+    setIsMenuOpen,
     isMenuOpen,
     isCalendarOpen,
     isTreatmentsOpen,
@@ -194,7 +195,12 @@ export const HeaderThree = ({ shop }: { shop: shopType }) => {
           </button>
           {!user ? (
             <>
-              <li onClick={() => navigate("auth")}>
+              <li
+                onClick={() => {
+                  navigate("auth");
+                  setIsMenuOpen(false);
+                }}
+              >
                 <FaSignInAlt /> Log in
               </li>
               <li>
@@ -230,7 +236,12 @@ export const HeaderThree = ({ shop }: { shop: shopType }) => {
               >
                 <FaCalendarCheck /> Appointment
               </li>
-              <li onClick={() => logout()}>
+              <li
+                onClick={() => {
+                  logout();
+                  setIsMenuOpen(false);
+                }}
+              >
                 <FaSignInAlt /> Log out
               </li>
               <li>

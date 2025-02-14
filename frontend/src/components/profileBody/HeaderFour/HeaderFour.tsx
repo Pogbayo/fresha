@@ -194,7 +194,12 @@ export const HeaderFour = () => {
           </button>
           {!user ? (
             <>
-              <li onClick={() => navigate("auth")}>
+              <li
+                onClick={() => {
+                  navigate("auth");
+                  setIsMenuOpen(false);
+                }}
+              >
                 <FaSignInAlt /> Log in
               </li>
               <li>
@@ -236,7 +241,12 @@ export const HeaderFour = () => {
               >
                 <FaCalendarCheck /> Appointment
               </li>
-              <li onClick={() => logout()}>
+              <li
+                onClick={() => {
+                  logout();
+                  setIsMenuOpen(false);
+                }}
+              >
                 <FaSignInAlt /> Log out
               </li>
               <li

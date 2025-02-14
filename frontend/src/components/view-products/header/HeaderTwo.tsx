@@ -13,7 +13,18 @@ import { FaChevronUp } from "react-icons/fa";
 import { GoArrowLeft } from "react-icons/go";
 import { GrMapLocation } from "react-icons/gr";
 import { useNavigate } from "react-router-dom";
-
+import { IoArrowBackOutline } from "react-icons/io5";
+import { IoHome } from "react-icons/io5";
+import { useAuth } from "../../../contextAPi/Auth/useAuthContext";
+import {
+  FaUserCircle,
+  FaHeart,
+  FaCalendarCheck,
+  FaSignInAlt,
+  FaTrash,
+  FaDownload,
+} from "react-icons/fa";
+import { useApiContext } from "../../../contextAPi/ApiResponseContext/useApiContext";
 export const HeaderTwo = () => {
   const {
     handleCurrentLocationDropDown,
@@ -28,6 +39,7 @@ export const HeaderTwo = () => {
     isTime,
     setIsTime,
     isMenuOpen,
+    setIsMenuOpen,
     isCalendarOpen,
     isTreatmentsOpen,
     setIsCalendarOpen,
@@ -37,7 +49,9 @@ export const HeaderTwo = () => {
     calendarInputValue,
     locationInputValue,
   } = useAppContext();
-
+  const { user, logout } = useAuth();
+  const firstLetter = user?.firstname?.charAt(0) || "";
+  const { setActiveComponent } = useApiContext();
   const calendarRef = useRef<HTMLDivElement | null>(null);
   const treatmentRef = useRef<HTMLDivElement | null>(null);
   const locationRef = useRef<HTMLDivElement | null>(null);
@@ -154,10 +168,96 @@ export const HeaderTwo = () => {
 
       <div className={styles.headerButtons}>
         <button className={styles.buttonTwo} onClick={handleMenuDropDown}>
-          Menu
+          {!user ? "Menu" : <p className={styles.firstLetter}>{firstLetter}</p>}
           {isMenuOpen ? <FaChevronUp /> : <FaAngleDown />}
         </button>
       </div>
+
+      <ul
+        // ref={menuRef}
+        className={`${styles.dropdownMenu} ${isMenuOpen ? styles.show : ""}`}
+      >
+        <button className={styles.backButton} onClick={handleMenuDropDown}>
+          <IoArrowBackOutline />
+        </button>
+        {!user ? (
+          <>
+            <li
+              onClick={() => {
+                navigate("auth");
+                setIsMenuOpen(false);
+              }}
+            >
+              <FaSignInAlt /> Log in
+            </li>
+            <li>
+              <FaDownload /> Download the app
+            </li>
+          </>
+        ) : (
+          <>
+            {location.pathname !== "/" && (
+              <li
+                onClick={() => {
+                  navigate("/");
+                  handleMenuDropDown();
+                }}
+              >
+                <IoHome /> Home
+              </li>
+            )}
+
+            <li
+              onClick={() => {
+                setActiveComponent("deets");
+                handleMenuDropDown();
+                navigate("/profile");
+              }}
+            >
+              <FaUserCircle /> Profile
+            </li>
+            <li
+              onClick={() => {
+                setActiveComponent("fav");
+                handleMenuDropDown();
+                navigate("/profile");
+              }}
+            >
+              <FaHeart /> Favourite
+            </li>
+            <li
+              onClick={() => {
+                setActiveComponent("appointment");
+                handleMenuDropDown();
+                navigate("/profile");
+              }}
+            >
+              <FaCalendarCheck /> Appointment
+            </li>
+            <li
+              onClick={() => {
+                logout();
+                setIsMenuOpen(false);
+                navigate("/");
+              }}
+            >
+              <FaSignInAlt /> Log out
+            </li>
+            <li
+              onClick={() => {
+                setActiveComponent("deleteaccount");
+                handleMenuDropDown();
+                navigate("/profile");
+              }}
+            >
+              <FaTrash /> Delete account
+            </li>
+            <li>
+              <FaDownload /> Download the app
+            </li>
+          </>
+        )}
+      </ul>
 
       <div className={styles.smallScreenHeader}>
         <div className={styles.iconContainer}>
@@ -173,16 +273,6 @@ export const HeaderTwo = () => {
           <GrMapLocation size={20} />
         </div>
       </div>
-
-      {
-        <ul
-          className={`${styles.dropdownMenu} ${isMenuOpen ? styles.show : ""}`}
-        >
-          <li>Log in</li>
-          <li>Download the app</li>
-        </ul>
-      }
-
       {
         <div
           ref={treatmentRef}

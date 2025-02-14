@@ -47,6 +47,7 @@
     margin-right: 10px; 
     scroll-snap-align: start; 
     border-radius: 10px ;
+    cursor: pointer;
     overflow: hidden;
     padding-bottom: 15px;
 }

@@ -190,8 +190,10 @@
         border-radius: 15px;
     }
     .bigFont{
-        font-size: 35px;
         font-weight: 900;
+        width: 100%;
+        text-align: left;
+        font-size: 3.9rem;
     }
     .formContainer span {
         width: 600px;
@@ -246,11 +248,11 @@
     }
 
 }
-@media(max-width:771px){
+/* @media(max-width:771px){
    .bigFont{
     font-size:1.7rem ;
    }
-}
+} */
 @media(max-width:771px){
     .container{
         text-align: center;
@@ -261,8 +263,8 @@
     }
     .bigFont{
         margin-right: 20px;
-        margin-top: 2px;
-        font-size: 2.6rem;
+        margin-top: 20px;
+        font-size: 3rem;
         text-align: start;
         font-weight: 900;
         width: 99%;

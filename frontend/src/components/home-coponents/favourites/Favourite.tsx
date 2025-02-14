@@ -2,9 +2,12 @@ import styles from "./Favourite.module.css";
 import { FaStar, FaAngleLeft, FaAngleRight } from "react-icons/fa";
 import { shopType } from "../../../contextAPi/ApiResponseContext/ApiContext";
 import { useApiContext } from "../../../contextAPi/ApiResponseContext/useApiContext";
+import { useNavigate } from "react-router-dom";
 
 export const Favourite = () => {
-  const { scroll, favouritesRef, favouritesArray } = useApiContext();
+  const { scroll, favouritesRef, favouritesArray, setActiveComponent } =
+    useApiContext();
+  const navigate = useNavigate();
 
   function getRandomInteger(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -35,7 +38,14 @@ export const Favourite = () => {
 
       <div className={styles.container} ref={favouritesRef}>
         {favouritesArray.map((shop: shopType, index: number) => (
-          <div key={index} className={styles.boxDiv}>
+          <div
+            key={index}
+            className={styles.boxDiv}
+            onClick={() => {
+              navigate("profile");
+              setActiveComponent("fav");
+            }}
+          >
             <img src={shop.images[1]} alt="" />
             <div className={styles.detailBox}>
               <h4 className={styles.shopName}>{shop.name}</h4>

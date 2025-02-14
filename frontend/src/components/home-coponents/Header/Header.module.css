@@ -18,13 +18,13 @@
 
 
 .logo {
-  font-family: "Lobster", cursive; /* Fancy, bold, and stylish */
-  font-size: 2.5rem; /* Bigger for more presence */
+  font-family: "Lobster", cursive; 
+  font-size: 2.5rem;
   font-weight: 700;
   background: linear-gradient(90deg, rgb(131, 107, 107), rgb(66, 34, 34));
   background-clip: text;
   -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; /* Gradient effect */
+  -webkit-text-fill-color: transparent;
   letter-spacing: 2px;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
@@ -32,7 +32,6 @@
   position: relative;
 }
 
-/* Thicker underline effect */
 .logo::after {
   content: "";
   position: absolute;
@@ -215,7 +214,6 @@
       justify-content: center;
   }
   .dropdownMenu li{
-    /* background-color: #4a5266; */
     width: 85%;
   }
   .backButton {

@@ -12,7 +12,7 @@ import { ImMakeGroup } from "react-icons/im";
 import { CiMedicalCross } from "react-icons/ci";
 import { CgGym } from "react-icons/cg";
 
-export const Treatment = ({
+const Treatment = ({
   handleTreatmentInput,
 }: {
   handleTreatmentInput: (value: string) => void;
@@ -112,3 +112,4 @@ export const Treatment = ({
     </div>
   );
 };
+export default Treatment;

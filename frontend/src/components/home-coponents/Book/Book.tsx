@@ -4,10 +4,10 @@ import { CiLocationOn } from "react-icons/ci";
 import { MdDateRange } from "react-icons/md";
 import { IoTimeOutline } from "react-icons/io5";
 import { IoQrCode } from "react-icons/io5";
-import { MyCalendar } from "./calendar/MyCalendar";
+import MyCalendar from "./calendar/MyCalendar";
 import { useRef, useEffect } from "react";
 import { useAppContext } from "../../../contextAPi/AppContextApi/useAppContext"; // Adjust the import path as necessary
-import { Treatment } from "./TreatmentDropDown/Treatment";
+import Treatment from "./TreatmentDropDown/Treatment";
 import { Location } from "./location/Location";
 import { Time } from "./Time-picker/Time";
 import { useNavigate } from "react-router-dom";

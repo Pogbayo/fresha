@@ -26,3 +26,4 @@ export const Time = () => {
     </LocalizationProvider>
   );
 };
+export default Time;

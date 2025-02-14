@@ -7,7 +7,7 @@ type ValuePiece = Date | null;
 
 type Value = ValuePiece | [ValuePiece, ValuePiece];
 
-export const MyCalendar = ({
+const MyCalendar = ({
   handleCalendarValueInput,
 }: {
   handleCalendarValueInput: (value: string) => void;
@@ -25,3 +25,4 @@ export const MyCalendar = ({
     </div>
   );
 };
+export default MyCalendar;

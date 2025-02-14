@@ -8,6 +8,9 @@ import { shopRoute } from './routes/shopRouter';
 import { deleteRoute } from './routes/deteteShop';
 import cookieParser from "cookie-parser";
 import { dashboardRoute } from './routes/dashboard';
+import axios from "axios"; // 
+import cron from "node-cron";
+
 import dotenv from "dotenv";
 dotenv.config();
 const app = express();
@@ -36,13 +39,21 @@ const startServer = async () => {
     app.use("/api", shopRoute);
     app.use("/api", deleteRoute);
     app.use("/api", dashboardRoute);
-
-    app.listen(PORT, () => {
-      console.log(`Server is running on http://localhost:${PORT}`);
+    
+    cron.schedule("*/1 * * * *", async () => {
+      try {
+        await axios.get(process.env.API_URL || "http://localhost:5000/");
+        console.log("✅ API pinged to keep it alive!");
+      } catch (error) {
+        console.error("❌ Error pinging API:", (error as Error).message);
+      }
     });
 
+    app.listen(PORT, () => {
+      console.log(`🚀 Server is running on http://localhost:${PORT}`);
+    });
   } catch (error) {
-    console.error("Error starting server:", error);
+    console.error("❌ Error starting server:", (error as Error).message);
   }
 };
 

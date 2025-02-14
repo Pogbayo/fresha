@@ -4,9 +4,9 @@ import { IoTimeOutline } from "react-icons/io5";
 import { MdDateRange } from "react-icons/md";
 import styles from "./HeaderFour.module.css";
 import { useAppContext } from "../../../../src/contextAPi/AppContextApi/useAppContext";
-import { MyCalendar } from "../../../components/home-coponents/Book/calendar/MyCalendar";
+import MyCalendar from "../../../components/home-coponents/Book/calendar/MyCalendar";
 import { Time } from "../../../components/home-coponents/Book/Time-picker/Time";
-import { Treatment } from "../../home-coponents/Book/TreatmentDropDown/Treatment";
+import Treatment from "../../home-coponents/Book/TreatmentDropDown/Treatment";
 import { Location } from "../../../components/home-coponents/Book/location/Location";
 import { FaAngleDown } from "react-icons/fa6";
 import { FaChevronUp } from "react-icons/fa";
@@ -212,7 +212,7 @@ export const HeaderFour = () => {
                 <li
                   onClick={() => {
                     navigate("/");
-                    handleMenuDropDown();
+                    setIsMenuOpen(false);
                   }}
                 >
                   <IoHome /> Home
@@ -221,6 +221,7 @@ export const HeaderFour = () => {
 
               <li
                 onClick={() => {
+                  setIsMenuOpen(false);
                   setActiveComponent("deets");
                 }}
               >
@@ -228,6 +229,7 @@ export const HeaderFour = () => {
               </li>
               <li
                 onClick={() => {
+                  setIsMenuOpen(false);
                   setActiveComponent("fav");
                 }}
               >
@@ -236,6 +238,7 @@ export const HeaderFour = () => {
 
               <li
                 onClick={() => {
+                  setIsMenuOpen(false);
                   setActiveComponent("appointment");
                 }}
               >
@@ -243,14 +246,15 @@ export const HeaderFour = () => {
               </li>
               <li
                 onClick={() => {
-                  logout();
                   setIsMenuOpen(false);
+                  logout();
                 }}
               >
                 <FaSignInAlt /> Log out
               </li>
               <li
                 onClick={() => {
+                  setIsMenuOpen(false);
                   setActiveComponent("deleteaccount");
                 }}
               >

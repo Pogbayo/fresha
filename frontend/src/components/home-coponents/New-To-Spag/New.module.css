@@ -96,7 +96,11 @@
   font-size: small;
   font-weight: 100;
 }
-
+.rating{
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgb(34, 33, 33);
+}
 @media(max-width:1128px){
   .boxDiv{
       flex: 0 0 250px; 

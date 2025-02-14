@@ -203,23 +203,47 @@ export const HeaderThree = ({ shop }: { shop: shopType }) => {
             </>
           ) : (
             <>
-              <li onClick={() => setActiveComponent("deets")}>
+              <li
+                onClick={() => {
+                  setActiveComponent("deets");
+                  handleMenuDropDown();
+                  navigate("/profile");
+                }}
+              >
                 <FaUserCircle /> Profile
               </li>
-              <li onClick={() => setActiveComponent("fav")}>
+              <li
+                onClick={() => {
+                  setActiveComponent("fav");
+                  handleMenuDropDown();
+                  navigate("/profile");
+                }}
+              >
                 <FaHeart /> Favourite
               </li>
-              <li onClick={() => setActiveComponent("appointment")}>
+              <li
+                onClick={() => {
+                  setActiveComponent("appointment");
+                  handleMenuDropDown();
+                  navigate("/profile");
+                }}
+              >
                 <FaCalendarCheck /> Appointment
               </li>
               <li onClick={() => logout()}>
                 <FaSignInAlt /> Log out
               </li>
-              <li onClick={() => setActiveComponent("deleteaccount")}>
-                <FaTrash /> Delete account
-              </li>
               <li>
                 <FaDownload /> Download the app
+              </li>
+              <li
+                onClick={() => {
+                  setActiveComponent("deleteaccount");
+                  handleMenuDropDown();
+                  navigate("/profile");
+                }}
+              >
+                <FaTrash /> Delete Account
               </li>
             </>
           )}

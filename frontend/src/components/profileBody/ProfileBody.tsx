@@ -1,19 +1,35 @@
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../../contextAPi/Auth/useAuthContext";
+// import { useAuth } from "../../contextAPi/Auth/useAuthContext";
 import { Header } from "../home-coponents/Header/Header";
 import { BodyTwo } from "./body2/BodyTwo";
 import { HeaderFour } from "./HeaderFour/HeaderFour";
 import styles from "./ProfileBody.module.css";
 import { Sidebar } from "./sidebar/Sidebar";
 import { useEffect } from "react";
+import { jwtDecode } from "jwt-decode";
+import { DecodedUserType } from "../../contextAPi/Auth/AuthContext";
 export const ProfileBody = () => {
-  const { user } = useAuth();
   const navigate = useNavigate();
   useEffect(() => {
-    if (!user) {
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      navigate("/auth");
+      return;
+    }
+
+    try {
+      const decodedUser: DecodedUserType = jwtDecode(token);
+      if (decodedUser.exp * 1000 < Date.now()) {
+        localStorage.removeItem("token");
+        navigate("/auth");
+      }
+    } catch (error) {
+      console.log(error);
+      localStorage.removeItem("token");
       navigate("/auth");
     }
-  });
+  }, [navigate]);
 
   return (
     <div className={styles.container}>

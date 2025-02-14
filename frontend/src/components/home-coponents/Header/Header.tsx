@@ -13,19 +13,35 @@ import { IoMdMenu } from "react-icons/io";
 import { useAppContext } from "../../../contextAPi/AppContextApi/useAppContext";
 import { useAuth } from "../../../contextAPi/Auth/useAuthContext";
 import { IoArrowBackOutline } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useApiContext } from "../../../contextAPi/ApiResponseContext/useApiContext";
+import { IoHome } from "react-icons/io5";
+import { useEffect, useRef } from "react";
 
 export const Header = () => {
-  const { handleMenuDropDown, isMenuOpen } = useAppContext();
+  const { handleMenuDropDown, isMenuOpen, setIsMenuOpen } = useAppContext();
   const { user, logout } = useAuth();
   const firstLetter = user?.firstname?.charAt(0) || "";
   const navigate = useNavigate();
   const { setActiveComponent } = useApiContext();
-
+  const location = useLocation();
+  const menuRef = useRef<HTMLUListElement | null>(null);
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  });
   return (
     <div className={styles.container}>
-      <h3 className={styles.logo}>Spag </h3>
+      <h3 className={styles.logo} onClick={() => navigate("/")}>
+        Spag{" "}
+      </h3>
       <div className={styles.headerButtons}>
         <button className={styles.buttonOne}>For business</button>
         <button className={styles.buttonTwo} onClick={handleMenuDropDown}>
@@ -39,7 +55,10 @@ export const Header = () => {
         />
       </div>
 
-      <ul className={`${styles.dropdownMenu} ${isMenuOpen ? styles.show : ""}`}>
+      <ul
+        ref={menuRef}
+        className={`${styles.dropdownMenu} ${isMenuOpen ? styles.show : ""}`}
+      >
         <button className={styles.backButton} onClick={handleMenuDropDown}>
           <IoArrowBackOutline />
         </button>
@@ -54,19 +73,54 @@ export const Header = () => {
           </>
         ) : (
           <>
-            <li onClick={() => setActiveComponent("deets")}>
+            {location.pathname !== "/" && (
+              <li
+                onClick={() => {
+                  navigate("/");
+                  handleMenuDropDown();
+                }}
+              >
+                <IoHome /> Home
+              </li>
+            )}
+
+            <li
+              onClick={() => {
+                setActiveComponent("deets");
+                handleMenuDropDown();
+                navigate("/profile");
+              }}
+            >
               <FaUserCircle /> Profile
             </li>
-            <li onClick={() => setActiveComponent("fav")}>
+            <li
+              onClick={() => {
+                setActiveComponent("fav");
+                handleMenuDropDown();
+                navigate("/profile");
+              }}
+            >
               <FaHeart /> Favourite
             </li>
-            <li onClick={() => setActiveComponent("appointment")}>
+            <li
+              onClick={() => {
+                setActiveComponent("appointment");
+                handleMenuDropDown();
+                navigate("/profile");
+              }}
+            >
               <FaCalendarCheck /> Appointment
             </li>
             <li onClick={() => logout()}>
               <FaSignInAlt /> Log out
             </li>
-            <li onClick={() => setActiveComponent("deleteaccount")}>
+            <li
+              onClick={() => {
+                setActiveComponent("deleteaccount");
+                handleMenuDropDown();
+                navigate("/profile");
+              }}
+            >
               <FaTrash /> Delete account
             </li>
             <li>

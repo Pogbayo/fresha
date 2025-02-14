@@ -60,8 +60,7 @@ export const Auth = () => {
             withCredentials: true,
           }
         );
-        console.log(response.data);
-
+        console.log(typeof response);
         setFormData({ firstname: "", lastname: "", email: "", password: "" });
         setPhone("");
         setErrors({});
@@ -89,7 +88,6 @@ export const Auth = () => {
 
   const handleSignIn = async () => {
     if (!validateForm()) return;
-    console.log("Sending data:", formData);
 
     setLoading(true);
     try {
@@ -102,8 +100,6 @@ export const Auth = () => {
         }
       );
 
-      console.log("Login Response:", response.data);
-
       if (response.status === 200) {
         const token = response.data.token;
         if (token) {
@@ -111,10 +107,8 @@ export const Auth = () => {
           console.log("This is my token ohhhhh", token);
 
           const decodedUser = jwtDecode<DecodedUserType>(token);
-          console.log("This is the decodedUser:", decodedUser);
 
           setUser(decodedUser);
-          console.log("This is the decodedUser ohhhhhhhhhh", decodedUser);
         } else {
           console.error("No token received");
         }

@@ -23,6 +23,7 @@ export interface AppContextType {
   handleTimeDropDown: () => void;
   setIsTime: (value: boolean | ((prev: boolean) => boolean)) => void;
   setLocationInputValue: (value: string) => void;
+  setIsMenuOpen: (value: boolean | ((prev: boolean) => boolean)) => void;
 }
 
 interface AppProviderProps {
@@ -97,6 +98,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
         isTime,
         setIsTime,
         handleTimeDropDown,
+        setIsMenuOpen,
       }}
     >
       {children}

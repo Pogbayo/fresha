@@ -139,10 +139,10 @@
 .subServices button{
     text-align: start;
     border: none;
-    color: rgb(238, 51, 238);
+    color: rgb(240, 99, 240);
     margin: 0;
     width: 80px;
-    background-color: white;
+    background-color: whitesmoke;
     cursor: pointer;
     margin-bottom: 30px;
 }

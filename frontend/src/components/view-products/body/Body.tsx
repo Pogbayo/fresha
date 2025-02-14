@@ -32,6 +32,7 @@ export const Body = () => {
   function generateRandomNumber(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
+
   useEffect(() => {
     setTimeout(() => {
       setShowMap(true);
@@ -53,68 +54,73 @@ export const Body = () => {
                 Filter
               </button>
             </div>
-            {allShops.map((shop: shopType, index) => (
-              <div className={styles.shop} key={index}>
-                <img
-                  src={shop.images[0]}
-                  alt={shop.name}
-                  className={styles.shopImage}
-                />
-                <div className={styles.serviceDetails}>
-                  <h3 className={styles.serviceName}>{shop.name}</h3>
-                  <p className={styles.ratingContainer}>
-                    {generateRandomDecimal()} ·{" "}
-                    <small style={{ marginRight: 1, marginTop: 5 }}>
-                      <IoMdStar />
-                      <IoMdStar />
-                      <IoMdStar />
-                      <IoMdStar />
-                      <IoMdStar />
-                    </small>
-                    <span style={{ marginLeft: 4, fontWeight: 700 }}>
-                      ({generateRandomNumber(1, 600)})
-                    </span>
-                  </p>
-                  <div className={styles.address}>
-                    {Array.isArray(shop.address)
-                      ? shop.address.map((item, index) => (
-                          <span key={index} style={{ display: "flex", gap: 5 }}>
-                            <p style={{ margin: 0 }}>{item.city},</p>
-                            <p style={{ margin: 0 }}>{item.country}</p>
+            {allShops
+              .sort(() => Math.random() - 0.5)
+              .map((shop: shopType, index) => (
+                <div className={styles.shop} key={index}>
+                  <img
+                    src={shop.images[0]}
+                    alt={shop.name}
+                    className={styles.shopImage}
+                  />
+                  <div className={styles.serviceDetails}>
+                    <h3 className={styles.serviceName}>{shop.name}</h3>
+                    <p className={styles.ratingContainer}>
+                      {generateRandomDecimal()} ·{" "}
+                      <small style={{ marginRight: 1, marginTop: 5 }}>
+                        <IoMdStar />
+                        <IoMdStar />
+                        <IoMdStar />
+                        <IoMdStar />
+                        <IoMdStar />
+                      </small>
+                      <span style={{ marginLeft: 4, fontWeight: 700 }}>
+                        ({generateRandomNumber(1, 600)})
+                      </span>
+                    </p>
+                    <div className={styles.address}>
+                      {Array.isArray(shop.address)
+                        ? shop.address.map((item, index) => (
+                            <span
+                              key={index}
+                              style={{ display: "flex", gap: 5 }}
+                            >
+                              <p style={{ margin: 0 }}>{item.city},</p>
+                              <p style={{ margin: 0 }}>{item.country}</p>
+                            </span>
+                          ))
+                        : shop.address}
+                    </div>
+                  </div>
+                  <div className={styles.subServices}>
+                    {shop.services[0].subServices
+                      .slice(0, 3)
+                      .map((item: subServiceType, index) => (
+                        <div className={styles.nameAndPrice} key={index}>
+                          <span className={styles.span}>
+                            <p className={styles.subServiceName}>{item.name}</p>
+                            <p className={styles.subServicePrice}>
+                              <TbCurrencyNaira />
+                              {item.price === 2
+                                ? `${item.price}000`
+                                : `${item.price},000`}
+                            </p>
                           </span>
-                        ))
-                      : shop.address}
+                          <p className={styles.subServiceDuration}>
+                            {item.duration}
+                          </p>
+                        </div>
+                      ))}
+                    <button
+                      onClick={() => {
+                        handleDisplayClick(shop);
+                      }}
+                    >
+                      See more
+                    </button>
                   </div>
                 </div>
-                <div className={styles.subServices}>
-                  {shop.services[0].subServices
-                    .slice(0, 3)
-                    .map((item: subServiceType, index) => (
-                      <div className={styles.nameAndPrice} key={index}>
-                        <span className={styles.span}>
-                          <p className={styles.subServiceName}>{item.name}</p>
-                          <p className={styles.subServicePrice}>
-                            <TbCurrencyNaira />
-                            {item.price === 2
-                              ? `${item.price}000`
-                              : `${item.price},000`}
-                          </p>
-                        </span>
-                        <p className={styles.subServiceDuration}>
-                          {item.duration}
-                        </p>
-                      </div>
-                    ))}
-                  <button
-                    onClick={() => {
-                      handleDisplayClick(shop);
-                    }}
-                  >
-                    See more
-                  </button>
-                </div>
-              </div>
-            ))}
+              ))}
           </>
         ) : (
           <div className={styles.loaderContainer}>

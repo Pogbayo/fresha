@@ -31,6 +31,7 @@ export const Book = () => {
     treatmentInputValue,
     setTreatmentInputValue,
     locationInputValue,
+
     setLocationInputValue,
   } = useAppContext();
   const calendarRef = useRef<HTMLDivElement | null>(null);

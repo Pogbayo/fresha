@@ -10,7 +10,7 @@ import { Treatment } from "../../home-coponents/Book/TreatmentDropDown/Treatment
 import { Location } from "../../../components/home-coponents/Book/location/Location";
 import { FaAngleDown } from "react-icons/fa6";
 import { FaChevronUp } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   FaUserCircle,
   FaHeart,
@@ -22,7 +22,7 @@ import {
 import { IoArrowBackOutline } from "react-icons/io5";
 import { useAuth } from "../../../contextAPi/Auth/useAuthContext";
 import { useApiContext } from "../../../contextAPi/ApiResponseContext/useApiContext";
-
+import { IoHome } from "react-icons/io5";
 export const HeaderFour = () => {
   const {
     handleCurrentLocationDropDown,
@@ -37,6 +37,7 @@ export const HeaderFour = () => {
     isTime,
     setIsTime,
     isMenuOpen,
+    setIsMenuOpen,
     isCalendarOpen,
     isTreatmentsOpen,
     setIsCalendarOpen,
@@ -46,6 +47,7 @@ export const HeaderFour = () => {
     calendarInputValue,
     locationInputValue,
   } = useAppContext();
+  const location = useLocation();
   const { user, logout } = useAuth();
   const firstLetter = user?.firstname.charAt(0);
   const { setActiveComponent } = useApiContext();
@@ -53,6 +55,7 @@ export const HeaderFour = () => {
   const treatmentRef = useRef<HTMLDivElement | null>(null);
   const locationRef = useRef<HTMLDivElement | null>(null);
   const timeRef = useRef<HTMLDivElement | null>(null);
+  const menuRef = useRef<HTMLDivElement | null>(null);
   const navigate = useNavigate();
   const handleTreatmentInput = (value: string) => {
     setTreatmentInputValue(value);
@@ -66,7 +69,6 @@ export const HeaderFour = () => {
     setCalendarInputValue(value);
   };
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
-  // console.log(typeof screenWidth);
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
@@ -75,6 +77,9 @@ export const HeaderFour = () => {
     window.addEventListener("resize", handleResize);
 
     const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
       if (
         calendarRef.current &&
         !calendarRef.current.contains(event.target as Node)
@@ -105,7 +110,22 @@ export const HeaderFour = () => {
 
       window.removeEventListener("resize", handleResize);
     };
-  }, [setIsCalendarOpen, setIsTreatmentsOpen, setIsTime, setIsCurrentLocation]);
+  }, [
+    setIsCalendarOpen,
+    setIsTreatmentsOpen,
+    setIsTime,
+    setIsCurrentLocation,
+    handleMenuDropDown,
+    setIsMenuOpen,
+  ]);
+  useEffect(() => {
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     <div className={styles.container}>
@@ -165,26 +185,6 @@ export const HeaderFour = () => {
           {isMenuOpen ? <FaChevronUp /> : <FaAngleDown />}
         </button>
       </div>
-      {/* 
-      <div className={styles.smallScreenHeader}>
-        <p
-          className={styles.first}
-          style={{ cursor: "pointer" }}
-          onClick={() => navigate("/")}
-        >
-          Home ·
-        </p>
-        <p
-          className={styles.second}
-          style={{ cursor: "pointer" }}
-          onClick={() => navigate("/secondary")}
-        >
-          Hair salons ·
-        </p>
-        <p className={styles.third}>Lagos ·</p>
-        <p className={styles.fourth}>TasalaHQ Hair and Beauty</p>
-      </div> */}
-
       {
         <ul
           className={`${styles.dropdownMenu} ${isMenuOpen ? styles.show : ""}`}
@@ -203,19 +203,47 @@ export const HeaderFour = () => {
             </>
           ) : (
             <>
-              <li onClick={() => setActiveComponent("deets")}>
+              {location.pathname === "profile" && (
+                <li
+                  onClick={() => {
+                    navigate("/");
+                    handleMenuDropDown();
+                  }}
+                >
+                  <IoHome /> Home
+                </li>
+              )}
+
+              <li
+                onClick={() => {
+                  setActiveComponent("deets");
+                }}
+              >
                 <FaUserCircle /> Profile
               </li>
-              <li onClick={() => setActiveComponent("fav")}>
+              <li
+                onClick={() => {
+                  setActiveComponent("fav");
+                }}
+              >
                 <FaHeart /> Favourite
               </li>
-              <li onClick={() => setActiveComponent("appointment")}>
+
+              <li
+                onClick={() => {
+                  setActiveComponent("appointment");
+                }}
+              >
                 <FaCalendarCheck /> Appointment
               </li>
               <li onClick={() => logout()}>
                 <FaSignInAlt /> Log out
               </li>
-              <li onClick={() => setActiveComponent("deleteaccount")}>
+              <li
+                onClick={() => {
+                  setActiveComponent("deleteaccount");
+                }}
+              >
                 <FaTrash /> Delete account
               </li>
               <li>

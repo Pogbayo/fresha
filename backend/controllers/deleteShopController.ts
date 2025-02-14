@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { Category } from "../models/CategorySchema"; 
-import { Shop } from "../models/CategorySchema";
+import { Category } from "../models/CategorySchema.js"; 
+import { Shop } from "../models/CategorySchema.js";
 
 export const deleteShop = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   const { categoryId, shopId } = req.params;

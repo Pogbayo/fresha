@@ -1,15 +1,19 @@
 import express from 'express';
-import { userRoutes } from './routes/userRoutes';
-import { connectDB } from './db';
-import { categoryRoute } from './routes/categoryRoute';
-import { reviewRoute } from './routes/reviewRoute';
+import { userRoutes } from './routes/userRoutes.js'; 
+import { connectDB } from './db.js'; 
+import { reviewRoute } from './routes/reviewRoute.js'; 
 import cors from 'cors';
-import { shopRoute } from './routes/shopRouter';
-import { deleteRoute } from './routes/deteteShop';
+import { shopRoute } from './routes/shopRouter.js'; 
+import { deleteRoute } from './routes/deteteShop.js'; 
 import cookieParser from "cookie-parser";
-import { dashboardRoute } from './routes/dashboard';
-import axios from "axios"; // 
+import { dashboardRoute } from './routes/dashboard.js'; 
+import axios from "axios";  
+import categoryRoute from "./routes/categoryRoute.js"; // ✅ Default Import
+
 import cron from "node-cron";
+
+dotenv.config();
+
 
 import dotenv from "dotenv";
 dotenv.config();

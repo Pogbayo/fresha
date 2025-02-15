@@ -6,4 +6,4 @@ const router = express.Router();
 
 router.delete("/categories/:categoryId/shop/:shopId", deleteShop);
 
-export { router as deleteRoute };
+export { router as deleteShopRoute };

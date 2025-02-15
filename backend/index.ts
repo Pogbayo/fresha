@@ -1,10 +1,10 @@
 import express from 'express';
-import { userRoute } from './routes/userRoutes.js'; 
+import { userRoute } from './routes/userRoute.js'; 
 import { connectDB } from './db.js'; 
 import { reviewRoute } from './routes/reviewRoute.js'; 
 import cors from 'cors';
 import { shopRoute } from './routes/shopRoute.js'; 
-import { deleteRoute } from './routes/deteteShopRoute.js'; 
+import { deleteShopRoute } from './routes/deteteShopRoute.js'; 
 import cookieParser from "cookie-parser";
 import { dashboardRoute } from './routes/dashboardRoute.js'; 
 import axios from "axios";  
@@ -39,7 +39,7 @@ const startServer = async () => {
     app.use("/api", categoryRoute);
     app.use("/api", reviewRoute);
     app.use("/api", shopRoute);
-    app.use("/api", deleteRoute);
+    app.use("/api", deleteShopRoute);
     app.use("/api", dashboardRoute);
     
     cron.schedule("*/1 * * * *", async () => {

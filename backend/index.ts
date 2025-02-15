@@ -8,8 +8,7 @@ import { deleteRoute } from './routes/deteteShop.js';
 import cookieParser from "cookie-parser";
 import { dashboardRoute } from './routes/dashboard.js'; 
 import axios from "axios";  
-import categoryRoute from "./routes/categoryRoute.js"; // ✅ Default Import
-
+import categoryRoute from "./routes/categoryRoute.js"; 
 import cron from "node-cron";
 
 dotenv.config();

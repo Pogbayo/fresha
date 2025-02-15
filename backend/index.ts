@@ -8,14 +8,11 @@ import { deleteRoute } from './routes/deteteShop.js';
 import cookieParser from "cookie-parser";
 import { dashboardRoute } from './routes/dashboard.js'; 
 import axios from "axios";  
-import categoryRoute from "./routes/categoryRoute.js"; 
+import {categoryRoute} from './routes/categoryRoute.js'; 
 import cron from "node-cron";
 import debug from 'debug';
-
-dotenv.config();
-
-
 import dotenv from "dotenv";
+
 dotenv.config();
 const app = express();
 app.use(cookieParser()); 

@@ -8,4 +8,4 @@ router.post("/categories", createCategory);
 router.delete("/categories/:categoryId", deleteCategory);
 router.post("/categories/addShop-to-category", addShopToCategory);
 
-export default router; // 
+export default router; 

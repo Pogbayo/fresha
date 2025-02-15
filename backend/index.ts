@@ -1,12 +1,12 @@
 import express from 'express';
-import { userRoutes } from './routes/userRoutes.js'; 
+import { userRoute } from './routes/userRoutes.js'; 
 import { connectDB } from './db.js'; 
 import { reviewRoute } from './routes/reviewRoute.js'; 
 import cors from 'cors';
-import { shopRoute } from './routes/shopRouter.js'; 
-import { deleteRoute } from './routes/deteteShop.js'; 
+import { shopRoute } from './routes/shopRoute.js'; 
+import { deleteRoute } from './routes/deteteShopRoute.js'; 
 import cookieParser from "cookie-parser";
-import { dashboardRoute } from './routes/dashboard.js'; 
+import { dashboardRoute } from './routes/dashboardRoute.js'; 
 import axios from "axios";  
 import {categoryRoute} from './routes/categoryRoute.js'; 
 import cron from "node-cron";
@@ -35,7 +35,7 @@ const startServer = async () => {
     }));
 
     app.use(express.json());
-    app.use("/api", userRoutes);
+    app.use("/api", userRoute);
     app.use("/api", categoryRoute);
     app.use("/api", reviewRoute);
     app.use("/api", shopRoute);

@@ -15,4 +15,4 @@ router.post("/users/login", login);
 router.delete("/users", deleteAccount);
 router.post("/users/logout", logout);
 
-export { router as userRoutes };
+export { router as userRoute };

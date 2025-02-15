@@ -6,6 +6,6 @@ const router = express.Router();
 router.post("/shops", createShop);  
 router.put("/shops/:shopId",updateImgUrl);
 router.get("/shops/:shopId",getShop);
-router.put("/shops/update-address/:shopId",updateAddress);
+router.put("/shops/:shopId/update-address", updateAddress);
 
 export { router as shopRoute };

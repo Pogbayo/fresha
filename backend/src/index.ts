@@ -1,10 +1,10 @@
 import express from 'express';
-import { userRoute } from '@src/routes/userRoute'; 
-import { reviewRoute } from '@src/routes/reviewRoute'; 
-import { shopRoute } from '@src/routes/shopRoute'; 
-import { deleteShopRoute } from '@src/routes/deteteShopRoute';  // ✅ Fixed typo
-import { dashboardRoute } from '@src/routes/dashboardRoute'; 
-import {categoryRoute} from '@src/routes/categoryRoute'; 
+import { userRoute } from './routes/userRoute'; 
+import { reviewRoute } from './routes/reviewRoute'; 
+import { shopRoute } from './routes/shopRoute'; 
+import { deleteShopRoute } from './routes/deteteShopRoute';  // ✅ Fixed typo
+import { dashboardRoute } from './routes/dashboardRoute'; 
+import {categoryRoute} from './routes/categoryRoute'; 
 import axios from "axios";  
 import cors from 'cors';
 import cookieParser from "cookie-parser";

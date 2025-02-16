@@ -1,6 +1,6 @@
 // 679c040f902673ace6f23d7f
 import express from "express";
-import { deleteShop } from "../controllers/deleteShopController.js";
+import { deleteShop } from "../../src/controllers/deleteShopController";
 
 const router = express.Router();
 

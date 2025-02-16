@@ -1,5 +1,5 @@
 import {NextFunction, Request, Response} from "express";
-import { Review } from "../models/Review.js";
+import { Review } from "../models/Review";
 
 
 export const getReviews = async(req:Request, res:Response, next:NextFunction) : Promise<void> => {

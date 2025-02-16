@@ -5,7 +5,7 @@ import {
   login, 
   logout, 
   register 
-} from "../../backend/src/controllers/userController";  
+} from "../../src/controllers/userController";  
 
 const router = express.Router();
 

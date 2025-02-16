@@ -1,15 +1,37 @@
+// {
+//   "compilerOptions": {
+//     "module": "NodeNext",                
+//     "moduleResolution": "NodeNext",     
+//     "target": "ESNext",
+//     "outDir": "./dist",
+//     "rootDir": "./",
+//     "strict": true,
+//     "esModuleInterop": true,             
+//     "forceConsistentCasingInFileNames": true,
+//     "skipLibCheck": true
+//   },
+//   "include": ["index.ts", "*.ts", "routes/**/*.ts", "controllers/**/*.ts", "models/**/*.ts", "db.ts"],
+//   "exclude": ["node_modules", "dist"]
+// }
+
+
 {
   "compilerOptions": {
-    "module": "NodeNext",                
-    "moduleResolution": "NodeNext",     
-    "target": "ESNext",
-    "outDir": "./dist",
-    "rootDir": "./",
+    "target": "ES6",
+    "module": "commonjs",
     "strict": true,
-    "esModuleInterop": true,             
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "typeRoots": ["node_modules/@types"],
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".", // Set base URL to the root of your project
+    "paths": {
+      "@models/*": ["src/models/*"], // Alias for models folder
+      "@src/*": ["src/*"] // Alias for src folder (optional, but useful)
+    }
   },
-  "include": ["index.ts", "*.ts", "routes/**/*.ts", "controllers/**/*.ts", "models/**/*.ts", "db.ts"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }

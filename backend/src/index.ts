@@ -1,22 +1,23 @@
 import express from 'express';
-import { userRoute } from './src/routes/userRoute'; 
-import { reviewRoute } from './src/routes/reviewRoute'; 
-import { shopRoute } from './src/routes/shopRoute'; 
-import { deleteShopRoute } from './src/routes/deteteShopRoute'; 
-import { dashboardRoute } from './src/routes/dashboardRoute'; 
-import {categoryRoute} from './src/routes/categoryRoute'; 
+import { userRoute } from './routes/userRoute'; 
+import { reviewRoute } from './routes/reviewRoute'; 
+import { shopRoute } from './routes/shopRoute'; 
+import { deleteShopRoute } from '@src/routes/deteteShopRoute';  // ✅ Fixed typo
+import { dashboardRoute } from './routes/dashboardRoute'; 
+import {categoryRoute} from './routes/categoryRoute'; 
 import axios from "axios";  
 import cors from 'cors';
 import cookieParser from "cookie-parser";
-import { connectDB } from './db.js'; 
+import { connectDB } from './db'; 
 import cron from "node-cron";
 import debug from 'debug';
 import dotenv from "dotenv";
 
 dotenv.config();
+
 const app = express();
-app.use(cookieParser()); 
 const log = debug('app');
+app.use(cookieParser()); 
 
 const PORT = 5000;
 
@@ -30,7 +31,7 @@ const startServer = async () => {
 
     app.use(cors({
       origin: 'http://localhost:5173',
-      methods: 'GET, POS, DELETE',
+      methods: 'GET, POST, DELETE',
       credentials: true,
     }));
 

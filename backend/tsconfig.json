@@ -14,7 +14,6 @@
 //   "exclude": ["node_modules", "dist"]
 // }
 
-
 {
   "compilerOptions": {
     "target": "ES6",
@@ -26,10 +25,12 @@
     "rootDir": "./src",
     "typeRoots": ["node_modules/@types"],
     "allowSyntheticDefaultImports": true,
-    "baseUrl": ".", // Set base URL to the root of your project
+    "baseUrl": "src",
     "paths": {
-      "@models/*": ["src/models/*"], // Alias for models folder
-      "@src/*": ["src/*"] // Alias for src folder (optional, but useful)
+      "@models/*": ["models/*"],
+      "@controllers/*": ["controllers/*"],
+      "@utils/*": ["utils/*"],
+      "@src/*": ["*"]
     }
   },
   "include": ["src/**/*"],

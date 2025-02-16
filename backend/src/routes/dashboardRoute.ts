@@ -1,5 +1,5 @@
 import express from "express";
-import { dashboard } from "../../src/controllers/dashboardController";
+import { dashboard } from "@controllers/dashboardController";
 
 const router = express.Router();
 

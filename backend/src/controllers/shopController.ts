@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import { Shop } from "../models/CategorySchema"; 
 import {Category} from "../models/CategorySchema"; 
+
 export const createShop = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     const {categoryId, name, address, services,images, team, reviews, about, openingTimes } = req.body;
   

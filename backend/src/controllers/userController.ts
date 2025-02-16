@@ -15,8 +15,6 @@ export const getUsers = async (req: Request, res: Response, next: NextFunction):
    
 };
 
-
-
 export const register = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     const {firstname,lastname,email,password,phone} = req.body;
     try {

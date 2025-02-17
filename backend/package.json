@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "ts-node -r tsconfig-paths/register src/index.ts",
     "build": "tsc",
-    "start": "node -r tsconfig-paths/register dist/index.js"
+    "start": "npm start"
   },
   "keywords": [],
   "author": "",

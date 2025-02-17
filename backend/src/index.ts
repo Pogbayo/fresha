@@ -19,7 +19,7 @@ const app = express();
 const log = debug('app');
 app.use(cookieParser()); 
 
-const PORT = 5000;
+const PORT = process.env.port || 5000
 
 const startServer = async () => {
   try {

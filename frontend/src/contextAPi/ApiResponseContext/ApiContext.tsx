@@ -201,7 +201,7 @@ export const ApiProvider: React.FC<ApiProviderProps> = ({ children }) => {
     const fetchedData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/categories"
+          "https://fresha-1.onrender.com/api/categories"
         );
         setCategoryArray(response.data.categories);
         console.log(categoryArray);

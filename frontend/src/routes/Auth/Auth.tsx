@@ -53,7 +53,7 @@ export const Auth = () => {
       try {
         const userData = { ...formData, phone };
         const response = await axios.post(
-          "http://localhost:5000/api/users",
+          "hhttps://fresha-1.onrender.com/api/categories/api/users",
           userData,
           {
             headers: { "Content-Type": "application/json" },
@@ -88,59 +88,62 @@ export const Auth = () => {
 
   const handleSignIn = async () => {
     if (!validateForm()) return;
-
     setLoading(true);
-    try {
-      const response = await axios.post(
-        "http://localhost:5000/api/users/login",
-        { email: formData.email, password: formData.password },
-        {
-          headers: { "Content-Type": "application/json" },
-          withCredentials: true,
+    setTimeout(async () => {
+      try {
+        const response = await axios.post(
+          "https://fresha-1.onrender.com/api/categories/api/users/login",
+          { email: formData.email, password: formData.password },
+          {
+            headers: { "Content-Type": "application/json" },
+            withCredentials: true,
+          }
+        );
+
+        if (response.status === 200) {
+          const token = response.data.token;
+          if (token) {
+            localStorage.setItem("token", token);
+            console.log("This is my token ohhhhh", token);
+
+            const decodedUser = jwtDecode<DecodedUserType>(token);
+
+            setUser(decodedUser);
+          } else {
+            console.error("No token received");
+          }
+
+          setFormData({ firstname: "", lastname: "", email: "", password: "" });
+          setErrors({});
+
+          setSuccessMessage("Login successful");
+          setSuccessful(true);
+
+          setTimeout(() => {
+            navigate("/profile");
+            setSuccessful(false);
+            setSuccessMessage("");
+          }, 3500);
         }
-      );
-
-      if (response.status === 200) {
-        const token = response.data.token;
-        if (token) {
-          localStorage.setItem("token", token);
-          console.log("This is my token ohhhhh", token);
-
-          const decodedUser = jwtDecode<DecodedUserType>(token);
-
-          setUser(decodedUser);
+      } catch (error: unknown) {
+        console.error("Login Error:", error);
+        if (
+          axios.isAxiosError(error) &&
+          error.response &&
+          error.response.data.message
+        ) {
+          setErrors({ general: error.response.data.message });
         } else {
-          console.error("No token received");
+          setErrors({
+            general: "Invalid email or password. Please try again.",
+          });
         }
-
-        setFormData({ firstname: "", lastname: "", email: "", password: "" });
-        setErrors({});
-
-        setSuccessMessage("Login successful");
-        setSuccessful(true);
-
+      } finally {
         setTimeout(() => {
-          setSuccessful(false);
-          setSuccessMessage("");
-          navigate("/profile");
-        }, 2000);
+          setLoading(false);
+        }, 4000);
       }
-    } catch (error: unknown) {
-      console.error("Login Error:", error);
-      if (
-        axios.isAxiosError(error) &&
-        error.response &&
-        error.response.data.message
-      ) {
-        setErrors({ general: error.response.data.message });
-      } else {
-        setErrors({
-          general: "Invalid email or password. Please try again.",
-        });
-      }
-    } finally {
-      setLoading(false);
-    }
+    }, 4000);
   };
   return (
     <div className={styles.container}>

@@ -53,7 +53,7 @@ export const Auth = () => {
       try {
         const userData = { ...formData, phone };
         const response = await axios.post(
-          "hhttps://fresha-1.onrender.com/api/categories/api/users",
+          "https://fresha-1.onrender.com/api/users",
           userData,
           {
             headers: { "Content-Type": "application/json" },
@@ -89,61 +89,61 @@ export const Auth = () => {
   const handleSignIn = async () => {
     if (!validateForm()) return;
     setLoading(true);
-    setTimeout(async () => {
-      try {
-        const response = await axios.post(
-          "https://fresha-1.onrender.com/api/categories/api/users/login",
-          { email: formData.email, password: formData.password },
-          {
-            headers: { "Content-Type": "application/json" },
-            withCredentials: true,
-          }
-        );
 
-        if (response.status === 200) {
-          const token = response.data.token;
-          if (token) {
-            localStorage.setItem("token", token);
-            console.log("This is my token ohhhhh", token);
-
-            const decodedUser = jwtDecode<DecodedUserType>(token);
-
-            setUser(decodedUser);
-          } else {
-            console.error("No token received");
-          }
-
-          setFormData({ firstname: "", lastname: "", email: "", password: "" });
-          setErrors({});
-
-          setSuccessMessage("Login successful");
-          setSuccessful(true);
-
-          setTimeout(() => {
-            navigate("/profile");
-            setSuccessful(false);
-            setSuccessMessage("");
-          }, 3500);
-        }
-      } catch (error: unknown) {
-        console.error("Login Error:", error);
-        if (
-          axios.isAxiosError(error) &&
-          error.response &&
-          error.response.data.message
-        ) {
-          setErrors({ general: error.response.data.message });
-        } else {
-          setErrors({
-            general: "Invalid email or password. Please try again.",
-          });
-        }
-      } finally {
-        setTimeout(() => {
-          setLoading(false);
-        }, 4000);
-      }
+    setTimeout(() => {
+      setLoading(false);
     }, 4000);
+    try {
+      const response = await axios.post(
+        "https://fresha-1.onrender.com/api/users/login",
+        { email: formData.email, password: formData.password },
+        {
+          headers: { "Content-Type": "application/json" },
+          withCredentials: true,
+        }
+      );
+
+      if (response.status === 200) {
+        const token = response.data.token;
+        if (token) {
+          localStorage.setItem("token", token);
+          // console.log("This is my token ohhhhh", token);
+
+          const decodedUser = jwtDecode<DecodedUserType>(token);
+
+          setUser(decodedUser);
+        } else {
+          console.error("No token received");
+        }
+
+        setFormData({ firstname: "", lastname: "", email: "", password: "" });
+        setErrors({});
+
+        setSuccessMessage("Login successful");
+        setSuccessful(true);
+
+        setTimeout(() => {
+          navigate("/profile");
+          setSuccessful(false);
+          setSuccessMessage("");
+        }, 3500);
+      }
+    } catch (error: unknown) {
+      console.error("Login Error:", error);
+      if (
+        axios.isAxiosError(error) &&
+        error.response &&
+        error.response.data.message
+      ) {
+        setErrors({ general: error.response.data.message });
+      } else {
+        setErrors({
+          general: "Invalid email or password. Please try again.",
+        });
+      }
+    } finally {
+      setLoading(false);
+    }
   };
   return (
     <div className={styles.container}>

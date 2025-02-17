@@ -189,9 +189,9 @@
   .IoMdMenu {
       display: block !important;
   }
-  .buttonTwo {
+  /* .buttonTwo {
       display: none;
-  }
+  } */
 }
 
 @media (max-width: 772px) {

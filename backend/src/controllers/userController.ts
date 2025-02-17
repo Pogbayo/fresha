@@ -71,9 +71,11 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
     });
 
     res.status(200).json({ message: `Welcome back ${existingUser.firstname}`, token })
-    console.log(token)
+    console.log("User logged in succesfully")
    } catch (error) {
     res.status(400).json({error: (error as Error).message})
+    console.log(error)
+
    };
 }
 

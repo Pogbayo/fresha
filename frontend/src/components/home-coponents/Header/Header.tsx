@@ -41,7 +41,7 @@ export const Header = () => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }); // ✅ Add isMenuOpen as a dependency
+  });
 
   return (
     <div className={styles.container}>
@@ -51,14 +51,23 @@ export const Header = () => {
       <div className={styles.headerButtons}>
         <button className={styles.buttonOne}>For business</button>
         <button className={styles.buttonTwo} onClick={handleMenuDropDown}>
-          {!user ? "Menu" : <p className={styles.firstLetter}>{firstLetter}</p>}
-          {isMenuOpen ? <FaChevronUp /> : <FaAngleDown />}
+          {user ? (
+            <>
+              {!user ? (
+                "Menu"
+              ) : (
+                <p className={styles.firstLetter}>{firstLetter}</p>
+              )}
+              {isMenuOpen ? <FaChevronUp /> : <FaAngleDown />}
+            </>
+          ) : (
+            <IoMdMenu
+              size={30}
+              className={styles.IoMdMenu}
+              onClick={handleMenuDropDown}
+            />
+          )}
         </button>
-        <IoMdMenu
-          size={30}
-          className={styles.IoMdMenu}
-          onClick={handleMenuDropDown}
-        />
       </div>
 
       <ul

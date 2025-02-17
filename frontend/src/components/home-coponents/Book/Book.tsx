@@ -21,7 +21,7 @@ export const Book = () => {
     setIsCalendarOpen,
     isTreatmentsOpen,
     setIsTreatmentsOpen,
-    handleTreatmentsDropDown,
+    // handleTreatmentsDropDown,
     isTime,
     setIsTime,
     handleTimeDropDown,
@@ -95,7 +95,7 @@ export const Book = () => {
             id="treatment"
             placeholder="All Treatments and venues"
             value={treatmentInputValue}
-            onClick={handleTreatmentsDropDown}
+            onClick={() => setIsTreatmentsOpen((prev) => !prev)}
             onChange={(e) => setTreatmentInputValue(e.target.value)}
           />
         </span>
@@ -167,6 +167,7 @@ export const Book = () => {
           className={`${styles.calendarDropDown} ${
             isCalendarOpen ? styles.show : ""
           }`}
+          // onClick={}
         >
           <MyCalendar handleCalendarValueInput={handleCalendarValueInput} />
         </div>

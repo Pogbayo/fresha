@@ -124,7 +124,10 @@
     top: 55%; 
     z-index: 10;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    opacity: 0; 
+    opacity: 0;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: white;
     transform: translateY(-10px); 
     visibility: hidden; 
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0.3s; /* Delayed visibility to sync with opacity */
@@ -180,6 +183,12 @@
 @media(max-width:1021px){
     .container{
         text-align: center;
+    }
+    .timedropdown{
+        top: 65%;
+    }
+    .calendarDropDown{
+        top: 65%;
     }
     .formContainer{
         max-width: 650px;

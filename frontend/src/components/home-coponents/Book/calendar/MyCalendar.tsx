@@ -1,11 +1,9 @@
 import { useState } from "react";
-import ReactCalendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
+import { DayPicker } from "react-day-picker";
+import "react-day-picker/dist/style.css";
 import { useAppContext } from "../../../../contextAPi/AppContextApi/useAppContext";
 
-type ValuePiece = Date | null;
-
-type Value = ValuePiece | [ValuePiece, ValuePiece];
+type ValuePiece = Date | undefined;
 
 const MyCalendar = ({
   handleCalendarValueInput,
@@ -13,16 +11,19 @@ const MyCalendar = ({
   handleCalendarValueInput: (value: string) => void;
 }) => {
   const { setIsCalendarOpen } = useAppContext();
-  const [value, setValue] = useState<Value>(new Date());
-  const handleDateClick = (selectedDate: Value) => {
+  const [value, setValue] = useState<ValuePiece>(undefined);
+
+  const handleDateClick = (selectedDate: Date) => {
     setValue(selectedDate);
     setIsCalendarOpen(false);
     handleCalendarValueInput("-----  Date selected  -----");
   };
+
   return (
-    <div>
-      <ReactCalendar onChange={handleDateClick} value={value} />
+    <div style={{ zIndex: 10 }}>
+      <DayPicker selected={value} onDayClick={handleDateClick} />
     </div>
   );
 };
+
 export default MyCalendar;

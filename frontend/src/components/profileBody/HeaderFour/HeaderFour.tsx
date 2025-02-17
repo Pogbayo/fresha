@@ -1,13 +1,11 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, lazy, Suspense } from "react";
 import { CiSearch, CiLocationOn } from "react-icons/ci";
 import { IoTimeOutline } from "react-icons/io5";
 import { MdDateRange } from "react-icons/md";
 import styles from "./HeaderFour.module.css";
 import { useAppContext } from "../../../../src/contextAPi/AppContextApi/useAppContext";
-import MyCalendar from "../../../components/home-coponents/Book/calendar/MyCalendar";
 // import { Time } from "../../../components/home-coponents/Book/Time-picker/Time";
-import Treatment from "../../home-coponents/Book/TreatmentDropDown/Treatment";
-import { Location } from "../../../components/home-coponents/Book/location/Location";
+// import Treatment from "../../home-coponents/Book/TreatmentDropDown/Treatment";
 import { FaAngleDown } from "react-icons/fa6";
 import { FaChevronUp } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -23,7 +21,16 @@ import { IoArrowBackOutline } from "react-icons/io5";
 import { useAuth } from "../../../contextAPi/Auth/useAuthContext";
 import { useApiContext } from "../../../contextAPi/ApiResponseContext/useApiContext";
 import { IoHome } from "react-icons/io5";
-import { Time } from "../../../components/home-coponents/Book/Time-picker/Time";
+const MyCalendar = lazy(
+  () => import("../../home-coponents/Book/calendar/MyCalendar")
+);
+const Time = lazy(() => import("../../home-coponents/Book/Time-picker/Time"));
+const Treatment = lazy(
+  () => import("../../home-coponents/Book/TreatmentDropDown/Treatment")
+);
+const Location = lazy(
+  () => import("../../home-coponents/Book/location/Location")
+);
 export const HeaderFour = () => {
   const {
     handleCurrentLocationDropDown,
@@ -163,6 +170,7 @@ export const HeaderFour = () => {
             type="text"
             placeholder={screenWidth.toString()}
             id="date"
+            style={{ background: "white" }}
             value={calendarInputValue}
             onClick={handleCalendarDropDown}
             onChange={(e) => setCalendarInputValue(e.target.value)}
@@ -268,48 +276,49 @@ export const HeaderFour = () => {
           )}
         </ul>
       }
+      <Suspense>
+        {
+          <div
+            ref={treatmentRef}
+            className={`${styles.treatmentDropDown} ${
+              isTreatmentsOpen ? styles.show : ""
+            }`}
+          >
+            <Treatment handleTreatmentInput={handleTreatmentInput} />
+          </div>
+        }
 
-      {
-        <div
-          ref={treatmentRef}
-          className={`${styles.treatmentDropDown} ${
-            isTreatmentsOpen ? styles.show : ""
-          }`}
-        >
-          <Treatment handleTreatmentInput={handleTreatmentInput} />
-        </div>
-      }
+        {
+          <div
+            ref={locationRef}
+            className={`${styles.locationDropDown} ${
+              isCurrentLocation ? styles.show : ""
+            }`}
+          >
+            <Location handleLocationValueInput={handleLocationValueInput} />
+          </div>
+        }
 
-      {
-        <div
-          ref={locationRef}
-          className={`${styles.locationDropDown} ${
-            isCurrentLocation ? styles.show : ""
-          }`}
-        >
-          <Location handleLocationValueInput={handleLocationValueInput} />
-        </div>
-      }
+        {
+          <div
+            ref={calendarRef}
+            className={`${styles.calendarDropDown} ${
+              isCalendarOpen ? styles.show : ""
+            }`}
+          >
+            <MyCalendar handleCalendarValueInput={handleCalendarValueInput} />
+          </div>
+        }
 
-      {
-        <div
-          ref={calendarRef}
-          className={`${styles.calendarDropDown} ${
-            isCalendarOpen ? styles.show : ""
-          }`}
-        >
-          <MyCalendar handleCalendarValueInput={handleCalendarValueInput} />
-        </div>
-      }
-
-      {
-        <div
-          ref={timeRef}
-          className={`${styles.timedropdown} ${isTime ? styles.show : ""}`}
-        >
-          <Time />
-        </div>
-      }
+        {
+          <div
+            ref={timeRef}
+            className={`${styles.timedropdown} ${isTime ? styles.show : ""}`}
+          >
+            <Time />
+          </div>
+        }
+      </Suspense>
     </div>
   );
 };

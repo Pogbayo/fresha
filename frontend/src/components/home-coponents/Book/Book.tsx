@@ -4,15 +4,20 @@ import { CiLocationOn } from "react-icons/ci";
 import { MdDateRange } from "react-icons/md";
 import { IoTimeOutline } from "react-icons/io5";
 import { IoQrCode } from "react-icons/io5";
-import MyCalendar from "./calendar/MyCalendar";
-import { useRef, useEffect } from "react";
-import { useAppContext } from "../../../contextAPi/AppContextApi/useAppContext"; // Adjust the import path as necessary
-import Treatment from "./TreatmentDropDown/Treatment";
-import { Location } from "./location/Location";
+import { useRef, useEffect, lazy, Suspense } from "react";
+import { useAppContext } from "../../../contextAPi/AppContextApi/useAppContext";
 // import { Time } from "./Time-picker/Time";
 import { useNavigate } from "react-router-dom";
-import { Time } from "../../../components/home-coponents/Book/Time-picker/Time";
-
+const MyCalendar = lazy(
+  () => import("../../home-coponents/Book/calendar/MyCalendar")
+);
+const Time = lazy(() => import("../../home-coponents/Book/Time-picker/Time"));
+const Treatment = lazy(
+  () => import("../../home-coponents/Book/TreatmentDropDown/Treatment")
+);
+const Location = lazy(
+  () => import("../../home-coponents/Book/location/Location")
+);
 export const Book = () => {
   const {
     isCalendarOpen,
@@ -142,45 +147,47 @@ export const Book = () => {
         Get the app
         <IoQrCode />
       </button>
-      {
-        <div
-          ref={treatmentRef}
-          className={`${styles.treatmentDropDown} ${
-            isTreatmentsOpen ? styles.show : ""
-          }`}
-        >
-          <Treatment handleTreatmentInput={handleTreatmentInput} />
-        </div>
-      }
-      {
-        <div
-          ref={locationRef}
-          className={`${styles.locationDropDown} ${
-            isCurrentLocation ? styles.show : ""
-          }`}
-        >
-          <Location handleLocationValueInput={handleLocationValueInput} />
-        </div>
-      }
-      {
-        <div
-          ref={calendarRef}
-          className={`${styles.calendarDropDown} ${
-            isCalendarOpen ? styles.show : ""
-          }`}
-          // onClick={}
-        >
-          <MyCalendar handleCalendarValueInput={handleCalendarValueInput} />
-        </div>
-      }
-      {
-        <div
-          ref={timeRef}
-          className={`${styles.timedropdown} ${isTime ? styles.show : ""}`}
-        >
-          <Time />
-        </div>
-      }
+      <Suspense>
+        {
+          <div
+            ref={treatmentRef}
+            className={`${styles.treatmentDropDown} ${
+              isTreatmentsOpen ? styles.show : ""
+            }`}
+          >
+            <Treatment handleTreatmentInput={handleTreatmentInput} />
+          </div>
+        }
+        {
+          <div
+            ref={locationRef}
+            className={`${styles.locationDropDown} ${
+              isCurrentLocation ? styles.show : ""
+            }`}
+          >
+            <Location handleLocationValueInput={handleLocationValueInput} />
+          </div>
+        }
+        {
+          <div
+            ref={calendarRef}
+            className={`${styles.calendarDropDown} ${
+              isCalendarOpen ? styles.show : ""
+            }`}
+            // onClick={}
+          >
+            <MyCalendar handleCalendarValueInput={handleCalendarValueInput} />
+          </div>
+        }
+        {
+          <div
+            ref={timeRef}
+            className={`${styles.timedropdown} ${isTime ? styles.show : ""}`}
+          >
+            <Time />
+          </div>
+        }
+      </Suspense>
     </div>
   );
 };

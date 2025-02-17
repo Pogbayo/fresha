@@ -1,13 +1,10 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, lazy, Suspense } from "react";
 import { CiSearch, CiLocationOn } from "react-icons/ci";
 import { IoTimeOutline } from "react-icons/io5";
 import { MdDateRange } from "react-icons/md";
 import styles from "./HeaderThree.module.css";
 import { useAppContext } from "../../../../contextAPi/AppContextApi/useAppContext";
-import MyCalendar from "../../../home-coponents/Book/calendar/MyCalendar";
 // import { Time } from "../../../home-coponents/Book/Time-picker/Time";
-import Treatment from "../../../home-coponents/Book/TreatmentDropDown/Treatment";
-import { Location } from "../../../home-coponents/Book/location/Location";
 import { FaAngleDown } from "react-icons/fa6";
 import { FaChevronUp } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
@@ -23,8 +20,18 @@ import {
 import { IoArrowBackOutline } from "react-icons/io5";
 import { useApiContext } from "../../../../contextAPi/ApiResponseContext/useApiContext";
 import { shopType } from "../../../../contextAPi/ApiResponseContext/ApiContext";
-import { Time } from "../../../home-coponents/Book/Time-picker/Time";
-
+const MyCalendar = lazy(
+  () => import("../../../home-coponents/Book/calendar/MyCalendar")
+);
+const Time = lazy(
+  () => import("../../../home-coponents/Book/Time-picker/Time")
+);
+const Treatment = lazy(
+  () => import("../../../home-coponents/Book/TreatmentDropDown/Treatment")
+);
+const Location = lazy(
+  () => import("../../../home-coponents/Book/location/Location")
+);
 export const HeaderThree = ({ shop }: { shop: shopType }) => {
   const {
     handleCurrentLocationDropDown,
@@ -261,48 +268,49 @@ export const HeaderThree = ({ shop }: { shop: shopType }) => {
           )}
         </ul>
       }
+      <Suspense>
+        {
+          <div
+            ref={treatmentRef}
+            className={`${styles.treatmentDropDown} ${
+              isTreatmentsOpen ? styles.show : ""
+            }`}
+          >
+            <Treatment handleTreatmentInput={handleTreatmentInput} />
+          </div>
+        }
 
-      {
-        <div
-          ref={treatmentRef}
-          className={`${styles.treatmentDropDown} ${
-            isTreatmentsOpen ? styles.show : ""
-          }`}
-        >
-          <Treatment handleTreatmentInput={handleTreatmentInput} />
-        </div>
-      }
+        {
+          <div
+            ref={locationRef}
+            className={`${styles.locationDropDown} ${
+              isCurrentLocation ? styles.show : ""
+            }`}
+          >
+            <Location handleLocationValueInput={handleLocationValueInput} />
+          </div>
+        }
 
-      {
-        <div
-          ref={locationRef}
-          className={`${styles.locationDropDown} ${
-            isCurrentLocation ? styles.show : ""
-          }`}
-        >
-          <Location handleLocationValueInput={handleLocationValueInput} />
-        </div>
-      }
+        {
+          <div
+            ref={calendarRef}
+            className={`${styles.calendarDropDown} ${
+              isCalendarOpen ? styles.show : ""
+            }`}
+          >
+            <MyCalendar handleCalendarValueInput={handleCalendarValueInput} />
+          </div>
+        }
 
-      {
-        <div
-          ref={calendarRef}
-          className={`${styles.calendarDropDown} ${
-            isCalendarOpen ? styles.show : ""
-          }`}
-        >
-          <MyCalendar handleCalendarValueInput={handleCalendarValueInput} />
-        </div>
-      }
-
-      {
-        <div
-          ref={timeRef}
-          className={`${styles.timedropdown} ${isTime ? styles.show : ""}`}
-        >
-          <Time />
-        </div>
-      }
+        {
+          <div
+            ref={timeRef}
+            className={`${styles.timedropdown} ${isTime ? styles.show : ""}`}
+          >
+            <Time />
+          </div>
+        }
+      </Suspense>
     </div>
   );
 };

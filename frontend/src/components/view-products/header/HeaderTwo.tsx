@@ -26,9 +26,7 @@ import { useApiContext } from "../../../contextAPi/ApiResponseContext/useApiCont
 const MyCalendar = lazy(
   () => import("../../home-coponents/Book/calendar/MyCalendar")
 );
-const Time = lazy(
-  () => import("../../../components/home-coponents/Book/Time-picker/Time")
-);
+const Time = lazy(() => import("../../home-coponents/Book/Time-picker/Time"));
 const Treatment = lazy(
   () => import("../../home-coponents/Book/TreatmentDropDown/Treatment")
 );

@@ -5,7 +5,7 @@ import { MdDateRange } from "react-icons/md";
 import styles from "./HeaderThree.module.css";
 import { useAppContext } from "../../../../contextAPi/AppContextApi/useAppContext";
 import MyCalendar from "../../../home-coponents/Book/calendar/MyCalendar";
-import { Time } from "../../../home-coponents/Book/Time-picker/Time";
+// import { Time } from "../../../home-coponents/Book/Time-picker/Time";
 import Treatment from "../../../home-coponents/Book/TreatmentDropDown/Treatment";
 import { Location } from "../../../home-coponents/Book/location/Location";
 import { FaAngleDown } from "react-icons/fa6";
@@ -23,6 +23,7 @@ import {
 import { IoArrowBackOutline } from "react-icons/io5";
 import { useApiContext } from "../../../../contextAPi/ApiResponseContext/useApiContext";
 import { shopType } from "../../../../contextAPi/ApiResponseContext/ApiContext";
+import { Time } from "../../../home-coponents/Book/Time-picker/Time";
 
 export const HeaderThree = ({ shop }: { shop: shopType }) => {
   const {

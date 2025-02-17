@@ -20,7 +20,7 @@ const MyCalendar = ({
   };
 
   return (
-    <div style={{ zIndex: 10 }}>
+    <div style={{ background: "white", padding: "10px" }}>
       <DayPicker selected={value} onDayClick={handleDateClick} />
     </div>
   );

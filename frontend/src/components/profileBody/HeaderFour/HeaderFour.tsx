@@ -23,7 +23,7 @@ import { IoArrowBackOutline } from "react-icons/io5";
 import { useAuth } from "../../../contextAPi/Auth/useAuthContext";
 import { useApiContext } from "../../../contextAPi/ApiResponseContext/useApiContext";
 import { IoHome } from "react-icons/io5";
-import { Time } from "../../home-coponents/Book/Time-picker/Time";
+import { Time } from "../../../components/home-coponents/Book/Time-picker/Time";
 export const HeaderFour = () => {
   const {
     handleCurrentLocationDropDown,

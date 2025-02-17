@@ -11,7 +11,7 @@ import Treatment from "./TreatmentDropDown/Treatment";
 import { Location } from "./location/Location";
 // import { Time } from "./Time-picker/Time";
 import { useNavigate } from "react-router-dom";
-import { Time } from "./Time-picker/Time";
+import { Time } from "../../../components/home-coponents/Book/Time-picker/Time";
 
 export const Book = () => {
   const {

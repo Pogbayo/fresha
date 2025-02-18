@@ -30,7 +30,7 @@ const startServer = async () => {
     });
 
     app.use(cors({
-      origin: 'http://localhost:5173',
+      origin: ["http://localhost:5173", "https://fresha-zxqo-git-fresha-adebayos-projects-556706dc.vercel.app"],
       methods: 'GET, POST, DELETE',
       credentials: true,
     }));

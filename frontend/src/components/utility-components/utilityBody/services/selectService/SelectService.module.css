@@ -50,6 +50,7 @@
    width: 60%;
 }
 .goBack{
+    margin-top: 10px;
     width: fit-content;
     height: fit-content;
     padding: 10px;

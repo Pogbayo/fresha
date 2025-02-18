@@ -57,7 +57,7 @@
   .miniTags p.active {
     background-color: black;
     color: white;
-    border-radius: 15px;
+    border-radius: 8px;
     opacity: 0.8;
     animation: fadeIn 0.5s ease-in forwards;
     white-space: nowrap;
@@ -81,8 +81,10 @@
   background-color: white;
   cursor: pointer;
   font-weight: 700;
+  color: black;
   border: 1px solid rgb(206, 206, 206);
-  }
+}
+
 .seeMore:hover{
     background-color: rgb(224, 220, 220);
     transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
@@ -167,3 +169,33 @@
      font-size: 1.7rem;
     }
   }
+
+  
+@media (max-width: 414px) {
+  .firstContainer h1{
+    font-size: 1.2rem;
+  }
+  .miniTags{
+    gap: 5px;
+    padding-right: 20px;
+  }
+  .tagContainer{
+    height: 50px;
+    margin-top: 10px;
+  }
+  .miniTags p{
+    font-size: 0.8rem;
+  }
+  .subService{
+    border: 2px solid rgb(209, 205, 205);
+  }
+  .name{
+    font-size: 0.9rem;
+  }
+  .duration{
+    font-size: 0.8rem;
+  }
+  .price{
+    font-size: 0.9rem;
+  }
+}

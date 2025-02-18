@@ -10,7 +10,9 @@ export const OpeningTime = ({ shop }: { shop: shopType }) => {
           key={day}
           style={{ display: "flex", alignItems: "center", gap: "8px" }}
         >
-          <GoDotFill color={day.toLowerCase() === "sunday" ? "gray" : "blue"} />
+          <GoDotFill
+            color={day.toLowerCase() === "sunday" ? "lightgray" : "lightgreen"}
+          />
           <strong>{day.charAt(0).toUpperCase() + day.slice(1)}:</strong>
           <span style={{ marginLeft: "8px" }}>{time}</span>
         </p>

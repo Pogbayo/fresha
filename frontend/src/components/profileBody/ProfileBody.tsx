@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 // import { useAuth } from "../../contextAPi/Auth/useAuthContext";
-import { Header } from "../home-coponents/Header/Header";
+import { Header } from "../HomeComponents/Header/Header";
 import { BodyTwo } from "./body2/BodyTwo";
 import { HeaderFour } from "./HeaderFour/HeaderFour";
 import styles from "./ProfileBody.module.css";

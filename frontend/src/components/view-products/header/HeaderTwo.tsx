@@ -24,16 +24,20 @@ import { useApiContext } from "../../../contextAPi/ApiResponseContext/useApiCont
 
 //Lazy loaading components
 const MyCalendar = lazy(
-  () => import("../../home-coponents/Book/calendar/MyCalendar")
+  () => import("../../../components/HomeComponents/Book/calendar/MyCalendar")
 );
-const Time = lazy(() => import("../../home-coponents/Book/Time-picker/Time"));
+const Time = lazy(
+  () => import("../../../components/HomeComponents/Book/Time-picker/Time")
+);
 const Treatment = lazy(
-  () => import("../../home-coponents/Book/TreatmentDropDown/Treatment")
+  () =>
+    import(
+      "../../../components/HomeComponents/Book/TreatmentDropDown/Treatment"
+    )
 );
 const Location = lazy(
-  () => import("../../home-coponents/Book/location/Location")
+  () => import("../../../components/HomeComponents/Book/location/Location")
 );
-
 export const HeaderTwo = () => {
   const {
     handleCurrentLocationDropDown,

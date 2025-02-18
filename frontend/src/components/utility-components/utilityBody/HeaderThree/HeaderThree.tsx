@@ -21,16 +21,16 @@ import { IoArrowBackOutline } from "react-icons/io5";
 import { useApiContext } from "../../../../contextAPi/ApiResponseContext/useApiContext";
 import { shopType } from "../../../../contextAPi/ApiResponseContext/ApiContext";
 const MyCalendar = lazy(
-  () => import("../../../home-coponents/Book/calendar/MyCalendar")
+  () => import("../../../HomeComponents/Book/calendar/MyCalendar")
 );
 const Time = lazy(
-  () => import("../../../home-coponents/Book/Time-picker/Time")
+  () => import("../../../HomeComponents/Book/Time-picker/Time")
 );
 const Treatment = lazy(
-  () => import("../../../home-coponents/Book/TreatmentDropDown/Treatment")
+  () => import("../../../HomeComponents/Book/TreatmentDropDown/Treatment")
 );
 const Location = lazy(
-  () => import("../../../home-coponents/Book/location/Location")
+  () => import("../../../HomeComponents/Book/location/Location")
 );
 export const HeaderThree = ({ shop }: { shop: shopType }) => {
   const {

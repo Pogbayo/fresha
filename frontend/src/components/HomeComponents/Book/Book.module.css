@@ -347,6 +347,14 @@
   }
 }
 @media (max-width: 414px) {
+    .container{
+        width: 100%;
+        padding: 8px;
+    }
+    .formContainer{
+        width: 99%;
+        padding: 0;
+    }
   .calendarDropDown{
     width: 80%;
     margin: 0 auto;

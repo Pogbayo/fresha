@@ -105,3 +105,34 @@
         flex: 0 0 230px; 
     }
 }
+
+
+/* Small Screens (414px and below) */
+@media (max-width: 414px) {
+  .boxDiv {
+      flex: 0 0 194px; /* Reduced width */
+      height: 190px; /* Reduced height */
+  }
+
+  .newHeader {
+      font-size: 1.2rem; /* Smaller text */
+  }
+
+  .boxDiv .detailBox {
+      padding: 10px; /* Reduced padding */
+      gap: 3px; /* Reduced gap between elements */
+  }
+
+  .boxDiv img {
+      height: 60%; /* Reduced image height */
+  }
+
+  .shopName, .rating, .address, .categoryName {
+      font-size: 0.75rem; /* Smaller text for mobile */
+      gap: 3px; /* Reduced gap */
+  }
+
+  .categoryName {
+      font-size: 0.65rem; /* Even smaller text */
+  }
+}

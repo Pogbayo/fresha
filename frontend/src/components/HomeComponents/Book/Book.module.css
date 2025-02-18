@@ -21,14 +21,15 @@
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 .formContainer{
-    height: 60px;
+    height: fit-content;
     border-radius: 40px;
     width: auto;
     padding: 2px;
-    border: 6px solid  rgb(235, 230, 230);
+    /* border: 6px solid  rgb(235, 230, 230); */
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid rgb(182, 181, 181);
     position: relative;
 }
 .formContainer span {
@@ -67,13 +68,13 @@
     border-bottom-left-radius: 1px;
 } 
 
-
+/* 
 .formContainer span:hover{
     background-color: rgb(235, 230, 230);
-}
-.formContainer span input:hover{
+} */
+/* .formContainer span input:hover{
     background-color: rgb(235, 230, 230);
-}
+} */
 
 
 .formContainer span:nth-of-type(5):hover{
@@ -82,9 +83,11 @@
 
 
 .formContainer span button{
+
     height: 60px;
     padding: 5px;
     border: none;
+    font-weight: 900;
     width: 14cqh;
     background-color: black;
     border-radius: 30px;
@@ -131,10 +134,10 @@
     transform: translateY(-10px); 
     visibility: hidden; 
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0.3s; /* Delayed visibility to sync with opacity */
-  }
+}
 
  
-  .treatmentDropDown{
+.treatmentDropDown{
     position: absolute;
     top: 53%; 
     z-index: 10;
@@ -143,9 +146,9 @@
     transform: translateY(-10px); /* Slightly above the final position */
     visibility: hidden; /* Hidden but not blocking interactions */
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0.3s; /* Delayed visibility to sync with opacity */
-  }  
+}  
 
-  .locationDropDown{
+.locationDropDown{
     position: absolute;
     top: 55%; 
     z-index: 10;
@@ -154,9 +157,9 @@
     transform: translateY(-10px); 
     visibility: hidden; 
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0.3s; 
-  }  
+}  
   
-  .timedropdown{
+.timedropdown{
     position: absolute;
     top: 54%; 
     z-index: 10;
@@ -166,19 +169,19 @@
     transform: translateY(-10px); 
     visibility: hidden; 
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0.3s; 
-  }  
-  .timedropdown.show, .locationDropDown.show,.treatmentDropDown.show,.calendarDropDown.show{
+}  
+.timedropdown.show, .locationDropDown.show,.treatmentDropDown.show,.calendarDropDown.show{
     opacity: 1;
     transform: translateY(0);
     visibility: visible; 
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0s; 
-  }
+}
   
-  @media(max-width:1156px){
+@media(max-width:1156px){
     .bigFont{
         width: 100%;
     }
-  }
+}
 
 @media(max-width:1021px){
     .container{
@@ -195,8 +198,9 @@
         flex-direction: column;
         height: auto;
         gap: 5px;
-        padding: 20px;
+        padding: 10px;
         border-radius: 15px;
+        padding-top: 10px;
     }
     .bigFont{
         font-weight: 900;
@@ -249,7 +253,6 @@
         background-color: black;
         border-radius: 10px;
         color: white;
-        border-right: 1px solid gray;
         margin: 0 ;
         padding: 0;
         border-right:none;
@@ -331,10 +334,24 @@
 }
 
 @media(max-width:593px){
-    .formContainer{
+   .formContainer{
         width: 95%;
      }
      .bigFont{
         font-size: 2rem;
-     }
+   }
+}
+@media(max-width:440px){
+  .bigFont{
+    font-size: 1.5rem;
+  }
+}
+@media (max-width: 414px) {
+  .calendarDropDown{
+    width: 80%;
+    margin: 0 auto;
+  }
+  .timedropdown{
+    width: 80%;
+  }
 }

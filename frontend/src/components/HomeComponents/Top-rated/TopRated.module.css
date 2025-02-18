@@ -7,7 +7,7 @@
     font-weight: 900;
     margin: 0;
 }
-section p{
+.container section p{
     font-size: 1.4rem;
     margin-top: 0;
 }
@@ -92,4 +92,20 @@ section p{
         margin: 0;
         font-size: 1.0rem;
     }
+}
+@media (max-width: 414px) {
+  .container section h1{
+    font-size: 1.4rem;
+  }
+  .container section p{
+    margin-top: 10px;
+  }
+  .div1 p{
+    margin: 0;
+    color: black;
+    padding: 0;
+  }
+  .div2 p,.div3 p,.div4 p{
+    font-size: 1rem;
+  }
 }

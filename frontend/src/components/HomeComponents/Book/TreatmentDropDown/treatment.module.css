@@ -40,8 +40,15 @@
   .container ul li div:first-child {
     margin-right: 10px; 
   }
-  @media(max-width:400px){
+
+  @media (max-width: 414px) {
+   .container{
+    width:330px ;
+   }
+  }
+
+  /* @media(max-width:400px){
     .container{
       width: 350px;
     }
-  }
+  } */

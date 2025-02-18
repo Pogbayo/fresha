@@ -342,7 +342,8 @@
         width: 100vw;
         border-radius: 60px;
         align-items: center;
-        padding: 10px;
+        padding: 5px;
+        /* height: fit-content; */
     }
     /* .dropdownMenu .show{
         display: none;
@@ -354,6 +355,7 @@
         border-radius: 50%;
         height: 30px;
         padding: 10px;
+        margin-right: 10px;
     }
     .iconContainer:hover{
         background-color: rgb(202, 201, 201);
@@ -367,10 +369,12 @@
         margin: 0;
         padding: 0;
         font-weight: 100;
+        font-size:13px;
     }
     .textContainer p {
         margin: 0;
         font-weight: 700;
+        font-size: 15px;
     }
     .textContainer span {
         margin: 0;

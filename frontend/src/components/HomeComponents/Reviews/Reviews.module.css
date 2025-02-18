@@ -132,3 +132,8 @@
         font-size: 15px;
       }
   }
+  @media (max-width: 414px) {
+   .reviewHeader{
+    font-size: 17px;
+   }
+  }

@@ -17,7 +17,9 @@ export const Review = () => {
   useEffect(() => {
     const fetchedData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/reviews");
+        const response = await axios.get(
+          "https://fresha-1.onrender.com/api/reviews"
+        );
         setData(response.data);
       } catch (error) {
         return error;

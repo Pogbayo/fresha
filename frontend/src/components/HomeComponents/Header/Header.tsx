@@ -64,7 +64,7 @@ export const Header = () => {
             <IoMdMenu
               size={30}
               className={styles.IoMdMenu}
-              onClick={handleMenuDropDown}
+              // onClick={handleMenuDropDown}
             />
           )}
         </button>

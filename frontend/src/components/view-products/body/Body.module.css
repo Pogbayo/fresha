@@ -46,7 +46,6 @@
   transform: scale(1.03);
 }
 
-
 .serviceDetails{
     padding: 0;
     border-bottom: 1px solid rgb(214, 211, 211);
@@ -154,7 +153,6 @@
   color: grey;
 }
 
-
 /* .loaderContainer {
     display: flex;
     gap: 10px;
@@ -164,7 +162,7 @@
     flex-direction: column;
   }
    */
-  .loaderOne, .loaderTwo, .loaderThree{
+.loaderOne, .loaderTwo, .loaderThree{
     width: 100%;
     height: 200px;
     background: linear-gradient(45deg, #e0e0e0, #c0c0c0, #e0e0e0);
@@ -173,77 +171,74 @@
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     opacity: 0.8;
-  }
-  .mapContainer{
+}
+.mapContainer{
     background: linear-gradient(45deg, #e0e0e0, #c0c0c0, #e0e0e0);
     background-size: 200% 200%;
     animation: shimmer 2s infinite linear;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     opacity: 0.8;
-  }
-  .upperDiv p, .upperDivbutton{
+}
+.upperDiv p, .upperDivbutton{
     background: linear-gradient(45deg, #e0e0e0, #c0c0c0, #e0e0e0);
     background-size: 200% 200%;
     animation: shimmer 2s infinite linear;
     border-radius: 15px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     opacity: 0.8;
-  }
- 
-
-
-  .loaderTwo {
+}
+.loaderTwo {
     animation-delay: 0.3s;
-  }
-  .upperDiv{
+}
+.upperDiv{
     display: flex;
     justify-content: space-between;
     width: 90%;
     height: auto;
     align-items: center;
- }
- .upperDiv p, .upperDivbutton{
+}
+.upperDiv p, .upperDivbutton{
    height: 30px;
    width: 80px;
    border: none;
- }
+}
  .upperDiv p{
     width: 150px;
- }
-  .loaderThree {
+}
+.loaderThree {
     animation-delay: 0.6s;
-  }
+}
   
-  @keyframes shimmer {
+@keyframes shimmer {
     0% {
       background-position: 200% 0%;
     }
     100% {
       background-position: -200% 0%;
     }
-  }
+}
   
-  @media(max-width:2000px){
+@media(max-width:2000px){
     .loaderContainer{
       width: 100%;  
-  }
+}
     .loaderOne, .loaderTwo, .loaderThree,.loadingHeader {
        width: 87%;
        margin: 20px;
        height: 240px;
     }
   }
-  @media(max-width:1020px){
-    .mapContainer{
+@media(max-width:1020px){
+  .mapContainer{
       display: none;
-    }
-    .headerDiv{
+  }
+  .headerDiv{
       display: flex;
       justify-items: flex-start;
       width: 90%; 
       
-    }
+  }
   .container{
     display: flex;
     flex-direction: column;
@@ -271,7 +266,7 @@
     padding-left: 7px;
     padding-right: 7px;
   }
-  }
+}
   @media(max-width:763px){
    .shopsColumn{
     flex-direction: column;

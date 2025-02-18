@@ -108,7 +108,7 @@
 }
 
 .IoMdMenu {
-  display: none;
+  /* display: none; */
   cursor: pointer;
 }
 
@@ -152,7 +152,7 @@
 
 .dropdownMenu li:hover {
   background-color: #f0f0f0;
-  width: 85%;
+  width: 88%;
 }
 
 .backButton {

@@ -53,11 +53,7 @@ export const Header = () => {
         <button className={styles.buttonTwo} onClick={handleMenuDropDown}>
           {user ? (
             <>
-              {!user ? (
-                "Menu"
-              ) : (
-                <p className={styles.firstLetter}>{firstLetter}</p>
-              )}
+              <p className={styles.firstLetter}>{firstLetter}</p>
               {isMenuOpen ? <FaChevronUp /> : <FaAngleDown />}
             </>
           ) : (

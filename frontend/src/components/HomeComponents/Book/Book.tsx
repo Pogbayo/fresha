@@ -147,7 +147,7 @@ export const Book = () => {
           <button onClick={() => navigate("secondary")}>Search spag</button>
         </span>
       </form>
-      <h2>403,834 appointments booked today</h2>
+      <h2 className={styles.kele}>403,834 appointments booked today</h2>
       <button className={styles.qrCodeButton}>
         Get the app
         <IoQrCode />

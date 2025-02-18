@@ -354,4 +354,10 @@
   .timedropdown{
     width: 80%;
   }
+  .formContainer span {
+    width: 95%;
+  }
+  .kele{
+    font-size: 1rem;
+  }
 }

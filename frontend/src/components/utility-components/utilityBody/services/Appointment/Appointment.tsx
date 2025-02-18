@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./Appointment.module.css";
 import { IoIosStar } from "react-icons/io";
-// import { VscClose } from "react-icons/vsc";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { TbCurrencyNaira } from "react-icons/tb";
 import { shopType } from "../../../../../contextAPi/ApiResponseContext/ApiContext";
@@ -179,7 +178,7 @@ export const Appointment = () => {
                             padding: 10,
                             marginTop: 20,
                             fontWeight: 700,
-                            fontSize: "1.2rem",
+                            fontSize: "1.0rem",
                             color: "grey",
                           }}
                         >

@@ -36,7 +36,7 @@ export const BookNowDiv = ({ shop }: { shop: shopType }) => {
         >
           <TbCurrencyNaira size={18} />
           <p>
-            {!formattedTotalPrice ? <>{formattedTotalPrice},000</> : <>free</>}
+            {formattedTotalPrice ? <>{formattedTotalPrice},000</> : <>free</>}
           </p>
         </small>
       </span>

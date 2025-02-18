@@ -12,23 +12,32 @@ export const ProfileAppointment = () => {
 
   return (
     <div className={styles.section}>
-      <p className={styles.newHeader}>Appointments</p>
+      {!appointmentArray ? (
+        <>You have no Appointments yet</>
+      ) : (
+        <>
+          <p className={styles.newHeader}>Appointments</p>
 
-      <div className={styles.container}>
-        {appointmentArray.map((shop: shopType, index: number) => (
-          <div key={index} className={styles.boxDiv}>
-            <img src={shop.images[1]} alt="" />
-            <div className={styles.detailBox}>
-              <h4 className={styles.shopName}>{shop.name}</h4>
-              <p className={styles.rating} style={{ display: "flex", gap: 9 }}>
-                5.0
-                <FaStar />({getRandomInteger(1, 2000)})
-              </p>
-              <h3 className={styles.categoryName}>{shop.name}</h3>
-            </div>
+          <div className={styles.container}>
+            {appointmentArray.map((shop: shopType, index: number) => (
+              <div key={index} className={styles.boxDiv}>
+                <img src={shop.images[1]} alt="" />
+                <div className={styles.detailBox}>
+                  <h4 className={styles.shopName}>{shop.name}</h4>
+                  <p
+                    className={styles.rating}
+                    style={{ display: "flex", gap: 9 }}
+                  >
+                    5.0
+                    <FaStar />({getRandomInteger(1, 2000)})
+                  </p>
+                  <h3 className={styles.categoryName}>{shop.name}</h3>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </>
+      )}
     </div>
   );
 };

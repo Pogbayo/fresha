@@ -63,7 +63,6 @@
     display: flex;
     gap: 6px;
     align-items: center;
-    background-color: white;
 }
 
 .headerDiv{
@@ -118,7 +117,7 @@
     margin: 0;
     /* border: 2px solid red; */
     font-weight: 700;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
     color: rgb(58, 57, 57);
 }
 
@@ -267,7 +266,7 @@
     padding-right: 7px;
   }
 }
-  @media(max-width:763px){
+@media(max-width:763px){
    .shopsColumn{
     flex-direction: column;
     flex-wrap: nowrap;
@@ -281,4 +280,21 @@
     width: 100%;
     margin: 0 auto;
    }
+}
+
+@media (max-width: 414px) {
+  .shopImage{
+    height: 230px;
   }
+  .ratingContainer{
+    font-size: 1rem;
+    padding-left: 2px;
+  }
+  .serviceName{
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  .subServicePrice,.subServiceName{
+    font-size:0.8rem ;
+  }
+}

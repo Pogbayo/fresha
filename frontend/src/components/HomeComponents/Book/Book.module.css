@@ -11,7 +11,6 @@
     overflow-x: hidden;
     margin-top: 70px;
 }
-
 .bigFont{
     color: black;
     font-size: 5.2rem;
@@ -54,7 +53,6 @@
     border: none;
     outline: none; 
 }
-
 .formContainer span:nth-of-type(2) {
     border-top-left-radius: 1px;
     border-bottom-left-radius: 1px;
@@ -67,7 +65,6 @@
     border-top-left-radius: 1px;
     border-bottom-left-radius: 1px;
 } 
-
 /* 
 .formContainer span:hover{
     background-color: rgb(235, 230, 230);
@@ -75,13 +72,9 @@
 /* .formContainer span input:hover{
     background-color: rgb(235, 230, 230);
 } */
-
-
 .formContainer span:nth-of-type(5):hover{
     background-color:white;
 }
-
-
 .formContainer span button{
 
     height: 60px;
@@ -95,14 +88,11 @@
     border-right: 1px solid gray;
     cursor: pointer;
 }
-
-
 .formContainer span button:hover{
  
     font-weight: 700;
     border: 1px solid gray;
 }
-
 .qrCodeButton{
     padding: 20px;
     border: 1px solid gray;
@@ -120,8 +110,6 @@
 /* .dateInputWrapper {
     position: relative;
   } */
-
-
 .calendarDropDown {
     position: absolute;
     top: 55%; 
@@ -135,8 +123,6 @@
     visibility: hidden; 
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0.3s; /* Delayed visibility to sync with opacity */
 }
-
- 
 .treatmentDropDown{
     position: absolute;
     top: 53%; 
@@ -147,7 +133,6 @@
     visibility: hidden; /* Hidden but not blocking interactions */
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0.3s; /* Delayed visibility to sync with opacity */
 }  
-
 .locationDropDown{
     position: absolute;
     top: 55%; 
@@ -158,7 +143,6 @@
     visibility: hidden; 
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0.3s; 
 }  
-  
 .timedropdown{
     position: absolute;
     top: 54%; 
@@ -176,13 +160,11 @@
     visibility: visible; 
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out, visibility 0s 0s; 
 }
-  
 @media(max-width:1156px){
     .bigFont{
         width: 100%;
     }
 }
-
 @media(max-width:1021px){
     .container{
         text-align: center;
@@ -266,14 +248,14 @@
    }
 } */
 @media(max-width:771px){
-    .container{
+.container{
         text-align: center;
         gap: 10px;
-    }
-    .formContainer{
+}
+.formContainer{
        width: 80%;
-    }
-    .bigFont{
+}
+.bigFont{
         margin-right: 20px;
         margin-top: 20px;
         font-size: 3rem;
@@ -281,8 +263,8 @@
         font-weight: 900;
         width: 99%;
         line-height: 1;
-    }
-    .formContainer span {
+}
+.formContainer span {
         width: 100%;
         border: 1px solid rgb(224, 221, 221);
         border-radius: none;
@@ -291,33 +273,33 @@
         padding-left: 20px;
         display: flex;
         gap: 10px;
-    }
-    .formContainer span input {
+}
+.formContainer span input {
         width: 600px;
         border: none;
         height: 50px;
         border-top-left-radius: 0;
         font-weight: 700;
         border-bottom-left-radius: 0;
-    }
-    .formContainer span:nth-of-type(2) {
+}
+.formContainer span:nth-of-type(2) {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
-    }
-    .formContainer span:nth-of-type(3) {
+}
+.formContainer span:nth-of-type(3) {
         border-top-left-radius: 1px;
         border-bottom-left-radius: 1px;
-    }
-    .formContainer span:nth-of-type(4) {
+}
+.formContainer span:nth-of-type(4) {
         border-top-left-radius: 1px;
         border-bottom-left-radius: 1px;
-    }
-    .formContainer span:nth-of-type(5) {
+}
+.formContainer span:nth-of-type(5) {
         border-top-left-radius: 1px;
         border-bottom-left-radius: 1px;
         border: none;
-    }
-    .formContainer span button{
+}
+.formContainer span button{
         height: 60px;
         padding: 5px;
         border: none;
@@ -327,12 +309,11 @@
         color: white;
         border-right: 1px solid gray;
         transition: width 0.3s ease-in-out; 
-    }
-    .formContainer span button:active{
-        width: 82%;
-    }
 }
-
+.formContainer span button:active{
+        width: 82%;
+}
+}
 @media(max-width:593px){
    .formContainer{
         width: 95%;

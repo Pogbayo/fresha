@@ -478,14 +478,9 @@
 
 @media (max-width: 378px) {
   .subServiceContainer {
-    border: 2px solid red;
     overflow-y: auto; 
     margin-bottom: 30px;
     padding-bottom: 80px; 
-  }
-
-  .subService {
-    border: 2px solid red;
   }
 }
 

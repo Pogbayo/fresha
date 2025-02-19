@@ -903,7 +903,7 @@ span{
   }
 }
 
-@media (max-width: 354px) {
+@media (max-width: 375px) {
   .container{
     width: 90%;
     padding-bottom: 10px;

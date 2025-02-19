@@ -76,8 +76,8 @@
 .teamContainer span {
   flex-wrap: wrap;
   display: flex;
-  max-height: 720px;
-  overflow-y: auto;
+  /* max-height: 720px; */
+  /* overflow-y: auto; */
   width: 100%;
   gap: 10px;
   justify-content: center;
@@ -97,7 +97,6 @@
   border-radius: 10px;
   padding: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06);
-
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.4s ease-in;
@@ -913,7 +912,8 @@ span{
   }
   
   .teamContainer span{
-    max-height: 900px;
+    max-height: 9000px;
+    overflow-y: scroll;
     gap: 2px;
   }
   .teamContainer span div{

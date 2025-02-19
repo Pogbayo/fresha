@@ -108,7 +108,7 @@
     }
 }
 
-  @media (max-width: 354px) {
+  @media (max-width: 375px) {
   .firstLetter{
        padding: 20px;
      }

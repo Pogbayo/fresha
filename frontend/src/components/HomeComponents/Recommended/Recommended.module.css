@@ -133,3 +133,8 @@
       font-size: 0.65rem; /* Even smaller text */
   }
 }
+@media (max-width: 375px) {
+  .newHeader{
+    padding-left: 10px;
+  }
+}

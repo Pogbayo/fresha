@@ -103,7 +103,6 @@
   transition: all 0.4s ease-in;
   animation: fadeInEase 0.4s forwards;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-
 }
 .teamContainer span div:hover {
   transform: translateY(-5px);
@@ -902,5 +901,30 @@ span{
     height: 88vh;
     width: 323px;
   }
- 
+}
+
+@media (max-width: 354px) {
+  .container{
+    width: 90%;
+    padding-bottom: 10px;
+  }
+  .firstLetter{
+    padding: 10px;
+  }
+  
+  .teamContainer span{
+    max-height: 900px;
+    gap: 2px;
+  }
+  .teamContainer span div{
+    width:339.85px ;
+    min-width: 10px;
+    margin: 10px;
+  }
+  .name{
+    font-size: 0.8rem;
+  }
+  .role{
+    font-size: 0.6rem;
+  }
 }

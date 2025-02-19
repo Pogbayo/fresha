@@ -106,4 +106,15 @@
         height: 30px;
         font-size: 1.3rem;
     }
-  }
+}
+
+  @media (max-width: 354px) {
+  .firstLetter{
+       padding: 20px;
+     }
+    
+    .teamContainer span div{
+        width:110px ;
+        min-width: 30px;
+    }
+}

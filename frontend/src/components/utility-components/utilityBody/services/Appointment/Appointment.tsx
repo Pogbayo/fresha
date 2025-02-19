@@ -102,7 +102,11 @@ export const Appointment = () => {
                         style={{ marginLeft: "0px" }}
                       >
                         <IoIosArrowRoundBack size={30} />
-                        <button>Select service</button>
+                        <button
+                          style={{ background: "whitesmoke", color: "black" }}
+                        >
+                          Select service
+                        </button>
                       </div>
                     </div>
 

@@ -259,3 +259,18 @@
     font-size: 1.7rem;
    }
 }
+@media (max-width: 375px) {
+   .logo{
+    font-size: 1.7rem;
+   }
+   .backButton{
+    width: 50px;
+    padding: 10px;
+    display: flex;
+    background-color: white;
+    height: 50px;
+   }
+   .dropdownMenu{
+    gap: 10px;
+   }
+}

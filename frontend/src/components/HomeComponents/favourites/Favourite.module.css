@@ -29,16 +29,14 @@
 .section:hover .scrollButton {
     display: block;
 }
-  .leftArrow {
+.leftArrow {
     left: 10px;
     opacity: 3;
-}
-  
+} 
 .rightArrow {
     right: 0;
     opacity: 3;
 }
-
 .boxDiv {
     flex: 0 0 240px; 
     border: 1px solid rgb(192, 188, 188);
@@ -51,12 +49,10 @@
     overflow: hidden;
     padding-bottom: 15px;
 }
-
 .newHeader{
     font-weight: 700;
     font-size: 1.5rem;
 }
-
 .boxDiv .detailBox{
      height: auto; 
      padding: 10px;
@@ -65,7 +61,6 @@
      gap: 5px;
      width: fit-content;
 }
-
 .boxDiv img{
   width: 99.9%;
   height: 60%; 
@@ -73,11 +68,9 @@
     transition: transform 0.3s ease; 
     overflow: hidden;
 }
-
 .boxDiv img:hover{
     transform: scale(1.2); 
 }
-
 .shopName, .rating, .address, .categoryName{
     margin: 0;
     display: flex;
@@ -88,7 +81,7 @@
     font-size: 0.8rem;
     font-weight: 700;
     color: rgb(34, 33, 33);
-  }
+}
 .categoryName{
     border: 1px solid rgb(214, 213, 213);
     display: inline-block; 
@@ -99,51 +92,46 @@
     font-size: small;
     font-weight: 100;
 }
-
-  @media(max-width:1128px){
+@media(max-width:1128px){
     .boxDiv{
         flex: 0 0 220px;
         height: 220px; 
         padding-bottom: 20px;
     }
 }
-
-
-/* Small Screens (414px and below) */
 @media (max-width: 414px) {
     .boxDiv {
-        flex: 0 0 180px; /* Reduced width */
-        height: 190px; /* Reduced height */
+        flex: 0 0 180px; 
+        height: 190px; 
     }
   
     .newHeader {
-        font-size: 1.2rem; /* Smaller text */
+        font-size: 1.2rem; 
     }
   
     .boxDiv .detailBox {
-        padding: 10px; /* Reduced padding */
-        gap: 3px; /* Reduced gap between elements */
+        padding: 10px; 
+        gap: 3px;
     }
   
     .boxDiv img {
-        height: 60%; /* Reduced image height */
+        height: 60%
     }
   
     .shopName, .rating, .address, .categoryName {
-        font-size: 0.75rem; /* Smaller text for mobile */
-        gap: 3px; /* Reduced gap */
+        font-size: 0.75rem; 
+        gap: 3px;
     }
   
     .categoryName {
-        font-size: 0.65rem; /* Even smaller text */
+        font-size: 0.65rem; 
     }
-  }
-  @media (max-width: 375px) {
-    .newHeader{
+}
+@media (max-width: 375px) {
+  .newHeader{
       padding-left: 10px;
     }
     .container{
         padding-left: 5px;
       }
-  }
-  
+}
